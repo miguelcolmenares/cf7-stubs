@@ -1,0 +1,43 @@
+{
+    "name": "miguelcolmenares/cf7-stubs",
+    "description": "Contact Form 7 function and class declaration stubs for static analysis",
+    "keywords": [
+        "contact-form-7",
+        "cf7",
+        "wordpress",
+        "static-analysis",
+        "stubs",
+        "phpstan",
+        "definitions"
+    ],
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Miguel Colmenares",
+            "email": "me@miguelcolmenares.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
+    "require-dev": {
+        "php-stubs/generator": "^0.8.3",
+        "php-stubs/wordpress-stubs": "^6.7",
+        "phpstan/phpstan": "^1.10",
+        "nikic/php-parser": "^4.18"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "[ -d source/contact-form-7 ] || (cd source && composer install)"
+        ],
+        "post-update-cmd": [
+            "[ -d source/contact-form-7 ] || (cd source && composer install)"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

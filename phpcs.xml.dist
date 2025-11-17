@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="Contact Form 7 Stubs">
+    <description>Coding standards for Contact Form 7 Stubs</description>
+
+    <file>.</file>
+
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/source/*</exclude-pattern>
+    <exclude-pattern>contact-form-7-stubs.php</exclude-pattern>
+
+    <arg name="extensions" value="php"/>
+    <arg name="colors"/>
+    <arg value="sp"/>
+
+    <rule ref="PSR12"/>
+</ruleset>

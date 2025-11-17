@@ -1,0 +1,411 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Function wpcf7_add_tag_generator\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_admin_menu_change_notice_bulk_cv\\(\\) has parameter \\$counts with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_admin_menu_change_notice_bulk_cv\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_admin_menu_change_notice_recaptcha_v2_v3\\(\\) has parameter \\$counts with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_akismet_comment_check\\(\\) has parameter \\$comment with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_akismet_posted_data\\(\\) has parameter \\$posted_data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_akismet_posted_data\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_array_flatten\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_autop_preserve_newline_callback\\(\\) has parameter \\$matches with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_build_query\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_captcha_ajax_refill\\(\\) has parameter \\$items with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_captcha_ajax_refill\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_captcha_messages\\(\\) has parameter \\$messages with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_captcha_messages\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_captchac_options\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_captchac_options\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_date_messages\\(\\) has parameter \\$messages with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_date_messages\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_doihelper_start_session\\(\\) has parameter \\$token with no type specified\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_exclude_blank\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_file_messages\\(\\) has parameter \\$messages with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_file_messages\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_flamingo_inbound_message_parameters_turnstile\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_flamingo_inbound_message_parameters_turnstile\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_flamingo_serial_number\\(\\) has parameter \\$html with no type specified\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_flamingo_submit\\(\\) has parameter \\$result with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_format_atts\\(\\) has parameter \\$atts with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_init_uploads\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_kses_allowed_html\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_l10n\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_log_remote_request\\(\\) has parameter \\$request with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_log_remote_request\\(\\) has parameter \\$response with no type specified\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_mail_replace_tags\\(\\) has parameter \\$options with no type specified\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_map_meta_cap\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_map_meta_cap\\(\\) has parameter \\$caps with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_map_meta_cap\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_messages\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_number_messages\\(\\) has parameter \\$messages with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_number_messages\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_plugin_action_links\\(\\) has parameter \\$links with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_plugin_action_links\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_quiz_ajax_refill\\(\\) has parameter \\$items with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_quiz_ajax_refill\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_quiz_messages\\(\\) has parameter \\$messages with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_quiz_messages\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_recaptcha_add_hidden_fields\\(\\) has parameter \\$fields with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sanitize_mail\\(\\) has parameter \\$defaults with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sanitize_mail\\(\\) has parameter \\$input with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sanitize_mail\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sanitize_messages\\(\\) has parameter \\$defaults with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sanitize_messages\\(\\) has parameter \\$input with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sanitize_messages\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_scan_form_tags\\(\\) has parameter \\$cond with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_scan_form_tags\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_scan_shortcode\\(\\) has parameter \\$cond with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_scan_shortcode\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sendinblue_collect_parameters\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sendinblue_doi_default_email_callback\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sendinblue_doi_default_optin_callback\\(\\) has parameter \\$properties with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sendinblue_editor_panels\\(\\) has parameter \\$panels with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sendinblue_editor_panels\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sendinblue_register_property\\(\\) has parameter \\$properties with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sendinblue_register_property\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_sendinblue_submit\\(\\) has parameter \\$result with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_stripe_before_send_mail\\(\\) has parameter \\$abort with no type specified\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_stripe_before_send_mail\\(\\) has parameter \\$submission with no type specified\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_superglobal_request\\(\\) has parameter \\$default with no type specified\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_superglobal_server\\(\\) has parameter \\$default with no type specified\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_switch_locale\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_swv_available_rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_swv_create_rule\\(\\) has parameter \\$properties with no type specified\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_swv_get_meta_schema\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_tag_generator_quiz\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_text_messages\\(\\) has parameter \\$messages with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_text_messages\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_unship_uploaded_file\\(\\) has parameter \\$file with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_unship_uploaded_file\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_upload_dir\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_version_grep\\(\\) has parameter \\$input with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_version_grep\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_welcome_panel_screen_settings\\(\\) has parameter \\$screen_settings with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: "#^Function wpcf7_welcome_panel_screen_settings\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: contact-form-7-stubs.php

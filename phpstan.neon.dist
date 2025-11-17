@@ -1,0 +1,14 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: max
+    paths:
+        - contact-form-7-stubs.php
+    bootstrapFiles:
+        - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+        - contact-form-7-stubs.php
+        - contact-form-7-types.php
+    excludePaths:
+        - vendor/*
+    reportUnmatchedIgnoredErrors: false

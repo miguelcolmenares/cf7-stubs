@@ -1,0 +1,8 @@
+/vendor/
+/source/contact-form-7/
+/source/vendor/
+/contact-form-7/
+composer.lock
+.phpunit.result.cache
+.DS_Store
+*.log

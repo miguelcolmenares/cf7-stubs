@@ -1,0 +1,59 @@
+name: Generate Stubs
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        php-version: ['7.4', '8.0', '8.1', '8.2', '8.3']
+    
+    name: PHP ${{ matrix.php-version }}
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-version }}
+        coverage: none
+    
+    - name: Validate composer.json
+      run: composer validate --strict
+    
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v4
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-${{ matrix.php-version }}-
+    
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+    
+    - name: Install source dependencies
+      run: cd source && composer install --prefer-dist --no-progress
+    
+    - name: Generate stubs
+      run: bash generate.sh
+    
+    - name: Check if stubs file exists
+      run: test -f contact-form-7-stubs.php
+    
+    - name: Upload stubs artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: contact-form-7-stubs-php-${{ matrix.php-version }}
+        path: contact-form-7-stubs.php

@@ -53,7 +53,7 @@ jobs:
       run: test -f contact-form-7-stubs.php
     
     - name: Upload stubs artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: contact-form-7-stubs-php-${{ matrix.php-version }}
         path: contact-form-7-stubs.php

@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.1.3.1] - 2025-12-15
+
+### Fixed
+
+- Remove standalone `null` return type declarations for PHP 7.4-8.1 compatibility
+- Standalone `null` type was introduced in PHP 8.2, causing fatal errors in PHP 7.4-8.1
+- Maintain PHPDoc annotations for static analysis tools (PHPStan, Psalm)
+- Ensure compatibility across PHP 7.4, 8.0, 8.1, 8.2, and 8.3
+
+### Technical Details
+
+- Removed 19 instances of `: null` return type declarations from methods and functions
+- All type information preserved in PHPDoc `@return` annotations
+- Maintains Contact Form 7 6.1.3 compatibility (requires PHP 7.4+)
+
 ## [6.1.3] - 2025-11-17
 
 ### Added

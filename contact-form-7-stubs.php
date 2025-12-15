@@ -2645,7 +2645,7 @@ namespace {
          *
          * @return null Always null in stubs.
          */
-        public function zero(): null
+        public function zero()
         {
             return null;
         }
@@ -2654,7 +2654,7 @@ namespace {
          *
          * @return null Always null in stubs.
          */
-        public function random_pipe(): null
+        public function random_pipe()
         {
             return null;
         }
@@ -2790,7 +2790,7 @@ namespace {
          *
          * @return null Always null in stubs.
          */
-        public static function get_instance(): null
+        public static function get_instance()
         {
             return null;
         }
@@ -2876,7 +2876,7 @@ namespace {
          * @param string|array<string, mixed> $options
          * @return null Always null in stubs.
          */
-        public static function get_instance($contact_form = \null, $options = ''): null
+        public static function get_instance($contact_form = \null, $options = '')
         {
             return null;
         }
@@ -2999,7 +2999,7 @@ namespace {
          * @return null Always null in stubs.
          *                     null otherwise.
          */
-        public function get_meta($name): null
+        public function get_meta($name)
         {
             return null;
         }
@@ -3009,7 +3009,7 @@ namespace {
          * @param string $name Optional field name.
          * @return null Always null in stubs.
          */
-        public function get_posted_data($name = ''): null
+        public function get_posted_data($name = '')
         {
             return null;
         }
@@ -3866,7 +3866,7 @@ namespace {
          *
          * @return null Always null in stubs. Singleton instance or null.
          */
-        public static function get_instance(): null
+        public static function get_instance()
         {
             return null;
         }
@@ -3942,7 +3942,7 @@ namespace {
          *
          * @return null Always null in stubs. Singleton instance or null.
          */
-        public static function get_instance(): null
+        public static function get_instance()
         {
             return null;
         }
@@ -4036,7 +4036,7 @@ namespace {
          *
          * @return null Always null in stubs. Singleton instance or null.
          */
-        public static function get_instance(): null
+        public static function get_instance()
         {
             return null;
         }
@@ -4428,7 +4428,7 @@ namespace {
          *
          * @return null Always null in stubs. Singleton instance or null.
          */
-        public static function get_instance(): null
+        public static function get_instance()
         {
             return null;
         }
@@ -4455,7 +4455,7 @@ namespace {
          *
          * @return null Always null in stubs. API instance or null.
          */
-        public function api(): null
+        public function api()
         {
             return null;
         }
@@ -4546,7 +4546,7 @@ namespace {
          *
          * @return null Always null in stubs. The singleton instance or null.
          */
-        public static function get_instance(): null
+        public static function get_instance()
         {
             return null;
         }
@@ -4883,14 +4883,14 @@ namespace {
      * @param int|\WP_Post|null $post Object or post ID.
      * @return WPCF7_ContactForm|null Contact form object. Null if unset.
      */
-    function wpcf7_contact_form(WPCF7_ContactForm|WP_Post|int $post): null { return null; }
+    function wpcf7_contact_form(WPCF7_ContactForm|WP_Post|int $post) { return null; }
     /**
      * Searches for a contact form by an old unit ID.
      *
      * @param int $old_id Old unit ID.
      * @return WPCF7_ContactForm|null Contact form object.
      */
-    function wpcf7_get_contact_form_by_old_id(int $old_id): null
+    function wpcf7_get_contact_form_by_old_id(int $old_id)
     {
         return null;
     }
@@ -4900,7 +4900,7 @@ namespace {
      * @param string $hash Part of a hash string.
      * @return WPCF7_ContactForm|null Contact form object.
      */
-    function wpcf7_get_contact_form_by_hash(string $hash): null
+    function wpcf7_get_contact_form_by_hash(string $hash)
     {
         return null;
     }
@@ -4910,7 +4910,7 @@ namespace {
      * @param string $title Title of contact form.
      * @return WPCF7_ContactForm|null Contact form object if found, null otherwise.
      */
-    function wpcf7_get_contact_form_by_title(string $title): null
+    function wpcf7_get_contact_form_by_title(string $title)
     {
         return null;
     }
@@ -4919,7 +4919,7 @@ namespace {
      *
      * @return WPCF7_ContactForm|null Contact form object.
      */
-    function wpcf7_get_current_contact_form(): null
+    function wpcf7_get_current_contact_form()
     {
         return null;
     }
@@ -5004,7 +5004,7 @@ namespace {
      * @param string $context
      * @return WPCF7_ContactForm|null
      */
-    function wpcf7_save_contact_form(mixed $data = '', string $context = 'save'): null
+    function wpcf7_save_contact_form(mixed $data = '', string $context = 'save')
     {
         return null;
     }
@@ -5817,7 +5817,7 @@ namespace {
      * @param string $key Array key.
      * @return string|array<int|string, mixed>|null Sanitized value.
      */
-    function wpcf7_superglobal(string $superglobal, string $key): null {
+    function wpcf7_superglobal(string $superglobal, string $key) {
         return null;
     }
     /**

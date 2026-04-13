@@ -7,7 +7,7 @@ This project auto-generates PHPStan/Psalm type stubs from Contact Form 7 WordPre
 **Key Files:**
 - `contact-form-7-stubs.php` - Auto-generated declarations (308 functions, 66 classes, 8 traits)
 - `contact-form-7-types.php` - Manual constants (MB_IN_BYTES, etc.) that reduce stub errors
-- `source/contact-form-7/` - Original CF7 v6.1.3 source (reference for types)
+- `source/contact-form-7/` - Original CF7 v6.1.5 source (reference for types)
 - `finder.php` - Configures which CF7 files to stub (excludes assets/languages)
 - `generate.sh` - Runs `php-stubs/generator` to regenerate base stubs
 

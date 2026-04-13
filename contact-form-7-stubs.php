@@ -4761,7 +4761,7 @@ namespace {
     /**
      * @return string|false
      */
-    function wpcf7_current_action(): bool
+    function wpcf7_current_action(): string|false
     {
         return false;
     }
@@ -4880,7 +4880,7 @@ namespace {
     /**
      * Wrapper function of WPCF7_ContactForm::get_instance().
      *
-     * @param int|\WP_Post|null $post Object or post ID.
+     * @param WPCF7_ContactForm|\WP_Post|int $post Object or post ID.
      * @return WPCF7_ContactForm|null Contact form object. Null if unset.
      */
     function wpcf7_contact_form(WPCF7_ContactForm|WP_Post|int $post) { return null; }
@@ -4890,7 +4890,7 @@ namespace {
      * @param int $old_id Old unit ID.
      * @return WPCF7_ContactForm|null Contact form object.
      */
-    function wpcf7_get_contact_form_by_old_id(int $old_id)
+    function wpcf7_get_contact_form_by_old_id(int $old_id): ?WPCF7_ContactForm
     {
         return null;
     }
@@ -4900,7 +4900,7 @@ namespace {
      * @param string $hash Part of a hash string.
      * @return WPCF7_ContactForm|null Contact form object.
      */
-    function wpcf7_get_contact_form_by_hash(string $hash)
+    function wpcf7_get_contact_form_by_hash(string $hash): ?WPCF7_ContactForm
     {
         return null;
     }
@@ -4910,7 +4910,7 @@ namespace {
      * @param string $title Title of contact form.
      * @return WPCF7_ContactForm|null Contact form object if found, null otherwise.
      */
-    function wpcf7_get_contact_form_by_title(string $title)
+    function wpcf7_get_contact_form_by_title(string $title): ?WPCF7_ContactForm
     {
         return null;
     }
@@ -4919,7 +4919,7 @@ namespace {
      *
      * @return WPCF7_ContactForm|null Contact form object.
      */
-    function wpcf7_get_current_contact_form()
+    function wpcf7_get_current_contact_form(): ?WPCF7_ContactForm
     {
         return null;
     }
@@ -5002,11 +5002,11 @@ namespace {
      *
      * @param array<string, mixed>|string $data
      * @param string $context
-     * @return WPCF7_ContactForm|null
+     * @return WPCF7_ContactForm|false
      */
-    function wpcf7_save_contact_form(mixed $data = '', string $context = 'save')
+    function wpcf7_save_contact_form(mixed $data = '', string $context = 'save'): WPCF7_ContactForm|false
     {
-        return null;
+        return false;
     }
     /**
      * Sanitizes the form property data.
@@ -5152,11 +5152,11 @@ namespace {
      *
      * @param string $mime MIME type.
      *                     Wildcard (*) is available for the subtype part.
-     * @return array Corresponding file extensions.
+     * @return array<int, string> Corresponding file extensions.
      */
-    function wpcf7_convert_mime_to_ext(string $mime): string
+    function wpcf7_convert_mime_to_ext(string $mime): array
     {
-        return '';
+        return array();
     }
     /**
      * Returns a formatted list of acceptable filetypes.
@@ -5447,7 +5447,7 @@ namespace {
      *               'start', 'end', or 'both' (default).
      * @return string|array<int|string, mixed> Output text.
      */
-    function wpcf7_strip_whitespaces(mixed $input, string $side = 'both'): string
+    function wpcf7_strip_whitespaces(mixed $input, string $side = 'both'): string|array
     {
         return '';
     }
@@ -5487,7 +5487,7 @@ namespace {
      * @param string|bool $type Optional. Type of output. Default false.
      * @return array<string, mixed>|string Information about the upload directory.
      */
-    function wpcf7_upload_dir(mixed $type = false): array
+    function wpcf7_upload_dir(mixed $type = false): array|string
     {
         return array();
     }
@@ -5497,11 +5497,11 @@ namespace {
      * @param string $nonce Nonce value that was used for verification.
      * @param string $action Optional. Context to what is taking place.
      *                       Default 'wp_rest'.
-     * @return int|bool 1 if the nonce is generated between 0-12 hours ago,
-     *                  2 if the nonce is generated between 12-24 hours ago.
-     *                  False if the nonce is invalid.
+     * @return int|false 1 if the nonce is generated between 0-12 hours ago,
+     *                   2 if the nonce is generated between 12-24 hours ago.
+     *                   False if the nonce is invalid.
      */
-    function wpcf7_verify_nonce(string $nonce, string $action = 'wp_rest'): bool
+    function wpcf7_verify_nonce(string $nonce, string $action = 'wp_rest'): int|false
     {
         return false;
     }
@@ -5530,8 +5530,8 @@ namespace {
     /**
      * Excludes unset or blank text values from the given array.
      *
-     * @param array $input The array.
-     * @return array Array without blank text values.
+     * @param array<int|string, mixed> $input The array.
+     * @return array<int, mixed> Array without blank text values.
      */
     function wpcf7_exclude_blank(mixed $input): array
     {
@@ -5541,7 +5541,7 @@ namespace {
      * Creates a comma-separated list from a multi-dimensional array.
      *
      * @param mixed $input Array or item of array.
-     * @param string|array $options Optional. Output options.
+     * @param string|array<string, mixed> $options Optional. Output options.
      * @return string Comma-separated list.
      */
     function wpcf7_flat_join(mixed $input, mixed $options = ''): string
@@ -5651,9 +5651,9 @@ namespace {
      *
      * @param string $version The version to search for.
      * @param array<int|string, mixed> $input Search target array.
-     * @return array<int|string, mixed>|bool Array of matched entries. False on failure.
+     * @return array<int|string, mixed>|false Array of matched entries. False on failure.
      */
-    function wpcf7_version_grep(string $version, array $input): array
+    function wpcf7_version_grep(string $version, array $input): array|false
     {
         return array();
     }
@@ -5699,7 +5699,7 @@ namespace {
      * @return int|false The number of code units, or false if
      *                  mb_convert_encoding is not available.
      */
-    function wpcf7_count_code_units(string $text): int
+    function wpcf7_count_code_units(string $text): int|false
     {
         return 0;
     }
@@ -5760,9 +5760,9 @@ namespace {
      * Anonymizes an IP address by masking local part.
      *
      * @param string $ip_addr The original IP address.
-     * @return string|bool Anonymized IP address, or false on failure.
+     * @return string|false Anonymized IP address, or false on failure.
      */
-    function wpcf7_anonymize_ip_addr(string $ip_addr): string
+    function wpcf7_anonymize_ip_addr(string $ip_addr): string|false
     {
         return '';
     }
@@ -5817,7 +5817,7 @@ namespace {
      * @param string $key Array key.
      * @return string|array<int|string, mixed>|null Sanitized value.
      */
-    function wpcf7_superglobal(string $superglobal, string $key) {
+    function wpcf7_superglobal(string $superglobal, string $key): string|array|null {
         return null;
     }
     /**
@@ -6010,10 +6010,10 @@ namespace {
      * Creates an SWV rule object.
      *
      * @param string $rule_name Rule name.
-     * @param string|array $properties Optional. Rule properties.
+     * @param string|array<string, mixed> $properties Optional. Rule properties.
      * @return \Contactable\SWV\Rule|null The rule object, or null if it failed.
      */
-    function wpcf7_swv_create_rule(string $rule_name, $properties = ''): void {}
+    function wpcf7_swv_create_rule(string $rule_name, mixed $properties = ''): ?\Contactable\SWV\Rule { return null; }
     /**
      * Returns an associative array of JSON Schema for Contact Form 7 SWV.
      *
@@ -6299,7 +6299,7 @@ namespace {
      *
      * @return array<string, mixed>|false
      */
-    function wpcf7_akismet_submitted_params(): bool
+    function wpcf7_akismet_submitted_params(): array|false
     {
         return false;
     }
@@ -6472,13 +6472,13 @@ namespace {
     }
     function wpcf7_swv_add_file_rules(WPCF7_SWV_Schema $schema, WPCF7_ContactForm $contact_form): void {}
     /**
-     * @param mixed $replaced
+     * @param string $replaced
      * @param mixed $submitted
      * @param bool $html
      * @param \WPCF7_MailTag|null $mail_tag
-     * @return void
+     * @return string
      */
-    function wpcf7_file_mail_tag(string $replaced, mixed $submitted, bool $html, ?WPCF7_MailTag $mail_tag): void {}
+    function wpcf7_file_mail_tag(string $replaced, mixed $submitted, bool $html, ?WPCF7_MailTag $mail_tag): string { return ''; }
     /**
      * @return void
      */
@@ -6709,11 +6709,9 @@ namespace {
     /**
      * Default email_callback function.
      * @param array<string, mixed> $args
-     * @return string|false
+     * @return void
      */
-    function wpcf7_sendinblue_doi_default_email_callback(array $args): string {
-        return '';
-    }
+    function wpcf7_sendinblue_doi_default_email_callback(array $args): void {}
     /**
      * Registers the Sendinblue service.
      * @return void

@@ -23,7 +23,7 @@
     },
     "require-dev": {
         "php-stubs/generator": "^0.8.3",
-        "php-stubs/wordpress-stubs": "^6.7",
+        "php-stubs/wordpress-stubs": "^6.7 || ^7.0",
         "phpstan/phpstan": "^1.10 || ^2.0",
         "nikic/php-parser": "^4.18 || ^5.0"
     },

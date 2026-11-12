@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- PHPStan CI failed with PHPStan 2.3, which reads `require.php` from `composer.json` and reported native union types as unsupported. `phpstan.neon.dist` now sets `phpVersion: 80000` for the analysis of the stubs file
+- Ignore `constructor.unusedParameter` for `contact-form-7-stubs.php`, since stub constructors have unused parameters by design
+
 ## [6.1.3.1] - 2025-12-15
 
 ### Fixed

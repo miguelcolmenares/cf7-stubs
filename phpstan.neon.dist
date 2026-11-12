@@ -3,6 +3,11 @@ includes:
 
 parameters:
     level: max
+    # The stubs use native union types and `mixed`, which need PHP 8.0 or later.
+    # Without this, PHPStan 2.3+ reads `require.php` (^7.4 || ^8.0) from composer.json
+    # and reports union types as unsupported. This is the PHP version used to analyse
+    # the stubs file, not the version promised to consumers.
+    phpVersion: 80000
     paths:
         - contact-form-7-stubs.php
     bootstrapFiles:
@@ -11,4 +16,9 @@ parameters:
         - contact-form-7-types.php
     excludePaths:
         - vendor/*
+    ignoreErrors:
+        # Stub constructors have unused parameters by design: they only declare the signature.
+        -
+            identifier: constructor.unusedParameter
+            path: contact-form-7-stubs.php
     reportUnmatchedIgnoredErrors: false

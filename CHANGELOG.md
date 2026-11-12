@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - The dev dependency `phpstan/phpstan` is now `^2.1.46`, not `^1.10 || ^2.0`. PHPStan 1.x already reported 56 errors on the stubs, and 2.1.0 to 2.1.30 report 1, so the old range promised versions that do not pass. Versions 2.1.46, 2.2.0 and 2.3.5 report none. `composer.lock` stays untracked, because this is a library
+- The README badges show the Packagist version and downloads, the license, and the status of the PHPStan and Generate Stubs workflows
 
 ## [6.1.3.1] - 2025-12-15
 

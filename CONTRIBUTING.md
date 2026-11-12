@@ -42,6 +42,12 @@ Before submitting a pull request:
 2. Run PHPStan: `vendor/bin/phpstan analyse`
 3. Validate composer.json: `composer validate --strict`
 
+`composer.lock` is not tracked, so `composer install` takes the newest PHPStan that
+`composer.json` allows (`^2.1.46`). A new PHPStan release can therefore make this check fail
+with no change in the repository. `phpstan.neon.dist` sets `phpVersion: 80000`, because the
+stubs file uses native union types and `mixed`. If PHPStan fails on a clean branch, run it
+again with the previous minor version before you change the stubs.
+
 ## Pull Request Process
 
 1. Update the README.md with details of changes if needed

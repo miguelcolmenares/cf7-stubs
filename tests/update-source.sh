@@ -128,7 +128,14 @@ before="$(edited_files "$d")"
 check "a PHPStan config without phpVersion fails" refuses "$d" "$f" "has no 'phpVersion"
 check "and nothing is left changed" test "$(edited_files "$d")" = "$before"
 d="$(scratch)"; f="$(fixture 9.9.9 7.4)"
-check "a release below PHP 8.0 is refused" refuses "$d" "$f" "the stubs need PHP 8.0 or later"
+run "$d" "$f" >/dev/null 2>&1
+check "a release that declares PHP 7.4 gets the floor 8.0" test "$(jq -r '.require.php' "$d/composer.json")" = ">=8.0"
+check "and phpVersion 80000" grep -qx '    phpVersion: 80000' "$d/phpstan.neon.dist"
+check "and the CHANGELOG line says why" grep -q 'least that the stubs file loads on, because that release declares "Requires PHP: 7.4"' "$d/CHANGELOG.md"
+check "the output php is the floor, 8.0" grep -qx 'php=8.0' "$d/out"
+d="$(scratch)"; f="$(fixture "$cur" 7.4)"
+run "$d" "$f" >/dev/null 2>&1
+check "the pinned release that declares 7.4 accepts the floor 8.3" grep -qx 'changed=false' "$d/out"
 d="$(scratch)"; f="$(fixture 9.9.9 8.3)"
 check "a version that is not a number is refused" refuses "$d" "$f" "not a version number" "6.2; rm -rf /"
 

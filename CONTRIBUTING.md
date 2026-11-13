@@ -35,8 +35,8 @@ bash scripts/update-source.sh 6.2.5    # a given release
 ```
 
 It pins the version in `source/composer.json`, sets the PHP floor of `composer.json` and the `phpVersion`
-of `phpstan.neon.dist` to the `Requires PHP` that Contact Form 7 declares for that release (it refuses a
-release below PHP 8.0, and when there is no new release it only checks that the floor of `composer.json`
+of `phpstan.neon.dist` to the `Requires PHP` that Contact Form 7 declares for that release (it never goes
+below PHP 8.0, the least the stubs file loads on, and when there is no new release it only checks that the floor of `composer.json`
 is not lower), prints the version in the README and in `contact-form-7-types.php`, adds a line under
 `[Unreleased]` in the CHANGELOG, and applies the change of the plugin between the pinned release and the new one to
 `contact-form-7-stubs.php` with a three-way merge. A line that was curated by hand and that the new

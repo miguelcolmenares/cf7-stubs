@@ -7,21 +7,31 @@ This project auto-generates PHPStan/Psalm type stubs from Contact Form 7 WordPre
 **Key Files:**
 - `contact-form-7-stubs.php` - Auto-generated declarations (308 functions, 66 classes, 8 traits)
 - `contact-form-7-types.php` - Manual constants (MB_IN_BYTES, etc.) that reduce stub errors
-- `source/contact-form-7/` - Original CF7 v6.1.5 source (reference for types)
+- `source/contact-form-7/` - Original CF7 source, the release pinned in `source/composer.json` (reference for types)
 - `finder.php` - Configures which CF7 files to stub (excludes assets/languages)
-- `generate.sh` - Runs `php-stubs/generator` to regenerate base stubs
+- `generate.sh` - Runs `php-stubs/generator` to regenerate base stubs (raw, it overwrites the curated file)
+- `scripts/update-source.sh` - Follows a new CF7 release and keeps the curated lines (three-way merge)
 
 **Type Enhancement Pattern:** Base stubs are auto-generated WITHOUT implementations or full types. Manual enhancement adds complete `@param`/`@return` annotations by cross-referencing source code implementations.
 
 ## Critical Workflows
 
-### Regenerate Stubs (when CF7 updates)
+### Follow a new CF7 release
+```bash
+bash scripts/update-source.sh          # the latest release on WordPress.org, or pass a version
+```
+The script pins the version, sets the PHP floor from the `Requires PHP` of that release, and applies the change of
+the plugin to the curated stubs with a three-way merge. A conflict (`<<<<<<< curated`) is a line edited by hand that
+the release also changed. The workflow `.github/workflows/cf7-release-watch.yml` runs it daily and opens a draft pull
+request. See the `update-stubs` skill.
+
+### Regenerate raw stubs only
 ```bash
 # Update version in source/composer.json first
 cd source && composer update
 cd .. && ./generate.sh
 ```
-**WARNING:** Regeneration **overwrites all manual type annotations**. You must re-apply them afterward (see type enhancement workflow below).
+**WARNING:** `generate.sh` alone **overwrites all manual type annotations**. Do it on a copy of the file.
 
 ### Validate Type Annotations
 ```bash
@@ -29,7 +39,7 @@ vendor/bin/phpstan analyse contact-form-7-stubs.php --memory-limit=512M
 ```
 **Config:** Uses `level: max` (most strict) as defined in `phpstan.neon.dist`. This matches php-stubs/generator standard (wordpress-stubs uses level 9).
 
-**Current Status:** ~1185 errors (mostly missing `@param`/`@return` annotations). Target: reduce errors by adding complete PHPDoc type annotations by cross-referencing source implementations.
+**Current Status:** `vendor/bin/phpstan analyse` reports no errors, with the entries of `phpstan-baseline.neon` for what is inherent to the stubs. A change must keep it that way: add complete PHPDoc type annotations by cross-referencing source implementations, and do not grow the baseline without a reason.
 
 ### Test in Downstream Projects
 ```neon
@@ -294,10 +304,10 @@ public function format($input, $options) {}
 
 **After CF7 version update:**
 - [ ] Updated `source/composer.json` with new version/URL
-- [ ] Ran `./generate.sh` successfully
-- [ ] Re-applied type annotations (they were lost in regeneration)
+- [ ] Ran `scripts/update-source.sh` successfully (or `./generate.sh` and re-applied the annotations by hand)
+- [ ] Resolved every `<<<<<<< curated` conflict
 - [ ] Verified error reduction maintained at level max
-- [ ] Tagged release matching CF7 version
+- [ ] After the pull request is merged, the maintainer tags the release by hand (the workflow never tags)
 
 ## Integration with WordPress
 
@@ -308,8 +318,8 @@ CF7 stubs depend on WordPress stubs. Load order matters:
 parameters:
     bootstrapFiles:
         - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php  # Load FIRST
-        - vendor/miguelcolmenares/contact-form-7-stubs/contact-form-7-stubs.php
-        - vendor/miguelcolmenares/contact-form-7-stubs/contact-form-7-types.php
+        - vendor/miguelcolmenares/cf7-stubs/contact-form-7-stubs.php
+        - vendor/miguelcolmenares/cf7-stubs/contact-form-7-types.php
 ```
 
 ## GitHub CLI Workflows
@@ -369,7 +379,8 @@ PAGER=cat gh pr view <pr-number>
 
 | Task | Command |
 |------|---------|
-| Regenerate stubs | `./generate.sh` |
+| Follow a new CF7 release | `bash scripts/update-source.sh [version]` |
+| Regenerate raw stubs | `./generate.sh` |
 | Check errors | `vendor/bin/phpstan analyse contact-form-7-stubs.php --memory-limit=512M` |
 | Update CF7 version | Edit `source/composer.json`, run `cd source && composer update` |
 | Find source class | `grep -r "class WPCF7_ClassName" source/contact-form-7/` |

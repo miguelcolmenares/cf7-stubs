@@ -17,6 +17,14 @@ return Finder::create()
     ->notPath('modules/stripe/index.js')
     ->notPath('assets')
     ->notPath('languages')
+    // Since 6.2 the plugin ships its own vendor folder. Keep the Rock Lobster packages, which hold
+    // the SWV rules and the form data tree that the plugin API uses, and drop the autoloader, the
+    // Symfony polyfills and every folder of tests, which are not part of the API.
+    ->notPath('vendor/composer')
+    ->notPath('vendor/symfony')
+    ->notPath('vendor/bin')
+    ->notPath('vendor/autoload.php')
+    ->notPath('#(^|/)tests/#')
     // Exclude non-PHP files
     ->notName('*.json')
     ->notName('*.txt')

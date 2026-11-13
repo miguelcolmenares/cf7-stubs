@@ -1,7 +1,10 @@
 # Contact Form 7 Stubs
 
-[![Packagist](https://img.shields.io/packagist/v/miguelcolmenares/cf7-stubs.svg?color=4CC61E&style=popout)](https://packagist.org/packages/miguelcolmenares/cf7-stubs)
+[![Packagist](https://img.shields.io/packagist/v/miguelcolmenares/cf7-stubs.svg?color=4CC61E&style=flat)](https://packagist.org/packages/miguelcolmenares/cf7-stubs)
+[![Downloads](https://img.shields.io/packagist/dt/miguelcolmenares/cf7-stubs)](https://packagist.org/packages/miguelcolmenares/cf7-stubs)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![PHPStan Analysis](https://github.com/miguelcolmenares/cf7-stubs/actions/workflows/phpstan.yml/badge.svg?branch=main)](https://github.com/miguelcolmenares/cf7-stubs/actions/workflows/phpstan.yml)
+[![Generate Stubs](https://github.com/miguelcolmenares/cf7-stubs/actions/workflows/generate.yml/badge.svg?branch=main)](https://github.com/miguelcolmenares/cf7-stubs/actions/workflows/generate.yml)
 
 Provides stub declarations for [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) functions, classes, interfaces, and traits. These stubs can help plugin and theme developers leverage static analysis tools like [PHPStan](https://github.com/phpstan/phpstan) and [Psalm](https://psalm.dev/).
 

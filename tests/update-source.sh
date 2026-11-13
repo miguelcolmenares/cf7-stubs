@@ -22,7 +22,8 @@ scratch() { # a copy with the files the script edits, and prints its path
     local d; d="$(tmpdir)"
     mkdir -p "$d/scripts" "$d/source" "$d/zips" "$d/tags" "$d/raw"
     cp "$REPO/scripts/update-source.sh" "$d/scripts/"
-    cp "$REPO/composer.json" "$d/composer.json"
+    # The floor of the scratch copy is fixed, so the tests do not depend on the release that the repository follows.
+    jq --indent 4 '.require.php = ">=8.3"' "$REPO/composer.json" > "$d/composer.json"
     cp "$REPO/source/composer.json" "$d/source/composer.json"
     cp "$REPO/CHANGELOG.md" "$d/CHANGELOG.md"
     cp "$REPO/README.md" "$d/README.md"

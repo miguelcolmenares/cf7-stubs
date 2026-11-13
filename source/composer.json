@@ -8,22 +8,24 @@
             "type": "package",
             "package": {
                 "name": "contact-form-7/contact-form-7",
-                "version": "6.1.5",
+                "version": "6.1.6",
                 "type": "wordpress-plugin",
                 "dist": {
-                    "url": "https://downloads.wordpress.org/plugin/contact-form-7.6.1.5.zip",
+                    "url": "https://downloads.wordpress.org/plugin/contact-form-7.6.1.6.zip",
                     "type": "zip"
                 }
             }
         }
     ],
     "require": {
-        "contact-form-7/contact-form-7": "6.1.5",
+        "contact-form-7/contact-form-7": "6.1.6",
         "composer/installers": "^2.0"
     },
     "extra": {
         "installer-paths": {
-            "contact-form-7/": ["contact-form-7/contact-form-7"]
+            "contact-form-7/": [
+                "contact-form-7/contact-form-7"
+            ]
         }
     },
     "config": {

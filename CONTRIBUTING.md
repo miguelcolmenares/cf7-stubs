@@ -7,8 +7,8 @@ Thank you for considering contributing to Contact Form 7 Stubs!
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/miguelcolmenares/contact-form-7-stubs.git
-cd contact-form-7-stubs
+git clone https://github.com/miguelcolmenares/cf7-stubs.git
+cd cf7-stubs
 ```
 
 2. Install dependencies:
@@ -26,13 +26,28 @@ cd source && composer install
 
 ## Updating Contact Form 7 Version
 
-To generate stubs for a new version of Contact Form 7:
+The stubs file is curated by hand (docblocks, return types and bodies that the generator does not
+write), so running `./generate.sh` on its own overwrites that work. Use the script instead:
 
-1. Update the version and URL in `source/composer.json`
-2. Delete the `source/contact-form-7` directory if it exists
-3. Run `cd source && composer install` to download the new version
-4. Run `./generate.sh` from the root directory
-5. Commit the updated `contact-form-7-stubs.php` file
+```bash
+bash scripts/update-source.sh          # the latest release on WordPress.org
+bash scripts/update-source.sh 6.2.5    # a given release
+```
+
+It pins the version in `source/composer.json`, sets the PHP floor of `composer.json` and the `phpVersion`
+of `phpstan.neon.dist` to the `Requires PHP` that Contact Form 7 declares for that release (it refuses a
+release below PHP 8.0, and when there is no new release it only checks that the floor of `composer.json`
+is not lower), prints the version in the README and in `contact-form-7-types.php`, adds a line under
+`[Unreleased]` in the CHANGELOG, and applies the change of the plugin between the pinned release and the new one to
+`contact-form-7-stubs.php` with a three-way merge. A line that was curated by hand and that the new
+release also changed is a conflict, marked with `<<<<<<< curated`. Resolve each one, then run
+PHPStan. The script prints how many conflicts there are.
+
+The workflow `.github/workflows/cf7-release-watch.yml` runs the script every day and opens a draft
+pull request when there is a new release. Run it by hand from the Actions tab to follow a given
+version. It never tags or releases.
+
+`bash tests/update-source.sh` tests the script with a fixture and no network.
 
 ## Testing
 
@@ -44,9 +59,9 @@ Before submitting a pull request:
 
 `composer.lock` is not tracked, so `composer install` takes the newest PHPStan that
 `composer.json` allows (`^2.1.46`). A new PHPStan release can therefore make this check fail
-with no change in the repository. `phpstan.neon.dist` sets `phpVersion: 80000`, because the
-stubs file uses native union types and `mixed`. If PHPStan fails on a clean branch, run it
-again with the previous minor version before you change the stubs.
+with no change in the repository. `phpstan.neon.dist` sets `phpVersion` to the id of the PHP floor
+of the package (80300 for 8.3), and `scripts/update-source.sh` keeps the two together. If PHPStan fails on a clean branch, run
+it again with the previous minor version before you change the stubs.
 
 ## Pull Request Process
 

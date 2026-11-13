@@ -7,6 +7,19 @@ description: "Update CF7 stubs to a new Contact Form 7 plugin version. Use when:
 
 This skill covers the complete workflow for updating the Contact Form 7 stubs when a new CF7 plugin version is released.
 
+## Automated path (use this first)
+
+`scripts/update-source.sh [version]` does steps 2 to 6 below in one run: it pins the new version in
+`source/composer.json`, sets the PHP floor in `composer.json` from the `Requires PHP` of that release,
+updates the version in the README and in `contact-form-7-types.php`, adds the CHANGELOG line, and applies
+the change between the raw stubs of the old and of the new release to the curated file with a three-way
+merge. Lines that were curated by hand and that the new release also changed are conflicts, marked with
+`<<<<<<< curated`. Resolve them, then do step 7 (validate) and step 8 (commit).
+
+The workflow `.github/workflows/cf7-release-watch.yml` runs the script every day and opens a draft pull
+request when Contact Form 7 has a new release, so most of the time you start from that pull request. The
+manual steps below are for resolving conflicts and for a release that the script cannot handle.
+
 ## When to Use
 
 - A new Contact Form 7 version has been released
@@ -16,7 +29,7 @@ This skill covers the complete workflow for updating the Contact Form 7 stubs wh
 ## Prerequisites
 
 - `composer install` completed in the project root
-- PHP 8.2+ available
+- PHP 8.3+ available (the floor of the package, the `Requires PHP` of Contact Form 7)
 - The new CF7 version number (e.g., `6.1.5`)
 - The current CF7 version from `source/composer.json`
 
@@ -72,7 +85,7 @@ Look for these categories in the diff:
 | Changed function signatures | HIGH | Update signatures in stubs |
 | New private/protected methods | NONE | Private methods don't appear in stubs |
 | Internal logic changes | NONE | No stub changes needed |
-| Version bumps (package.json, etc.) | NONE | Only update source/composer.json |
+| Version bumps (package.json, etc.) | NONE | Only the pinned version, see Step 3 |
 | I18n/translation changes | NONE | No stub changes needed |
 
 ---
@@ -106,6 +119,12 @@ Edit `source/composer.json` to point to the new CF7 version. Three values must c
     }
 }
 ```
+
+Then update the rest by hand, which the script does for you:
+
+- `composer.json`: set `require.php` to `>=<Requires PHP of the release>`, and `phpVersion` in `phpstan.neon.dist` to the same floor (`80300` for 8.3). Never below PHP 8.0.
+- The README line "Current version" and `WPCF7_VERSION` in `contact-form-7-types.php`.
+- One line under `[Unreleased]` in `CHANGELOG.md`.
 
 Then download the new source:
 
@@ -290,7 +309,7 @@ vendor/bin/phpstan analyse --no-progress --memory-limit=512M
 rm -f contact-form-7-stubs.php.annotated
 
 # Stage changes
-git add contact-form-7-stubs.php phpstan-baseline.neon source/composer.json
+git add contact-form-7-stubs.php phpstan-baseline.neon source/composer.json composer.json phpstan.neon.dist CHANGELOG.md README.md contact-form-7-types.php
 
 # Commit with descriptive message
 git commit -m "chore: Bump CF7 source version to X.Y.Z

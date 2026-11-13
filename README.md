@@ -15,7 +15,7 @@ The package includes two files:
 
 > **Note:** The auto-generated stubs may have some PHPStan errors due to missing type hints in the original CF7 code. Including `contact-form-7-types.php` helps reduce these errors by providing essential constants like `MB_IN_BYTES`.
 
-**Current version:** Contact Form 7 6.1.3
+**Current version:** Contact Form 7 6.1.5
 
 **Stubs include:**
 
@@ -28,7 +28,7 @@ The stubs are generated directly from the Contact Form 7 plugin source code usin
 
 ## Requirements
 
-- PHP 7.4 or 8.0+
+- PHP 8.3 or later. Contact Form 7 6.2 declares `Requires PHP: 8.3`, and the stubs file uses native union types and `mixed`, so it does not load below PHP 8.0. When the update workflow follows a release, it sets this minimum to that release's `Requires PHP`, and it refuses a release below PHP 8.0. Between releases it only checks that the minimum is not lower.
 
 ## Installation
 
@@ -80,7 +80,13 @@ This package is versioned to match the Contact Form 7 version from which the stu
 
 ## Generating stubs for a different Contact Form 7 version
 
-1. Run a modern PHP version (7.4+)
+The stubs file is curated by hand on top of the generator output, so do not run `generate.sh`
+alone over it. `scripts/update-source.sh` moves to a new release and keeps the curated lines, and a
+workflow runs it every day and opens a draft pull request when Contact Form 7 publishes a release.
+See [CONTRIBUTING.md](CONTRIBUTING.md#updating-contact-form-7-version). The manual steps below
+produce the raw generator output.
+
+1. Run PHP 8.3 or later
 2. Clone this repository and `cd` into it
 3. Update the version in `source/composer.json`:
 
@@ -97,7 +103,9 @@ This package is versioned to match the Contact Form 7 version from which the stu
 4. Run `composer update` in the `source` directory (or delete `source/contact-form-7` to force re-download)
 5. Run `./generate.sh` from the root directory
 
-The `contact-form-7-stubs.php` file should now be updated.
+This writes the raw generator output over `contact-form-7-stubs.php`, so the curated lines are lost.
+Do it on a copy, or use `scripts/update-source.sh`, which also updates `composer.json` (the PHP floor),
+`phpstan.neon.dist`, the version texts and the CHANGELOG, and keeps the curated lines.
 
 ## Trademark Notice
 

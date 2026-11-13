@@ -1,0 +1,133 @@
+name: Watch Contact Form 7
+
+# Looks every day for a Contact Form 7 release newer than the one the stubs follow. When there is
+# one, it opens a draft pull request that moves the pinned version, the PHP floor (the "Requires
+# PHP" of that release), the PHP version of the PHPStan analysis, the version printed in the README and in contact-form-7-types.php, and the
+# CHANGELOG, and applies the change of the plugin API to the curated
+# stubs file with a three-way merge. See scripts/update-source.sh.
+#
+# The pull request is a draft because a person has to read it: a line that was curated by hand and
+# that the new release also changed is a conflict, and the file keeps its markers. Nothing is tagged
+# or released here.
+#
+# Pull requests that a workflow opens with GITHUB_TOKEN do not start other workflows, so the job runs
+# the PHPStan analysis itself and writes the result in the description.
+
+on:
+  schedule:
+    - cron: '23 5 * * *'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Contact Form 7 version to follow (empty: the latest release)'
+        required: false
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: cf7-release-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    name: Look for a new release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # The pull request targets the default branch, so a manual run from another branch must not build on it.
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Move the source to the new release
+        id: update
+        env:
+          REQUESTED_VERSION: ${{ inputs.version }}
+        run: bash scripts/update-source.sh ${REQUESTED_VERSION:+"$REQUESTED_VERSION"}
+
+      # A pull request for this release, open or closed, or a branch that a failed run left behind,
+      # stops the run: a closed pull request means that a person decided not to follow that release.
+      - name: Stop when this release already has a pull request or a branch
+        id: existing
+        if: steps.update.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.update.outputs.version }}
+        run: |
+          branch="chore/cf7-$VERSION"
+          count="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$branch" --state all --json number --jq length)"
+          if [ "$count" -gt 0 ] || git ls-remote --exit-code --heads "https://github.com/${GITHUB_REPOSITORY}.git" "$branch" >/dev/null 2>&1; then
+            echo "::notice::$branch already exists or has a pull request, nothing to open for Contact Form 7 $VERSION"
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check the stubs file
+        id: check
+        if: steps.update.outputs.changed == 'true' && steps.existing.outputs.found == 'false'
+        env:
+          CONFLICTS: ${{ steps.update.outputs.conflicts }}
+        run: |
+          if [ "$CONFLICTS" -gt 0 ]; then
+            echo "phpstan=skipped, the file has conflict markers" >> "$GITHUB_OUTPUT"
+          elif php -l contact-form-7-stubs.php >/dev/null && vendor/bin/phpstan analyse --no-progress --memory-limit=512M >/dev/null; then
+            echo "phpstan=passes" >> "$GITHUB_OUTPUT"
+          else
+            echo "phpstan=fails, run it on the branch" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open the draft pull request
+        if: steps.update.outputs.changed == 'true' && steps.existing.outputs.found == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.update.outputs.version }}
+          PHP_FLOOR: ${{ steps.update.outputs.php }}
+          CONFLICTS: ${{ steps.update.outputs.conflicts }}
+          PHPSTAN: ${{ steps.check.outputs.phpstan }}
+        run: |
+          branch="chore/cf7-$VERSION"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add CHANGELOG.md README.md composer.json phpstan.neon.dist source/composer.json contact-form-7-stubs.php contact-form-7-types.php
+          git commit -q -m "Follow Contact Form 7 $VERSION"
+          git push -q "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/$branch"
+          {
+            echo "## Summary"
+            echo
+            echo "Contact Form 7 $VERSION is on WordPress.org. This pull request follows it."
+            echo
+            echo "- **Source:** \`source/composer.json\` pins $VERSION."
+            echo "- **PHP floor:** \`composer.json\` requires \`>=$PHP_FLOOR\`, the \`Requires PHP\` that CF7 declares for this release."
+            echo "- **PHPStan:** \`phpVersion\` in \`phpstan.neon.dist\` is the same floor."
+            echo "- **Version texts:** the README line \"Current version\" and \`WPCF7_VERSION\` in \`contact-form-7-types.php\` say $VERSION."
+            echo "- **Stubs:** the change of the plugin API between the pinned release and $VERSION is applied to \`contact-form-7-stubs.php\` with a three-way merge, so the lines that were curated by hand stay."
+            echo "- **Conflicts:** $CONFLICTS"
+            echo "- **PHPStan:** $PHPSTAN"
+            echo
+            if [ "$CONFLICTS" -gt 0 ]; then
+              echo "## What is left to do"
+              echo
+              echo "The stubs file has $CONFLICTS conflict(s), marked with \`<<<<<<< curated\`. Check out this branch, resolve each one (keep the curated line when it still fits the new code), run \`vendor/bin/phpstan analyse\`, and regenerate \`phpstan-baseline.neon\` if the remaining errors are stub-inherent."
+              echo
+            fi
+            echo "## Not done here"
+            echo
+            echo "No tag and no release. The version of the package follows the one of the plugin, and the maintainer decides when to cut it."
+          } > "$RUNNER_TEMP/body.md"
+          gh pr create --repo "$GITHUB_REPOSITORY" --draft --base main --head "$branch" \
+            --title "Follow Contact Form 7 $VERSION" --body-file "$RUNNER_TEMP/body.md"

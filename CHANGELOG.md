@@ -7,15 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Fixed
+### Added
 
-- PHPStan CI failed with PHPStan 2.3, which reads `require.php` from `composer.json` and reported native union types as unsupported. `phpstan.neon.dist` now sets `phpVersion: 80000` for the analysis of the stubs file
-- Ignore `constructor.unusedParameter` for `contact-form-7-stubs.php`, since stub constructors have unused parameters by design
+- A workflow, `cf7-release-watch.yml`, that looks every day for a Contact Form 7 release newer than the one the stubs follow, and opens a draft pull request when there is one. The pull request pins the new version, sets the PHP floor and the `phpVersion` of `phpstan.neon.dist` to the `Requires PHP` of that release, adds the CHANGELOG line, and applies the change of the plugin to the curated stubs file with a three-way merge, so the lines edited by hand stay. A conflict keeps its markers and the description says how many there are. It does not tag or release. It can also be started by hand for a given version
+- `scripts/update-source.sh`, the script behind that workflow, and `tests/update-source.sh`, its tests. The same script fails when the PHP floor of `composer.json` (this one only, not `phpVersion`) is lower than the `Requires PHP` that Contact Form 7 declares for the followed release, so the daily run of the workflow turns red when the two drift apart. It also prints the new version in the README and in `contact-form-7-types.php`
 
 ### Changed
 
+- `generate.sh` stops when `source/contact-form-7` is not the release that `source/composer.json` pins, so a folder left from another release cannot produce stubs for that release
+- **The PHP floor is 8.3**, the `Requires PHP` that Contact Form 7 6.2 declares, and `composer.json` requires `>=8.3`, and `phpstan.neon.dist` analyses as 8.3. The stubs still follow 6.1.5, whose own `Requires PHP` is 7.4, so the floor is higher than the release that is pinned until the workflow moves it. A floor lower than the `Requires PHP` of the followed release is the error that the daily run reports. The README promised 7.4, but the stubs file does not load there: it uses native union types and `mixed`, and `php -l` fails below 8.0 (the 6.1.3.1 entry claimed 7.4 compatibility, which was wrong). The CI matrix runs PHP 8.3 and 8.4, and PHPStan runs on 8.4. `phpstan.neon.dist` analyses as PHP 8.3
+- `finder.php` leaves out the Composer autoloader, the Symfony polyfills and every `tests/` folder of the `vendor/` directory that Contact Form 7 ships since 6.2, and keeps the Rock Lobster packages, which hold the API of the plugin
 - The dev dependency `phpstan/phpstan` is now `^2.1.46`, not `^1.10 || ^2.0`. PHPStan 1.x already reported 56 errors on the stubs, and 2.1.0 to 2.1.30 report 1, so the old range promised versions that do not pass. Versions 2.1.46, 2.2.0 and 2.3.5 report none. `composer.lock` stays untracked, because this is a library
 - The README badges show the Packagist version and downloads, the license, and the status of the PHPStan and Generate Stubs workflows
+
+### Fixed
+
+- PHPStan CI failed with PHPStan 2.3, which reads `require.php` from `composer.json` and reported native union types as unsupported. `phpstan.neon.dist` now sets `phpVersion` for the analysis of the stubs file
+- Ignore `constructor.unusedParameter` for `contact-form-7-stubs.php`, since stub constructors have unused parameters by design
 
 ## [6.1.3.1] - 2025-12-15
 

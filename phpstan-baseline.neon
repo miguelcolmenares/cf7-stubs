@@ -895,12 +895,6 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
-			message: '#^Function wpcf7_unship_uploaded_file\(\) never returns WP_Error so it can be removed from the return type\.$#'
-			identifier: return.unusedType
-			count: 1
-			path: contact-form-7-stubs.php
-
-		-
 			message: '#^Function wpcf7_upload_dir\(\) never returns string so it can be removed from the return type\.$#'
 			identifier: return.unusedType
 			count: 1

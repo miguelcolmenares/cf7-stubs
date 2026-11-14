@@ -7,6 +7,72 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.2.5] - 2026-11-14
+
+### Changed
+
+- The stubs follow Contact Form 7 6.2.5, up from 6.2.4.1. The PHP floor of the package is 8.3, the "Requires PHP" of that release
+
+### Fixed
+
+- `WPCF7_SWV_Schema::add_rule()` has the `@deprecated 6.2 Use addRule()` tag of the real method
+
+## [6.2.4.1] - 2026-11-14
+
+### Changed
+
+- The stubs follow Contact Form 7 6.2.4.1, up from 6.2.4. The PHP floor of the package is 8.3, the "Requires PHP" of that release
+
+## [6.2.4] - 2026-11-14
+
+### Changed
+
+- The stubs follow Contact Form 7 6.2.4, up from 6.2.3. The PHP floor of the package is 8.3, the "Requires PHP" of that release
+
+### Fixed
+
+- `wpcf7_unship_uploaded_file()` returns `bool|WP_Error`, as the code does since 6.2.4 (it returned a list of paths before)
+
+## [6.2.3] - 2026-11-14
+
+### Changed
+
+- The stubs follow Contact Form 7 6.2.3, up from 6.2.2. The PHP floor of the package is 8.3, the "Requires PHP" of that release
+
+## [6.2.2] - 2026-11-14
+
+### Changed
+
+- The stubs follow Contact Form 7 6.2.2, up from 6.2.1. The PHP floor of the package is 8.3, the "Requires PHP" of that release
+
+## [6.2.1] - 2026-11-14
+
+### Changed
+
+- The stubs follow Contact Form 7 6.2.1, up from 6.2. The PHP floor of the package is 8.3, the "Requires PHP" of that release
+
+## [6.2] - 2026-11-14
+
+### Changed
+
+- The stubs follow Contact Form 7 6.2, up from 6.1.7. The PHP floor of the package is 8.3, the "Requires PHP" of that release
+
+### Fixed
+
+- Corrected the types of the stubs that did not match the code of the plugin. Each function and method was read against the real code of Contact Form 7 6.2, and the native types and the docblocks now say what the code accepts and returns. The main corrections: `wpcf7_is_mailbox_list()` takes `string|array` and returns `array|false`; `WPCF7_Submission::get_invalid_field()` returns `array|false` and `verify_posted_data_hash()` returns `int|false`; `wpcf7_unship_uploaded_file()` returns `array|WP_Error`; the callbacks of `WPCF7_REST_Controller` return `WP_REST_Response|WP_Error`
+- The `validate()` methods of the 24 SWV rules return `bool`, not `array`, and `WPCF7_SWV_Schema::validate()` is a generator. `RockLobsterInc\Swv\Rules\StepNumberRule` no longer declares five methods (`save_data()`, `reset_data()`, `load()`, `admin_notice()` and `display()`) that the class does not have
+- `wpcf7_config_validator_update_option()` is declared again. The 6.1.7 stubs had it, and the 6.2 stubs had dropped it
+- Functions and methods that the stubs declared `void` but that return a value (for example `wpcf7_add_tag_generator()`, `wpcf7_register_post_types()`, `WPCF7_Validation::offsetGet()`, `WPCF7_Submission::add_consent()`) now declare that value, and the ones that the stubs declared with a return type but that return nothing (the `icon()` and `link()` methods of the integrations, the `validate_mail_*()` methods of `WPCF7_ConfigValidator_Mail`, `WPCF7_ConfigValidator::save()`) are `void`
+- The docblocks of `WPCF7_Submission::get_meta()` and `get_posted_data()` no longer say that they return only `null`, `WPCF7_FormTagsManager::get_scanned_tags()` can return `null` before the first scan, `WPCF7_HTMLFormatter::normalize_start_tag()` returns a list and not named keys, and the chunks of the HTML formatter have an integer `type`
+
+## [6.1.7] - 2026-11-14
+
+### Changed
+
+- The stubs follow Contact Form 7 6.1.7, up from 6.1.6. The PHP floor of the package is 8.0, the least that the stubs file loads on, because that release declares "Requires PHP: 7.4"
+
+## [6.1.6] - 2026-11-14
+
 ### Added
 
 - A workflow, `cf7-release-watch.yml`, that looks every day for a Contact Form 7 release newer than the one the stubs follow, and opens a draft pull request when there is one. The pull request pins the new version, sets the PHP floor and the `phpVersion` of `phpstan.neon.dist` to the `Requires PHP` of that release, adds the CHANGELOG line, and applies the change of the plugin to the curated stubs file with a three-way merge, so the lines edited by hand stay. A conflict keeps its markers and the description says how many there are. It does not tag or release. It can also be started by hand for a given version
@@ -15,25 +81,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `generate.sh` stops when `source/contact-form-7` is not the release that `source/composer.json` pins, so a folder left from another release cannot produce stubs for that release
-- **The PHP floor is 8.3**, the `Requires PHP` that Contact Form 7 6.2 declares, and `composer.json` requires `>=8.3`, and `phpstan.neon.dist` analyses as 8.3. The stubs still follow 6.1.5, whose own `Requires PHP` is 7.4, so the floor is higher than the release that is pinned until the workflow moves it. A floor lower than the `Requires PHP` of the followed release is the error that the daily run reports. The README promised 7.4, but the stubs file does not load there: it uses native union types and `mixed`, and `php -l` fails below 8.0 (the 6.1.3.1 entry claimed 7.4 compatibility, which was wrong). The CI matrix runs PHP 8.3 and 8.4, and PHPStan runs on 8.4. `phpstan.neon.dist` analyses as PHP 8.3
+- **The PHP floor is 8.0**, and `composer.json` requires `>=8.0`. The stubs file uses native union types and `mixed`, and `php -l` fails below 8.0, so the README promise of 7.4 was wrong (the 6.1.3.1 entry claimed 7.4 compatibility, which was wrong too). Contact Form 7 6.1 declares `Requires PHP: 7.4`, so the floor is higher than that of the plugin. `phpstan.neon.dist` analyses as 8.0. A floor lower than the `Requires PHP` of the followed release is the error that the daily run reports. The CI matrix runs PHP 8.3 and 8.4, and PHPStan runs on 8.4
 - `scripts/update-source.sh` sets the PHP floor to the `Requires PHP` of the release that it follows, and never below 8.0, which is the least that the stubs file loads on. Releases of the 6.1 line declare 7.4, so they get the floor 8.0, and the CHANGELOG line it adds says so
 - `finder.php` leaves out the Composer autoloader, the Symfony polyfills and every `tests/` folder of the `vendor/` directory that Contact Form 7 ships since 6.2, and keeps the Rock Lobster packages, which hold the API of the plugin
 - The dev dependency `phpstan/phpstan` is now `^2.1.46`, not `^1.10 || ^2.0`. PHPStan 1.x already reported 56 errors on the stubs, and 2.1.0 to 2.1.30 report 1, so the old range promised versions that do not pass. Versions 2.1.46, 2.2.0 and 2.3.5 report none. `composer.lock` stays untracked, because this is a library
 - The README badges show the Packagist version and downloads, the license, and the status of the PHPStan and Generate Stubs workflows
 - The stubs follow Contact Form 7 6.1.6, up from 6.1.5. The PHP floor of the package is 8.0, the least that the stubs file loads on, because that release declares "Requires PHP: 7.4"
-- The stubs follow Contact Form 7 6.1.7, up from 6.1.6. The PHP floor of the package is 8.0, the least that the stubs file loads on, because that release declares "Requires PHP: 7.4"
-- The stubs follow Contact Form 7 6.2, up from 6.1.7. The PHP floor of the package is 8.3, the "Requires PHP" of that release
-- The stubs follow Contact Form 7 6.2.1, up from 6.2. The PHP floor of the package is 8.3, the "Requires PHP" of that release
-- The stubs follow Contact Form 7 6.2.2, up from 6.2.1. The PHP floor of the package is 8.3, the "Requires PHP" of that release
-- The stubs follow Contact Form 7 6.2.3, up from 6.2.2. The PHP floor of the package is 8.3, the "Requires PHP" of that release
-- The stubs follow Contact Form 7 6.2.4, up from 6.2.3. The PHP floor of the package is 8.3, the "Requires PHP" of that release
-- The stubs follow Contact Form 7 6.2.4.1, up from 6.2.4. The PHP floor of the package is 8.3, the "Requires PHP" of that release
-- The stubs follow Contact Form 7 6.2.5, up from 6.2.4.1. The PHP floor of the package is 8.3, the "Requires PHP" of that release
 
 ### Fixed
 
 - PHPStan CI failed with PHPStan 2.3, which reads `require.php` from `composer.json` and reported native union types as unsupported. `phpstan.neon.dist` now sets `phpVersion` for the analysis of the stubs file
 - Ignore `constructor.unusedParameter` for `contact-form-7-stubs.php`, since stub constructors have unused parameters by design
+- Corrected the types of the stubs that did not match the code of the plugin. Each function and method was read against the real code of Contact Form 7 6.1.6, and the native types and the docblocks now say what the code accepts and returns. The main corrections: `wpcf7_is_mailbox_list()` takes `string|array` and returns `array|false`; `WPCF7_Submission::get_invalid_field()` returns `array|false` and `verify_posted_data_hash()` returns `int|false`; `wpcf7_unship_uploaded_file()` returns `array|WP_Error`; the callbacks of `WPCF7_REST_Controller` return `WP_REST_Response|WP_Error`; the `validate()` methods of the SWV rules return `bool|WP_Error`
+- Functions and methods that the stubs declared `void` but that return a value (for example `wpcf7_add_tag_generator()`, `wpcf7_register_post_types()`, `WPCF7_Validation::offsetGet()`, `WPCF7_Submission::add_consent()`) now declare that value, and the ones that the stubs declared with a return type but that return nothing (the `icon()` and `link()` methods of the integrations, the `validate_mail_*()` methods of `WPCF7_ConfigValidator_Mail`, `WPCF7_ConfigValidator::save()`) are `void`
+- The docblocks of `WPCF7_Submission::get_meta()` and `get_posted_data()` no longer say that they return only `null`, `WPCF7_FormTagsManager::get_scanned_tags()` can return `null` before the first scan, `WPCF7_HTMLFormatter::normalize_start_tag()` returns a list and not named keys, and the chunks of the HTML formatter have an integer `type`
 
 ## [6.1.3.1] - 2025-12-15
 

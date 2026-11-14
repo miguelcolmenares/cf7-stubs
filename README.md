@@ -15,7 +15,7 @@ The package includes two files:
 
 > **Note:** The auto-generated stubs may have some PHPStan errors due to missing type hints in the original CF7 code. Including `contact-form-7-types.php` helps reduce these errors by providing essential constants like `MB_IN_BYTES`.
 
-**Current version:** Contact Form 7 6.2.1
+**Current version:** Contact Form 7 6.2.2
 
 **Stubs include:**
 

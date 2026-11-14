@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The stubs follow Contact Form 7 6.2, up from 6.1.7. The PHP floor of the package is 8.3, the "Requires PHP" of that release
 - The stubs follow Contact Form 7 6.2.1, up from 6.2. The PHP floor of the package is 8.3, the "Requires PHP" of that release
 - The stubs follow Contact Form 7 6.2.2, up from 6.2.1. The PHP floor of the package is 8.3, the "Requires PHP" of that release
+- The stubs follow Contact Form 7 6.2.3, up from 6.2.2. The PHP floor of the package is 8.3, the "Requires PHP" of that release
 
 ### Fixed
 

@@ -865,6 +865,24 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
+			message: '#^Function wpcf7_stripe_get_pi_params\(\) never returns array so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_stripe_get_pi_params\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_stripe_pi_params_hash\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_superglobal\(\) never returns array\<int\|string, mixed\> so it can be removed from the return type\.$#'
 			identifier: return.unusedType
 			count: 1

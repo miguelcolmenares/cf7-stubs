@@ -3005,6 +3005,8 @@ namespace {
         /**
          * Wrapper function for toArray.
          *
+         * @deprecated 6.2 Use toArray()
+         *
          * @return array Array of rule properties.
          */
         public function to_array(): array
@@ -7553,6 +7555,25 @@ namespace {
      * @param mixed $submission
      */
     function wpcf7_stripe_before_send_mail(WPCF7_ContactForm $contact_form, &$abort, $submission): void {}
+    /**
+     * Returns Payment Intent parameters.
+     *
+     * @param WPCF7_Submission $submission Submission object.
+     * @return array|null Payment Intent parameters.
+     *                    Null if no [stripe] form-tag found.
+     */
+    function wpcf7_stripe_get_pi_params($submission)
+    {
+        return null;
+    }
+    /**
+     * Returns the hash of Payment Intent parameters plus some submission metadata.
+     * @param mixed $submission
+     * @param mixed $length
+     */
+    function wpcf7_stripe_pi_params_hash($submission, $length = 7)
+    {
+    }
     /**
      * Returns payment link URL.
      *

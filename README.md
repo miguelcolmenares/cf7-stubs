@@ -107,6 +107,10 @@ This writes the raw generator output over `contact-form-7-stubs.php`, so the cur
 Do it on a copy, or use `scripts/update-source.sh`, which also updates `composer.json` (the PHP floor),
 `phpstan.neon.dist`, the version texts and the CHANGELOG, and keeps the curated lines.
 
+To check the curated file against the plugin it follows, run `bash scripts/compare-stubs.sh`. It lists what exists
+on one side only and where a type, a parameter or a stub body differs, and `--check` fails on the structural part.
+See [CONTRIBUTING.md](CONTRIBUTING.md#comparing-the-stubs-with-the-plugin).
+
 ## Trademark Notice
 
 "Contact Form 7" is a trademark of Rock Lobster, LLC. This project is not affiliated with, endorsed by, or sponsored by Rock Lobster, LLC or the Contact Form 7 project. This is an independent tool created to provide static analysis support for developers using the Contact Form 7 plugin.

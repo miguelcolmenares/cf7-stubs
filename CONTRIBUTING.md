@@ -44,10 +44,41 @@ release also changed is a conflict, marked with `<<<<<<< curated`. Resolve each 
 PHPStan. The script prints how many conflicts there are.
 
 The workflow `.github/workflows/cf7-release-watch.yml` runs the script every day and opens a draft
-pull request when there is a new release. Run it by hand from the Actions tab to follow a given
+pull request when there is a new release, and requests a review from the owner of the repository so
+that GitHub sends a notification. Run it by hand from the Actions tab to follow a given
 version. It never tags or releases.
 
 `bash tests/update-source.sh` tests the script with a fixture and no network.
+
+## Comparing the stubs with the plugin
+
+The types in the stubs file are curated by hand, so a wrong one makes PHPStan accept a bug or reject
+correct code. `scripts/compare-stubs.sh` reads every declaration of `source/contact-form-7` and of
+`contact-form-7-stubs.php` and writes a Markdown report:
+
+```bash
+cd source && composer install && cd ..     # the release that the stubs follow
+bash scripts/compare-stubs.sh              # the report on standard output
+bash scripts/compare-stubs.sh --check --report /tmp/stubs-report.md
+```
+
+The report has three kinds of section:
+
+- **Structure** (functions, classes, methods, properties and constants on one side only, kinds, parents,
+  interface lists and modifiers, by-reference returns, native types of properties, parameter names, order,
+  defaults, by-reference and variadic flags, and native types that the plugin declares on a parameter). These are facts, and
+  `--check` exits 1 when one is not empty. CI runs it. A method that the stubs leave out of a class but
+  declare on a parent class counts as there.
+- **Review** (return types that differ, native or documented, stub bodies that contradict their type, and
+  parameter types that the stubs add where the plugin has only a docblock that does not fit). These are leads. Read the real function and every
+  `return` of it before you change a type. Some differences are on purpose, such as `string|false` in the
+  stubs where the plugin documents `string|bool`. They never fail `--check`.
+- **Undocumented** (types that the stubs add where the plugin declares and documents none). Only the
+  plugin code can confirm them, so they are leads too and never fail `--check`.
+
+The script refuses to compare when `source/contact-form-7` is not the release in
+`contact-form-7-types.php`. `bash tests/compare-stubs.sh` tests it with a small fixture and no network,
+and needs `composer install` for `nikic/php-parser`.
 
 ## Testing
 
@@ -55,7 +86,9 @@ Before submitting a pull request:
 
 1. Ensure stubs generate without errors
 2. Run PHPStan: `vendor/bin/phpstan analyse`
-3. Validate composer.json: `composer validate --strict`
+3. Compare with the plugin: `bash scripts/compare-stubs.sh --check` (needs `cd source && composer install` first)
+4. Run the script tests: `bash tests/update-source.sh` and `bash tests/compare-stubs.sh`
+5. Validate composer.json: `composer validate --strict`
 
 `composer.lock` is not tracked, so `composer install` takes the newest PHPStan that
 `composer.json` allows (`^2.1.46`). A new PHPStan release can therefore make this check fail

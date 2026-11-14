@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `scripts/compare-stubs.sh` compares the curated stubs file with the Contact Form 7 release that it follows (functions, classes, methods, properties, constants, parameters, native and docblock types, stub bodies) and writes a Markdown report. `--check` fails on a structure difference (see "Comparing the stubs with the plugin" in CONTRIBUTING.md); the type findings are leads for a person and never fail it
+- The workflow `generate.yml` runs that comparison against the pinned release and tests the script, and the workflow that watches for new releases writes the counts in the draft pull request and requests a review from the owner
+
 ## [6.2.5] - 2026-11-14
 
 ### Changed

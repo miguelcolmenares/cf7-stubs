@@ -6,7 +6,7 @@ parameters:
     # The PHP version of the analysis is the floor of the package (8.3, the "Requires PHP" of
     # Contact Form 7 6.2). PHPStan 2.3+ would read it from `require.php` in composer.json anyway.
     # scripts/update-source.sh sets both when it follows a release.
-    phpVersion: 80000
+    phpVersion: 80300
     paths:
         - contact-form-7-stubs.php
     bootstrapFiles:

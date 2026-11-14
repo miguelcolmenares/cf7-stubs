@@ -7,23 +7,63 @@
  */
 
 namespace {
-    class WPCF7_Contact_Form_List_Table extends \WP_List_Table
+    // Exit if accessed directly
+    class WPCF7_Editor
     {
         /**
-         * @return array<string, string>
+         * @param-unused \WPCF7_ContactForm $contact_form
+         * @return void
          */
-        public static function define_columns()
+        public function __construct(\WPCF7_ContactForm $contact_form)
+        {}
+        /**
+         * @param string $panel_id
+         * @param string $title
+         * @param callable $callback
+         * @return void
+         */
+        public function add_panel($panel_id, $title, $callback)
+        {}
+        /**
+         * @return void
+         */
+        public function display()
+        {}
+    }
+    // Exit if accessed directly
+    class WPCF7_Help_Tabs
+    {
+        /**
+         * @param-unused \WP_Screen $screen
+         * @return void
+         */
+        public function __construct(\WP_Screen $screen)
+        {}
+        /**
+         * @param string $screen_type
+         * @return void
+         */
+        public function set_help_tabs($screen_type): void
+        {}
+        /**
+         * @return string
+         */
+        public function sidebar(): string
         {
-            return array();
+            return '';
+        }
+    }
+    class WPCF7_List_Table extends \WP_List_Table
+    {
+        public static function get_instance()
+        {
+            return '';
         }
         /**
          * @return void
          */
-        public function __construct() {}
-        /**
-         * @return void
-         */
-        public function prepare_items() {}
+        public function prepare_items()
+        {}
         /**
          * @return array<string, string>
          */
@@ -50,7 +90,7 @@ namespace {
          * @param string $column_name
          * @return string
          */
-        protected function column_default($item, $column_name)
+        public function column_default($item, $column_name)
         {
             return '';
         }
@@ -92,64 +132,12 @@ namespace {
          * @param array<string, mixed> $item
          * @return string
          */
-        public function column_shortcode($item)
-        {
-            return '';
-        }
-        /**
-         * @param array<string, mixed> $item
-         * @return string
-         */
         public function column_date($item)
         {
             return '';
         }
     }
-    class WPCF7_Editor
-    {
-        /**
-         * @param-unused \WPCF7_ContactForm $contact_form
-         * @return void
-         */
-        public function __construct(\WPCF7_ContactForm $contact_form) {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($contact_form);
-        }
-        /**
-         * @param string $panel_id
-         * @param string $title
-         * @param callable $callback
-         * @return void
-         */
-        public function add_panel($panel_id, $title, $callback) {}
-        /**
-         * @return void
-         */
-        public function display() {}
-    }
-    class WPCF7_Help_Tabs
-    {
-        /**
-         * @param-unused \WP_Screen $screen
-         * @return void
-         */
-        public function __construct(\WP_Screen $screen) {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($screen);
-        }
-        /**
-         * @param string $screen_type
-         * @return void
-         */
-        public function set_help_tabs($screen_type): void {}
-        /**
-         * @return string
-         */
-        public function sidebar(): string
-        {
-            return '';
-        }
-    }
+    // Exit if accessed directly
     /**
      * The base class for form-tag generators management.
      */
@@ -197,10 +185,7 @@ namespace {
          *
          * @param string $key Generator key.
          */
-        public function __construct($key) {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($key);
-        }
+        public function __construct($key) {}
         /**
          * Returns a unique reference ID.
          *
@@ -220,153 +205,7 @@ namespace {
          */
         public function print($part, $options = ''): void {}
     }
-    abstract class WPCF7_WelcomePanelColumn
-    {
-        /**
-         * Returns the icon HTML.
-         *
-         * @return string Icon HTML.
-         */
-        protected abstract function icon();
-        /**
-         * Returns the title text.
-         *
-         * @return string Title text.
-         */
-        protected abstract function title();
-        /**
-         * Returns the content HTML.
-         *
-         * @return string Content HTML.
-         */
-        protected abstract function content();
-        /**
-         * Prints the content.
-         *
-         * @return void
-         */
-        public function print_content(): void {}
-    }
-    class WPCF7_WelcomePanelColumn_AntiSpam extends \WPCF7_WelcomePanelColumn
-    {
-        /**
-         * Returns the icon HTML.
-         *
-         * @return string Icon HTML.
-         */
-        protected function icon(): string
-        {
-            return '';
-        }
-        /**
-         * Returns the title text.
-         *
-         * @return string Title text.
-         */
-        protected function title(): string
-        {
-            return '';
-        }
-        /**
-         * Returns the content HTML.
-         *
-         * @return string Content HTML.
-         */
-        protected function content(): string
-        {
-            return '';
-        }
-    }
-    class WPCF7_WelcomePanelColumn_Donation extends \WPCF7_WelcomePanelColumn
-    {
-        /**
-         * Returns the icon HTML.
-         *
-         * @return string Icon HTML.
-         */
-        protected function icon(): string
-        {
-            return '';
-        }
-        /**
-         * Returns the title text.
-         *
-         * @return string Title text.
-         */
-        protected function title(): string
-        {
-            return '';
-        }
-        /**
-         * Returns the content HTML.
-         *
-         * @return string Content HTML.
-         */
-        protected function content(): string
-        {
-            return '';
-        }
-    }
-    class WPCF7_WelcomePanelColumn_Flamingo extends \WPCF7_WelcomePanelColumn
-    {
-        /**
-         * Returns the icon HTML.
-         *
-         * @return string Icon HTML.
-         */
-        protected function icon(): string
-        {
-            return '';
-        }
-        /**
-         * Returns the title text.
-         *
-         * @return string Title text.
-         */
-        protected function title(): string
-        {
-            return '';
-        }
-        /**
-         * Returns the content HTML.
-         *
-         * @return string Content HTML.
-         */
-        protected function content(): string
-        {
-            return '';
-        }
-    }
-    class WPCF7_WelcomePanelColumn_Integration extends \WPCF7_WelcomePanelColumn
-    {
-        /**
-         * Returns the icon HTML.
-         *
-         * @return string Icon HTML.
-         */
-        protected function icon(): string
-        {
-            return '';
-        }
-        /**
-         * Returns the title text.
-         *
-         * @return string Title text.
-         */
-        protected function title(): string
-        {
-            return '';
-        }
-        /**
-         * Returns the content HTML.
-         *
-         * @return string Content HTML.
-         */
-        protected function content(): string
-        {
-            return '';
-        }
-    }
+    // Exit if accessed directly
     trait WPCF7_ConfigValidator_AdditionalSettings
     {
         /**
@@ -376,6 +215,7 @@ namespace {
          */
         public function validate_additional_settings(): void {}
     }
+    // Exit if accessed directly
     trait WPCF7_ConfigValidator_Form
     {
         /**
@@ -388,6 +228,8 @@ namespace {
          * Detects errors of multiple form controls in a single label.
          *
          * @link https://contactform7.com/configuration-errors/multiple-controls-in-label/
+         * @param string $section
+         * @param string $content
          */
         public function detect_multiple_controls_in_label(string $section, string $content): bool
         {
@@ -397,6 +239,8 @@ namespace {
          * Detects errors of unavailable form-tag names.
          *
          * @link https://contactform7.com/configuration-errors/unavailable-names/
+         * @param string $section
+         * @param string $content
          */
         public function detect_unavailable_names(string $section, string $content): bool
         {
@@ -406,6 +250,8 @@ namespace {
          * Detects errors of unavailable HTML elements.
          *
          * @link https://contactform7.com/configuration-errors/unavailable-html-elements/
+         * @param string $section
+         * @param string $content
          */
         public function detect_unavailable_html_elements(string $section, string $content): bool
         {
@@ -415,6 +261,8 @@ namespace {
          * Detects errors of dots in form-tag names.
          *
          * @link https://contactform7.com/configuration-errors/dots-in-names/
+         * @param string $section
+         * @param string $content
          */
         public function detect_dots_in_names(string $section, string $content): bool
         {
@@ -424,6 +272,8 @@ namespace {
          * Detects errors of colons in form-tag names.
          *
          * @link https://contactform7.com/configuration-errors/colons-in-names/
+         * @param string $section
+         * @param string $content
          */
         public function detect_colons_in_names(string $section, string $content): bool
         {
@@ -433,16 +283,21 @@ namespace {
          * Detects errors of uploadable file size overlimit.
          *
          * @link https://contactform7.com/configuration-errors/upload-filesize-overlimit
+         * @param string $section
+         * @param string $content
          */
         public function detect_upload_filesize_overlimit(string $section, string $content): bool
         {
             return false;
         }
     }
+    // Exit if accessed directly
     trait WPCF7_ConfigValidator_Mail
     {
         /**
          * Replaces all mail-tags in the given content.
+         * @param string $content
+         * @param mixed $options
          */
         public function replace_mail_tags(string $content, mixed $options = ''): string
         {
@@ -460,6 +315,7 @@ namespace {
         }
         /**
          * Runs error detection for the mail sections.
+         * @param string $template
          */
         public function validate_mail(string $template = 'mail'): bool
         {
@@ -467,6 +323,8 @@ namespace {
         }
         /**
          * Runs error detection for the mail subject section.
+         * @param string $template
+         * @param string $content
          */
         public function validate_mail_subject(string $template, string $content): bool
         {
@@ -474,6 +332,8 @@ namespace {
         }
         /**
          * Runs error detection for the mail sender section.
+         * @param string $template
+         * @param string $content
          */
         public function validate_mail_sender(string $template, string $content): bool
         {
@@ -481,6 +341,8 @@ namespace {
         }
         /**
          * Runs error detection for the mail recipient section.
+         * @param string $template
+         * @param string $content
          */
         public function validate_mail_recipient(string $template, string $content): bool
         {
@@ -488,6 +350,8 @@ namespace {
         }
         /**
          * Runs error detection for the mail additional headers section.
+         * @param string $template
+         * @param string $content
          */
         public function validate_mail_additional_headers(string $template, string $content): bool
         {
@@ -495,6 +359,8 @@ namespace {
         }
         /**
          * Runs error detection for the mail body section.
+         * @param string $template
+         * @param string $content
          */
         public function validate_mail_body(string $template, string $content): bool
         {
@@ -502,6 +368,8 @@ namespace {
         }
         /**
          * Runs error detection for the mail attachments section.
+         * @param string $template
+         * @param string $content
          */
         public function validate_mail_attachments(string $template, string $content): bool
         {
@@ -511,6 +379,8 @@ namespace {
          * Detects errors of invalid mailbox syntax.
          *
          * @link https://contactform7.com/configuration-errors/invalid-mailbox-syntax/
+         * @param string $section
+         * @param string $content
          */
         public function detect_invalid_mailbox_syntax(string $section, string $content): bool
         {
@@ -520,24 +390,30 @@ namespace {
          * Detects errors of empty message fields.
          *
          * @link https://contactform7.com/configuration-errors/maybe-empty/
+         * @param mixed $section
+         * @param mixed $content
          */
-        public function detect_maybe_empty(mixed $section, mixed $content) : bool {
+        public function detect_maybe_empty(mixed $section, mixed $content): bool {
             return false;
         }
         /**
          * Detects errors of nonexistent attachment files.
          *
          * @link https://contactform7.com/configuration-errors/file-not-found/
+         * @param mixed $section
+         * @param mixed $content
          */
-        public function detect_file_not_found(mixed $section, mixed $content) : bool {
+        public function detect_file_not_found(mixed $section, mixed $content): bool {
             return false;
         }
         /**
          * Detects errors of attachment files out of the content directory.
          *
          * @link https://contactform7.com/configuration-errors/file-not-in-content-dir/
+         * @param mixed $section
+         * @param mixed $content
          */
-        public function detect_file_not_in_content_dir(mixed $section, mixed $content) : bool {
+        public function detect_file_not_in_content_dir(mixed $section, mixed $content): bool {
             return false;
         }
         /**
@@ -545,23 +421,28 @@ namespace {
          * sufficient protection.
          *
          * @link https://contactform7.com/configuration-errors/unsafe-email-without-protection/
+         * @param mixed $section
+         * @param mixed $content
          */
-        public function detect_unsafe_email_without_protection(mixed $section, mixed $content) : bool {
+        public function detect_unsafe_email_without_protection(mixed $section, mixed $content): bool {
             return false;
         }
     }
+    // Exit if accessed directly
     trait WPCF7_ConfigValidator_Messages
     {
         /**
          * Runs error detection for the messages section.
          */
-        public function validate_messages() : void {}
+        public function validate_messages(): void {}
         /**
          * Detects errors of HTML uses in a message.
          *
          * @link https://contactform7.com/configuration-errors/html-in-message/
+         * @param mixed $section
+         * @param mixed $content
          */
-        public function detect_html_in_message(mixed $section, mixed $content) : bool {
+        public function detect_html_in_message(mixed $section, mixed $content): bool {
             return false;
         }
     }
@@ -598,10 +479,7 @@ namespace {
          * @param-unused string|array<string, mixed> $options
          * @return void
          */
-        public function __construct(\WPCF7_ContactForm $contact_form, mixed $options = '') {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($contact_form, $options);
-        }
+        public function __construct(\WPCF7_ContactForm $contact_form, mixed $options = '') {}
         /**
          * Returns the contact form object that is tied to this validator.
          *
@@ -609,7 +487,7 @@ namespace {
          */
         public function contact_form()
         {
-            return new \WPCF7_ContactForm();
+            return null;
         }
         /**
          * Returns true if no error has been detected.
@@ -618,7 +496,7 @@ namespace {
          */
         public function is_valid()
         {
-            return true;
+            return false;
         }
         /**
          * Returns true if the given error code is supported by this instance.
@@ -707,7 +585,7 @@ namespace {
          */
         public function validate()
         {
-            return true;
+            return false;
         }
         /**
          * Saves detected errors as a post meta data.
@@ -724,6 +602,7 @@ namespace {
          */
         public function restore() {}
     }
+    // Exit if accessed directly
     class WPCF7_ContactFormTemplate
     {
         /**
@@ -734,7 +613,7 @@ namespace {
          */
         public static function get_default($prop = 'form')
         {
-            return '';
+            return array();
         }
         /**
          * Returns the default form template.
@@ -821,7 +700,9 @@ namespace {
          * @param string $field_name Field name.
          * @return WPCF7_Pipes|null Pipes object or null.
          */
-        public function get_pipes($field_name) { return null; }
+        public function get_pipes($field_name) {
+            return null;
+        }
         /**
          * Scans form tags.
          *
@@ -829,6 +710,7 @@ namespace {
          */
         public function scan_form_tags() {}
     }
+    // Exit if accessed directly
     class WPCF7_ContactForm
     {
         use \WPCF7_SWV_SchemaHolder;
@@ -876,7 +758,7 @@ namespace {
          */
         public static function get_template($options = ''): WPCF7_ContactForm
         {
-            return new self();
+            return null;
         }
         /**
          * Creates a WPCF7_ContactForm object and sets it as the current instance.
@@ -915,7 +797,7 @@ namespace {
          */
         public function prop($name)
         {
-            return null;
+            return array();
         }
         /**
          * Returns all the properties.
@@ -1135,7 +1017,7 @@ namespace {
          */
         public function submit($options = ''): array
         {
-            return array('contact_form_id' => 0, 'status' => '', 'message' => '');
+            return array();
         }
         /**
          * Returns message used for given status.
@@ -1234,7 +1116,7 @@ namespace {
          */
         public function copy(): WPCF7_ContactForm
         {
-            return new self();
+            return null;
         }
         /**
          * Deletes this contact form.
@@ -1256,6 +1138,7 @@ namespace {
             return '';
         }
     }
+    // Exit if accessed directly
     /**
      * Class for filesystem operations.
      */
@@ -1268,7 +1151,7 @@ namespace {
          */
         public static function get_instance()
         {
-            return new self();
+            return null;
         }
         /**
          * Changes filesystem permissions.
@@ -1310,6 +1193,7 @@ namespace {
             return false;
         }
     }
+    // Exit if accessed directly
     /**
      * A form-tag.
      *
@@ -1344,10 +1228,7 @@ namespace {
          * @param array<string, mixed>|WPCF7_FormTag $tag
          * @return void
          */
-        public function __construct($tag = array()) {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($tag);
-        }
+        public function __construct($tag = array()) {}
         /**
          * Returns true if the type has a trailing asterisk.
          *
@@ -1422,7 +1303,7 @@ namespace {
          */
         public function get_size_option($default_value = false): string|bool
         {
-            return $default_value;
+            return false;
         }
         /**
          * Retrieves the maxlength option value from the form-tag.
@@ -1432,7 +1313,7 @@ namespace {
          */
         public function get_maxlength_option($default_value = false): string|bool
         {
-            return $default_value;
+            return false;
         }
         /**
          * Retrieves the minlength option value from the form-tag.
@@ -1442,7 +1323,7 @@ namespace {
          */
         public function get_minlength_option($default_value = false): string|bool
         {
-            return $default_value;
+            return false;
         }
         /**
          * Retrieves the cols option value from the form-tag.
@@ -1452,7 +1333,7 @@ namespace {
          */
         public function get_cols_option($default_value = false): string|bool
         {
-            return $default_value;
+            return false;
         }
         /**
          * Retrieves the rows option value from the form-tag.
@@ -1462,7 +1343,7 @@ namespace {
          */
         public function get_rows_option($default_value = false): string|bool
         {
-            return $default_value;
+            return false;
         }
         /**
          * Retrieves a date-type option value from the form-tag.
@@ -1485,7 +1366,7 @@ namespace {
          */
         public function get_default_option($default_value = '', $args = ''): string|array
         {
-            return $default_value;
+            return array();
         }
         /**
          * Retrieves the data option value from the form-tag.
@@ -1505,7 +1386,7 @@ namespace {
          */
         public function get_limit_option(int $default_value = \MB_IN_BYTES): int
         {
-            return $default_value;
+            return 0;
         }
         /**
          * Retrieves the value of the first option matches the given
@@ -1538,8 +1419,8 @@ namespace {
          * @return void
          * @link https://www.php.net/manual/en/arrayaccess.offsetset.php
          */
-        #[\ReturnTypeWillChange]
-        public function offsetSet($offset, $value) {}
+        public function offsetSet($offset, $value): void
+        {}
         /**
          * Returns the value at specified offset.
          *
@@ -1547,8 +1428,10 @@ namespace {
          * @return mixed Value at offset.
          * @link https://www.php.net/manual/en/arrayaccess.offsetget.php
          */
-        #[\ReturnTypeWillChange]
-        public function offsetGet($offset) {}
+        public function offsetGet($offset): mixed
+        {
+            return null;
+        }
         /**
          * Returns true if the specified offset exists.
          *
@@ -1556,8 +1439,7 @@ namespace {
          * @return bool True if exists, false otherwise.
          * @link https://www.php.net/manual/en/arrayaccess.offsetexists.php
          */
-        #[\ReturnTypeWillChange]
-        public function offsetExists($offset)
+        public function offsetExists($offset): bool
         {
             return false;
         }
@@ -1568,8 +1450,8 @@ namespace {
          * @return void
          * @link https://www.php.net/manual/en/arrayaccess.offsetunset.php
          */
-        #[\ReturnTypeWillChange]
-        public function offsetUnset($offset) {}
+        public function offsetUnset($offset): void
+        {}
     }
     /**
      * The singleton instance of this class manages the collection of form-tags.
@@ -1583,7 +1465,7 @@ namespace {
          */
         public static function get_instance()
         {
-            return new self();
+            return null;
         }
         /**
          * Returns scanned form-tags.
@@ -1715,6 +1597,7 @@ namespace {
             return array();
         }
     }
+    // Exit if accessed directly
     /**
      * Contact Form 7's class used for formatting HTML fragments.
      */
@@ -1828,10 +1711,7 @@ namespace {
          * @param string|array<string, mixed> $options
          * @return void
          */
-        public function __construct($options = '') {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($options);
-        }
+        public function __construct($options = '') {}
         /**
          * Separates the given text into chunks of HTML. Each chunk must be an
          * associative array that includes 'position', 'type', and 'content' keys.
@@ -1841,7 +1721,7 @@ namespace {
          */
         public function separate_into_chunks($input)
         {
-            return array();
+            return null;
         }
         /**
          * Normalizes content in each chunk. This may change the type and position
@@ -1852,7 +1732,7 @@ namespace {
          */
         public function pre_format($chunks)
         {
-            return array();
+            return null;
         }
         /**
          * Concatenates neighboring text chunks to create a single chunk.
@@ -1862,7 +1742,7 @@ namespace {
          */
         public function concatenate_texts($chunks)
         {
-            return array();
+            return null;
         }
         /**
          * Outputs formatted HTML based on the given chunks.
@@ -2015,7 +1895,7 @@ namespace {
          */
         public static function normalize_start_tag($tag)
         {
-            return array('tag' => '', 'tag_name' => '');
+            return null;
         }
         /**
          * Normalizes a paragraph of text.
@@ -2040,6 +1920,7 @@ namespace {
             return false;
         }
     }
+    // Exit if accessed directly
     /**
      * Integration API
      *
@@ -2324,6 +2205,7 @@ namespace {
          */
         protected function log($url, $request, $response) {}
     }
+    // Exit if accessed directly
     /**
      * Class that represents a mail-tag.
      */
@@ -2339,10 +2221,7 @@ namespace {
          * @param string $tagname Tag name.
          * @param array<int, string> $values Tag values.
          */
-        public function __construct($tag, $tagname, $values) {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($tag, $tagname, $values);
-        }
+        public function __construct($tag, $tagname, $values) {}
         /**
          * Returns the name part of this mail-tag.
          *
@@ -2403,10 +2282,7 @@ namespace {
          *
          * @param WPCF7_ContactForm $contact_form Contact form object.
          */
-        public function __construct(\WPCF7_ContactForm $contact_form) {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($contact_form);
-        }
+        public function __construct(\WPCF7_ContactForm $contact_form) {}
         /**
          * Calculates the output for a mail tag.
          *
@@ -2530,10 +2406,7 @@ namespace {
          * @param string|array<string, mixed> $options
          * @return void
          */
-        public function __construct($content, $options = '') {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($content, $options);
-        }
+        public function __construct($content, $options = '') {}
         /**
          * Retrieves mail-tags that have been replaced by this instance.
          *
@@ -2564,11 +2437,7 @@ namespace {
             return '';
         }
     }
-    /**
-     * Pipe-related classes.
-     *
-     * @link https://contactform7.com/selectable-recipient-with-pipes/
-     */
+    // Exit if accessed directly
     /**
      * Class representing a pair of pipe.
      */
@@ -2586,10 +2455,7 @@ namespace {
          * @param string $text
          * @return void
          */
-        public function __construct($text) {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($text);
-        }
+        public function __construct($text) {}
     }
     /**
      * Class representing a list of pipes.
@@ -2601,10 +2467,7 @@ namespace {
          *
          * @param array<int, string>|string|null $texts Pipe texts.
          */
-        public function __construct($texts = \null) {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($texts);
-        }
+        public function __construct($texts = \null) {}
         /**
          * Merges another pipes object.
          *
@@ -2668,6 +2531,7 @@ namespace {
             return array();
         }
     }
+    // Exit if accessed directly
     /**
      * Handy trait provides methods to handle dynamic properties.
      */
@@ -2710,7 +2574,7 @@ namespace {
          */
         public function get_contact_forms(\WP_REST_Request $request): WP_REST_Response
         {
-            return new \WP_REST_Response();
+            return null;
         }
         /**
          * Creates a contact form.
@@ -2720,7 +2584,7 @@ namespace {
          */
         public function create_contact_form(\WP_REST_Request $request): WP_REST_Response
         {
-            return new \WP_REST_Response();
+            return null;
         }
         /**
          * Gets a contact form.
@@ -2730,7 +2594,7 @@ namespace {
          */
         public function get_contact_form(\WP_REST_Request $request): WP_REST_Response
         {
-            return new \WP_REST_Response();
+            return null;
         }
         /**
          * Updates a contact form.
@@ -2740,7 +2604,7 @@ namespace {
          */
         public function update_contact_form(\WP_REST_Request $request): WP_REST_Response
         {
-            return new \WP_REST_Response();
+            return null;
         }
         /**
          * Deletes a contact form.
@@ -2750,7 +2614,7 @@ namespace {
          */
         public function delete_contact_form(\WP_REST_Request $request): WP_REST_Response
         {
-            return new \WP_REST_Response();
+            return null;
         }
         /**
          * Creates feedback.
@@ -2760,7 +2624,7 @@ namespace {
          */
         public function create_feedback(\WP_REST_Request $request): WP_REST_Response
         {
-            return new \WP_REST_Response();
+            return null;
         }
         /**
          * Gets schema.
@@ -2770,7 +2634,7 @@ namespace {
          */
         public function get_schema(\WP_REST_Request $request): WP_REST_Response
         {
-            return new \WP_REST_Response();
+            return null;
         }
         /**
          * Gets refill data.
@@ -2780,89 +2644,10 @@ namespace {
          */
         public function get_refill(\WP_REST_Request $request): WP_REST_Response
         {
-            return new \WP_REST_Response();
-        }
-    }
-    class WPCF7_ShortcodeManager
-    {
-        /**
-         * Returns the singleton instance.
-         *
-         * @return null Always null in stubs.
-         */
-        public static function get_instance()
-        {
             return null;
         }
-        /**
-         * Gets scanned tags.
-         *
-         * @return array<string, mixed> Scanned tags.
-         */
-        public function get_scanned_tags(): array
-        {
-            return array();
-        }
-        /**
-         * Adds a shortcode.
-         *
-         * @param string $tag Shortcode tag.
-         * @param callable $callback Shortcode callback.
-         * @param bool $has_name Whether shortcode has a name attribute.
-         * @return void
-         */
-        public function add_shortcode($tag, $callback, $has_name = \false): void {}
-        /**
-         * Removes a shortcode.
-         *
-         * @param string $tag Shortcode tag.
-         * @return void
-         */
-        public function remove_shortcode($tag): void {}
-        /**
-         * Normalizes shortcode.
-         *
-         * @param string $content Content to normalize.
-         * @return string Normalized content.
-         */
-        public function normalize_shortcode($content): string
-        {
-            return '';
-        }
-        /**
-         * Processes shortcodes.
-         *
-         * @param string $content Content to process.
-         * @param bool $exec Whether to execute shortcodes.
-         * @return string Processed content.
-         */
-        public function do_shortcode($content, $exec = \true): string
-        {
-            return '';
-        }
-        /**
-         * Scans for shortcodes.
-         *
-         * @param string $content Content to scan.
-         * @return array<int, WPCF7_FormTag> Found form tags.
-         */
-        public function scan_shortcode($content): array
-        {
-            return array();
-        }
     }
-    class WPCF7_Shortcode extends \WPCF7_FormTag
-    {
-        /**
-         * Constructor.
-         *
-         * @param string $tag Shortcode tag.
-         */
-        public function __construct($tag) {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($tag);
-        }
-    }
+    // Exit if accessed directly
     /**
      * Class representing contact form submission.
      */
@@ -2932,7 +2717,7 @@ namespace {
          */
         public function get_result(): array
         {
-            return array('status' => '', 'message' => '');
+            return array();
         }
         /**
          * Adds items to the array of submission result properties.
@@ -2961,7 +2746,7 @@ namespace {
          */
         public function set_response($response): bool
         {
-            return true;
+            return false;
         }
         /**
          * Retrieves the contact form property.
@@ -2970,7 +2755,7 @@ namespace {
          */
         public function get_contact_form(): WPCF7_ContactForm
         {
-            return new WPCF7_ContactForm();
+            return null;
         }
         /**
          * Search an invalid field by field name.
@@ -3111,647 +2896,121 @@ namespace {
         }
     }
 }
-
-namespace Contactable\SWV {
+namespace RockLobsterInc\Swv {
     /**
-     * The base class of SWV rules.
+     * Abstract class that represents the base for all SWV rules.
      */
-    abstract class Rule
+    abstract class AbstractRule
     {
-        /** @var array<string, mixed> */
-        protected $properties = array();
-        /**
-         * @param array<string, mixed>|string $properties
-         * @return void
-         */
-        public function __construct($properties = '') {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($properties);
-        }
         /**
          * Returns true if this rule matches the given context.
          *
          * @param array<string, mixed> $context Context.
          * @return bool
          */
-        public function matches($context): bool
+        public function matches(array $context): bool
         {
             return false;
         }
         /**
-         * Validates with this rule's logic.
+         * Validates the form data according to the logic defined by this rule.
          *
-         * @param array<string, mixed> $context Context.
-         * @return array<string, mixed>
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data Form data.
+         * @param array $context Optional context.
          */
-        public function validate($context): array
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = [])
         {
             return array();
         }
         /**
-         * Converts the properties to an array.
+         * Returns an array that represents the rule properties.
          *
-         * @return array<string, mixed> Array of properties.
+         * @return array Array of rule properties.
          */
-        public function to_array(): array
+        public function toArray(): array
         {
             return array();
-        }
-        /**
-         * Returns the property value specified by the given property name.
-         *
-         * @param string $name Property name.
-         * @return mixed Property value.
-         */
-        public function get_property($name) {}
-        /**
-         * Returns the default user input value from $_POST.
-         *
-         * @return mixed Default user input value.
-         */
-        public function get_default_input() {}
-        /**
-         * Returns the default user upload file from $_FILES.
-         *
-         * @return object Default user upload file.
-         */
-        public function get_default_upload(): object
-        {
-            return (object) array();
-        }
-        /**
-         * Creates an error object. Returns false if the error property is omitted.
-         *
-         * @return false
-         */
-        protected function create_error(): bool
-        {
-            return false;
         }
     }
     /**
      * The base class of SWV composite rules.
      */
-    abstract class CompositeRule extends \Contactable\SWV\Rule
+    abstract class CompositeRule extends \RockLobsterInc\Swv\AbstractRule
     {
-        /** @var array<int, Rule> */
-        protected $rules = array();
+        /**
+         * Sub-rules of the rule.
+         */
+        protected array $rules = [];
         /**
          * Adds a sub-rule to this composite rule.
          *
-         * @param Rule $rule Sub-rule to be added.
-         * @return void
-         */
-        public function add_rule($rule): void {}
-        /**
-         * Returns an iterator of sub-rules.
-         *
-         * @return \ArrayIterator<int, Rule>
-         */
-        public function rules(): \ArrayIterator
-        {
-            return new \ArrayIterator();
-        }
-        /**
-         * Returns true if this rule matches the given context.
-         *
-         * @param array<string, mixed> $context Context.
+         * @param \RockLobsterInc\Swv\AbstractRule $rule Sub-rule to be added.
          * @return bool
          */
-        public function matches($context): bool
+        public function addRule(\RockLobsterInc\Swv\AbstractRule $rule): bool
         {
             return false;
         }
         /**
-         * Validates with this rule's logic.
+         * Returns an iterator of sub-rules.
+         *
+         * @return array Rule>
+         */
+        public function rules(): array
+        {
+            return array();
+        }
+    }
+}
+namespace {
+    /**
+     * The schema class as a composite rule.
+     */
+    final class WPCF7_SWV_Schema extends \RockLobsterInc\Swv\CompositeRule
+    {
+        /**
+         * The human-readable version of the schema.
+         */
+        const version = 'SWV Core 2026-09-20';
+        /**
+         * Rule properties.
+         */
+        public readonly string $locale;
+        /**
+         * Constructor.
+         * @param array $properties
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * Validates with this schema.
          *
          * @param array<string, mixed> $context Context.
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
          * @return array<string, mixed>
          */
-        public function validate($context): array
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
         {
             return array();
         }
         /**
-         * Converts the properties to an array.
+         * Wrapper function for addRule.
          *
-         * @return array<string, mixed> Array of properties.
+         * @param \RockLobsterInc\Swv\AbstractRule $rule Sub-rule to be added.
+         */
+        public function add_rule(\RockLobsterInc\Swv\AbstractRule $rule)
+        {}
+        /**
+         * Wrapper function for toArray.
+         *
+         * @return array Array of rule properties.
          */
         public function to_array(): array
         {
             return array();
         }
     }
-    class AllRule extends \Contactable\SWV\CompositeRule
-    {
-        const rule_name = 'all';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class AnyRule extends \Contactable\SWV\CompositeRule
-    {
-        const rule_name = 'any';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class DateRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'date';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class DayofweekRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'dayofweek';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class EmailRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'email';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class EnumRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'enum';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class FileRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'file';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class MaxDateRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'maxdate';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class MaxFileSizeRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'maxfilesize';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class MaxItemsRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'maxitems';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class MaxLengthRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'maxlength';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class MaxNumberRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'maxnumber';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class MinDateRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'mindate';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class MinFileSizeRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'minfilesize';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class MinItemsRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'minitems';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class MinLengthRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'minlength';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class MinNumberRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'minnumber';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class NumberRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'number';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class RequiredRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'required';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class RequiredFileRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'requiredfile';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class StepNumberRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'stepnumber';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class TelRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'tel';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class TimeRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'time';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-    class URLRule extends \Contactable\SWV\Rule
-    {
-        const rule_name = 'url';
-        /**
-         * @param array<string, mixed> $context
-         * @return bool
-         */
-        public function matches($context): bool
-        {
-            return false;
-        }
-        /**
-         * @param array<string, mixed> $context
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
-}
-
-namespace {
-    /**
-     * The schema class as a composite rule.
-     */
-    class WPCF7_SWV_Schema extends \Contactable\SWV\CompositeRule
-    {
-        /**
-         * The human-readable version of the schema.
-         */
-        const version = 'Contact Form 7 SWV Schema 2024-10';
-        /**
-         * Constructor.
-         */
-        public function __construct($properties = '') {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($properties);
-        }
-        /**
-         * Validates with this schema.
-         *
-         * @param array<string, mixed> $context Context.
-         * @return array<string, mixed>
-         */
-        public function validate($context): array
-        {
-            return array();
-        }
-    }
+    // Exit if accessed directly
     /**
      * Server-side user input validation manager.
      *
@@ -3759,7 +3018,8 @@ namespace {
      */
     class WPCF7_Validation implements \ArrayAccess
     {
-        public function __construct() {}
+        public function __construct()
+        {}
         /**
          * Marks a form control as an invalid field.
          *
@@ -3768,7 +3028,8 @@ namespace {
          * @param WP_Error|string $error The error of the field.
          * @return void
          */
-        public function invalidate($context, $error): void {}
+        public function invalidate($context, $error): void
+        {}
         /**
          * Returns true if the target field is valid.
          *
@@ -3795,22 +3056,25 @@ namespace {
          * Assigns a value to the specified offset.
          *
          * @link https://www.php.net/manual/en/arrayaccess.offsetset.php
+         * @param mixed $offset
+         * @param mixed $value
          */
-        #[\ReturnTypeWillChange]
-        public function offsetSet($offset, $value): void {}
+        public function offsetSet($offset, $value): void
+        {}
         /**
          * Returns the value at specified offset.
          *
          * @link https://www.php.net/manual/en/arrayaccess.offsetget.php
+         * @param mixed $offset
          */
-        #[\ReturnTypeWillChange]
-        public function offsetGet($offset): void {}
+        public function offsetGet($offset): void
+        {}
         /**
          * Returns true if the specified offset exists.
          *
          * @link https://www.php.net/manual/en/arrayaccess.offsetexists.php
+         * @param mixed $offset
          */
-        #[\ReturnTypeWillChange]
         public function offsetExists($offset): bool
         {
             return false;
@@ -3819,9 +3083,10 @@ namespace {
          * Unsets an offset.
          *
          * @link https://www.php.net/manual/en/arrayaccess.offsetunset.php
+         * @param mixed $offset
          */
-        #[\ReturnTypeWillChange]
-        public function offsetUnset($offset): void {}
+        public function offsetUnset($offset): void
+        {}
     }
     class WPCF7
     {
@@ -3829,7 +3094,8 @@ namespace {
          * Loads modules from the modules directory.
          * @return void
          */
-        public static function load_modules(): void {}
+        public static function load_modules(): void
+        {}
         /**
          * Loads the specified module.
          *
@@ -3849,7 +3115,10 @@ namespace {
          * @return mixed Array value tied to the $name key. If nothing found,
          *               the $default_value value will be returned.
          */
-        public static function get_option($name, $default_value = \false) {}
+        public static function get_option($name, $default_value = \false)
+        {
+            return false;
+        }
         /**
          * Update an entry value on the option array of Contact Form 7.
          *
@@ -3857,7 +3126,8 @@ namespace {
          * @param mixed $value Option value.
          * @return void
          */
-        public static function update_option($name, $value): void {}
+        public static function update_option($name, $value): void
+        {}
     }
     class WPCF7_Akismet extends \WPCF7_Service
     {
@@ -4215,34 +3485,50 @@ namespace {
          *
          * @return bool True if valid, false otherwise.
          */
-        public function confirm_key(): bool { return false; }
+        public function confirm_key(): bool
+        {
+            return false;
+        }
         /**
          * Gets contact lists.
          *
          * @param string|array<string, mixed> $options Optional query parameters.
          * @return array<string, mixed>|false List data or false on failure.
          */
-        public function get_lists($options = '') { return array(); }
+        public function get_lists($options = '')
+        {
+            return array();
+        }
         /**
          * Gets email templates.
          *
+         * @param mixed $options
          * @return array<string, mixed>|false Template data or false on failure.
          */
-        public function get_templates() { return false; }
+        public function get_templates($options = '')
+        {
+            return array();
+        }
         /**
          * Creates a contact.
          *
          * @param array<string, mixed> $properties Contact properties.
          * @return bool True if successful, false otherwise.
          */
-        public function create_contact($properties): bool { return false; }
+        public function create_contact($properties): bool
+        {
+            return false;
+        }
         /**
          * Sends an email.
          *
          * @param array<string, mixed> $properties Email properties.
          * @return bool True if successful, false otherwise.
          */
-        public function send_email($properties): bool { return false; }
+        public function send_email($properties): bool
+        {
+            return false;
+        }
     }
     class WPCF7_Sendinblue extends \WPCF7_Service
     {
@@ -4363,6 +3649,7 @@ namespace {
          */
         public function display($action = '') {}
     }
+    // Exit if accessed directly
     /**
      * Class for the Stripe API.
      *
@@ -4379,10 +3666,7 @@ namespace {
          *
          * @param string $secret Secret key.
          */
-        public function __construct($secret) {
-            // Suppress PHPStan unused parameter warning in stub
-            unset($secret);
-        }
+        public function __construct($secret) {}
         /**
          * Creates a Payment Intent.
          *
@@ -4393,7 +3677,7 @@ namespace {
          */
         public function create_payment_intent($args = '')
         {
-            return false;
+            return array();
         }
         /**
          * Retrieves a Payment Intent.
@@ -4405,7 +3689,7 @@ namespace {
          */
         public function retrieve_payment_intent($id)
         {
-            return false;
+            return array();
         }
         /**
          * Updates a Payment Intent.
@@ -4418,7 +3702,7 @@ namespace {
          */
         public function update_payment_intent($id, $parameters)
         {
-            return false;
+            return array();
         }
     }
     class WPCF7_Stripe extends \WPCF7_Service
@@ -4510,34 +3794,39 @@ namespace {
          *
          * @return void
          */
-        protected function save_data(): void {}
+        protected function save_data(): void
+        {}
         /**
          * Resets the service data.
          *
          * @return void
          */
-        protected function reset_data(): void {}
+        protected function reset_data(): void
+        {}
         /**
          * Loads the service.
          *
          * @param string $action Optional action to perform.
          * @return void
          */
-        public function load($action = ''): void {}
+        public function load($action = ''): void
+        {}
         /**
          * Displays an admin notice.
          *
          * @param string $message Notice message.
          * @return void
          */
-        public function admin_notice($message = ''): void {}
+        public function admin_notice($message = ''): void
+        {}
         /**
          * Displays the service.
          *
          * @param string $action Optional action to display.
          * @return void
          */
-        public function display($action = ''): void {}
+        public function display($action = ''): void
+        {}
     }
     class WPCF7_Turnstile extends \WPCF7_Service
     {
@@ -4548,7 +3837,6 @@ namespace {
          */
         public static function get_instance()
         {
-            return null;
         }
         /**
          * Returns the service title.
@@ -4622,7 +3910,8 @@ namespace {
          * @param array<string, mixed>|\WP_Error $response Response data or WP_Error.
          * @return void
          */
-        protected function log($url, $request, $response): void {}
+        protected function log($url, $request, $response): void
+        {}
         /**
          * Verifies a response token.
          *
@@ -4648,44 +3937,1419 @@ namespace {
          *
          * @return void
          */
-        protected function save_data(): void {}
+        protected function save_data(): void
+        {}
         /**
          * Resets the service configuration data.
          *
          * @return void
          */
-        protected function reset_data() {}
+        protected function reset_data()
+        {
+        }
         /**
          * The loading process of the service configuration page.
          *
          * @param string $action Optional action to perform.
          * @return void
          */
-        public function load($action = ''): void {}
+        public function load($action = ''): void
+        {}
         /**
          * Displays a notice on the integration page.
+         * @param mixed $message
          */
-        public function admin_notice($message = ''): void {}
+        public function admin_notice($message = ''): void
+        {}
         /**
          * Displays the service configuration box.
          *
          * @param string $action
          * @return void
          */
-        public function display($action = ''): void {}
+        public function display($action = ''): void
+        {}
     }
 }
-
+namespace RockLobsterInc\FormDataTree {
+    /**
+     * Interface that represents an uploaded file.
+     */
+    interface FileInterface
+    {
+        /**
+         * Returns the original name of the file on the client machine.
+         */
+        public function name(): string;
+        /**
+         * Returns the size, in bytes, of the file.
+         */
+        public function size(): int;
+        /**
+         * Returns the full path of the file in which the uploaded file was
+         * stored on the server.
+         */
+        public function temporaryFilePath(): string;
+        /**
+         * Returns the error code associated with this file upload.
+         */
+        public function error(): int;
+    }
+    /**
+     * Class that represents a standard file data in $_FILES.
+     */
+    class File implements \RockLobsterInc\FormDataTree\FileInterface
+    {
+        /**
+         * Creates a tree structure based on the $_FILES superglobal. A terminal
+         * node of the tree must be a File object.
+         *
+         * @return array Tree created based on $_FILES.
+         */
+        public static function buildTree(): array
+        {
+            return array();
+        }
+        /**
+         * Returns the original name of the file on the client machine.
+         */
+        public function name(): string
+        {
+            return '';
+        }
+        /**
+         * Returns the size, in bytes, of the file.
+         */
+        public function size(): int
+        {
+            return 0;
+        }
+        /**
+         * Returns the full path of the file in which the uploaded file was
+         * stored on the server.
+         */
+        public function temporaryFilePath(): string
+        {
+            return '';
+        }
+        /**
+         * Returns the error code associated with this file upload.
+         */
+        public function error(): int
+        {
+            return 0;
+        }
+    }
+    /**
+     * An interface that represents form submission data in the key/value pairs
+     * format.
+     */
+    interface FormDataTreeInterface
+    {
+        /**
+         * Returns the values associated with a given field name.
+         *
+         * @param string $name Field name.
+         * @return iterable Iterator of the values.
+         */
+        public function getAll(string $name): iterable;
+        /**
+         * Returns the file objects associated with a given field name.
+         *
+         * @param string $name Field name.
+         * @return iterable Iterator of the file objects.
+         */
+        public function getAllFiles(string $name): iterable;
+    }
+    /**
+     * A class that implements FormDataTreeInterface. Wraps the PHP superglobals.
+     */
+    class FormDataTree implements \RockLobsterInc\FormDataTree\FormDataTreeInterface
+    {
+        /**
+         * Constructor.
+         *
+         * @param array $origin Optional data origin.
+         */
+        public function __construct(array $origin = [])
+        {}
+        /**
+         * Returns the values associated with a given field name.
+         *
+         * @param string $name Field name.
+         * @return iterable Iterator of the values.
+         */
+        public function getAll(string $name): iterable
+        {
+            return null;
+        }
+        /**
+         * Returns the file objects associated with a given field name.
+         *
+         * @param string $name Field name.
+         * @return iterable Iterator of the FileInterface objects.
+         */
+        public function getAllFiles(string $name): iterable
+        {
+            return null;
+        }
+    }
+}
+namespace RockLobsterInc\Swv {
+    /**
+     * Exception that represents a validation error.
+     */
+    final class InvalidityException extends \Exception
+    {
+        /**
+         * The SWV rule who has thrown this error.
+         */
+        public readonly \RockLobsterInc\Swv\AbstractRule $rule;
+        /**
+         * The specific cause of this exception.
+         */
+        public readonly mixed $cause;
+        /**
+         * Constructor.
+         *
+         * @param AbstractRule $rule SWV rule.
+         * @param array $options
+         */
+        public function __construct(\RockLobsterInc\Swv\AbstractRule $rule, array $options = [])
+        {}
+        /**
+         * Retrieves the field name where the validation error occurs.
+         */
+        public function getField(): string
+        {
+            return '';
+        }
+    }
+}
+namespace RockLobsterInc\Swv\Rules {
+    final class AllRule extends \RockLobsterInc\Swv\CompositeRule
+    {
+        const RULE_NAME = "all";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class AnyRule extends \RockLobsterInc\Swv\CompositeRule
+    {
+        const RULE_NAME = "any";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class DateRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "date";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * Returns true if the given string is a valid Gregorian date in
+         * the YYYY-MM-DD format.
+         *
+         * @param string $value String to check.
+         */
+        public static function isDate(string $value): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class DayofweekRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "dayofweek";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly array $accept;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class EmailRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "email";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * Returns true if the given string is a valid email address. This method
+         * follows WordPress's is_email() implementation.
+         *
+         * @link https://developer.wordpress.org/reference/functions/is_email/
+         *
+         * @param string $value String to check.
+         */
+        public static function isEmail(string $value): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class EnumRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "enum";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly array $accept;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class FileRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "file";
+        const MIME_TYPES = ["application/java" => ["class"], "application/javascript" => ["js"], "application/msword" => ["doc"], "application/octet-stream" => ["psd", "xcf"], "application/onenote" => ["onetoc", "onetoc2", "onetmp", "onepkg"], "application/oxps" => ["oxps"], "application/pdf" => ["pdf"], "application/rar" => ["rar"], "application/rtf" => ["rtf"], "application/ttaf+xml" => ["dfxp"], "application/vnd.apple.keynote" => ["key"], "application/vnd.apple.numbers" => ["numbers"], "application/vnd.apple.pages" => ["pages"], "application/vnd.ms-access" => ["mdb"], "application/vnd.ms-excel" => ["xla", "xls", "xlt", "xlw"], "application/vnd.ms-excel.addin.macroEnabled.12" => ["xlam"], "application/vnd.ms-excel.sheet.binary.macroEnabled.12" => ["xlsb"], "application/vnd.ms-excel.sheet.macroEnabled.12" => ["xlsm"], "application/vnd.ms-excel.template.macroEnabled.12" => ["xltm"], "application/vnd.ms-powerpoint" => ["pot", "pps", "ppt"], "application/vnd.ms-powerpoint.addin.macroEnabled.12" => ["ppam"], "application/vnd.ms-powerpoint.presentation.macroEnabled.12" => ["pptm"], "application/vnd.ms-powerpoint.slide.macroEnabled.12" => ["sldm"], "application/vnd.ms-powerpoint.slideshow.macroEnabled.12" => ["ppsm"], "application/vnd.ms-powerpoint.template.macroEnabled.12" => ["potm"], "application/vnd.ms-project" => ["mpp"], "application/vnd.ms-word.document.macroEnabled.12" => ["docm"], "application/vnd.ms-word.template.macroEnabled.12" => ["dotm"], "application/vnd.ms-write" => ["wri"], "application/vnd.ms-xpsdocument" => ["xps"], "application/vnd.oasis.opendocument.chart" => ["odc"], "application/vnd.oasis.opendocument.database" => ["odb"], "application/vnd.oasis.opendocument.formula" => ["odf"], "application/vnd.oasis.opendocument.graphics" => ["odg"], "application/vnd.oasis.opendocument.presentation" => ["odp"], "application/vnd.oasis.opendocument.spreadsheet" => ["ods"], "application/vnd.oasis.opendocument.text" => ["odt"], "application/vnd.openxmlformats-officedocument.presentationml.presentation" => ["pptx"], "application/vnd.openxmlformats-officedocument.presentationml.slide" => ["sldx"], "application/vnd.openxmlformats-officedocument.presentationml.slideshow" => ["ppsx"], "application/vnd.openxmlformats-officedocument.presentationml.template" => ["potx"], "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" => ["xlsx"], "application/vnd.openxmlformats-officedocument.spreadsheetml.template" => ["xltx"], "application/vnd.openxmlformats-officedocument.wordprocessingml.document" => ["docx"], "application/vnd.openxmlformats-officedocument.wordprocessingml.template" => ["dotx"], "application/wordperfect" => ["wp", "wpd"], "application/x-7z-compressed" => ["7z"], "application/x-gzip" => ["gz", "gzip"], "application/x-msdownload" => ["exe"], "application/x-shockwave-flash" => ["swf"], "application/x-tar" => ["tar"], "application/zip" => ["zip"], "audio/3gpp" => ["3gp", "3gpp"], "audio/3gpp2" => ["3g2", "3gp2"], "audio/aac" => ["aac"], "audio/flac" => ["flac"], "audio/midi" => ["mid", "midi"], "audio/mpeg" => ["mp3", "m4a", "m4b"], "audio/ogg" => ["ogg", "oga"], "audio/wav" => ["wav", "x-wav"], "audio/x-matroska" => ["mka"], "audio/x-ms-wax" => ["wax"], "audio/x-ms-wma" => ["wma"], "audio/x-realaudio" => ["ra", "ram"], "image/avif" => ["avif"], "image/bmp" => ["bmp"], "image/gif" => ["gif"], "image/heic" => ["heic"], "image/heic-sequence" => ["heic", "heics"], "image/heif" => ["heic", "heif"], "image/heif-sequence" => ["heic", "heifs"], "image/jpeg" => ["jpg", "jpeg", "jpe"], "image/png" => ["png"], "image/tiff" => ["tiff", "tif"], "image/webp" => ["webp"], "image/x-icon" => ["ico"], "text/calendar" => ["ics"], "text/css" => ["css"], "text/csv" => ["csv"], "text/html" => ["htm", "html"], "text/plain" => ["txt", "asc", "c", "cc", "h", "srt"], "text/richtext" => ["rtx"], "text/tab-separated-values" => ["tsv"], "text/vtt" => ["vtt"], "video/3gpp" => ["3gp", "3gpp"], "video/3gpp2" => ["3g2", "3gp2"], "video/avi" => ["avi"], "video/divx" => ["divx"], "video/mp4" => ["mp4", "m4v"], "video/mpeg" => ["mpeg", "mpg", "mpe"], "video/ogg" => ["ogv"], "video/quicktime" => ["mov", "qt"], "video/webm" => ["webm"], "video/x-flv" => ["flv"], "video/x-matroska" => ["mkv"], "video/x-ms-asf" => ["asf", "asx"], "video/x-ms-wm" => ["wm"], "video/x-ms-wmv" => ["wmv"], "video/x-ms-wmx" => ["wmx"]];
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly array $accept;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * Converts a MIME type string to an array of corresponding file extensions.
+         *
+         * @param string $mime MIME type. Wildcard (*) is available for the subtype.
+         * @return array Corresponding file extensions.
+         */
+        public static function convertMimeToExt(string $mime): array
+        {
+            return array();
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class MaxDateRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "maxdate";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly string $threshold;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class MaxFilesizeRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "maxfilesize";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly string $threshold;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class MaxItemsRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "maxitems";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly string $threshold;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class MaxLengthRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "maxlength";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly string $threshold;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class MaxNumberRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "maxnumber";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly string $threshold;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class MinDateRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "mindate";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly string $threshold;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class MinFilesizeRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "minfilesize";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly string $threshold;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class MinItemsRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "minitems";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly string $threshold;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class MinLengthRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "minlength";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly string $threshold;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class MinNumberRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "minnumber";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly string $threshold;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class NumberRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "number";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * Returns true if the given string is a well-formed number.
+         *
+         * @link https://html.spec.whatwg.org/multipage/input.html#number-state-(type=number)
+         *
+         * @param string $value String to check.
+         */
+        public static function isNumber(string $value): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class RequiredFileRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "requiredfile";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class RequiredRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "required";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class StepNumberRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "stepnumber";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        public readonly string $base;
+        public readonly string $interval;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+        /**
+         * Saves the service data.
+         *
+         * @return void
+         */
+        protected function save_data(): void {}
+        /**
+         * Resets the service data.
+         *
+         * @return void
+         */
+        protected function reset_data(): void {}
+        /**
+         * Loads the service.
+         *
+         * @param string $action Optional action to perform.
+         * @return void
+         */
+        public function load($action = ''): void {}
+        /**
+         * Displays an admin notice.
+         *
+         * @param string $message Notice message.
+         * @return void
+         */
+        public function admin_notice($message = ''): void {}
+        /**
+         * Displays the service.
+         *
+         * @param string $action Optional action to display.
+         * @return void
+         */
+        public function display($action = ''): void {}
+    }
+    final class TelRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "tel";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * Returns true if the given string is a well-formed telephone number.
+         *
+         * @param string $value String to check.
+         */
+        public static function isTel(string $value): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class TimeRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "time";
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * Returns true if the given string is a valid time.
+         *
+         * @link https://html.spec.whatwg.org/multipage/input.html#time-state-(type=time)
+         *
+         * @param string $value String to check.
+         */
+        public static function isTime(string $value): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+    final class UrlRule extends \RockLobsterInc\Swv\AbstractRule
+    {
+        const RULE_NAME = "url";
+        const ALLOWED_PROTOCOLS = ["http", "https"];
+        /**
+         * Rule properties.
+         */
+        public readonly string $field;
+        public readonly string $error;
+        /**
+         * Constructor.
+         *
+         * @param array $properties Rule properties.
+         */
+        public function __construct(array $properties = [])
+        {}
+        /**
+         * Returns true if the given string is a well-formed URL.
+         *
+         * @param string $value String to check.
+         */
+        public static function isUrl(string $value): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @return bool
+         */
+        public function matches(array $context): bool
+        {
+            return false;
+        }
+        /**
+         * @param array<string, mixed> $context
+         * @param \RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data
+         * @return array<string, mixed>
+         */
+        public function validate(\RockLobsterInc\FormDataTree\FormDataTreeInterface $form_data, array $context = []): array
+        {
+            return array();
+        }
+        /**
+         * Returns an array that represents the rule properties.
+         *
+         * @return array Array of rule properties.
+         */
+        public function toArray(): array
+        {
+            return array();
+        }
+    }
+}
+namespace RockLobsterInc\FormDataTree {
+    /**
+     * Returns components of the given name.
+     *
+     * @param string $name Field name, such as 'abc' or 'abc[de]'.
+     * @return array Single dimension array of name components.
+     */
+    function dissolve_name(string $name): array
+    {
+        return array();
+    }
+    /**
+     * Converts a scalar value into a map with a specified key. The original
+     * array structure will be preserved.
+     *
+     * @param string $key Map key.
+     * @param mixed $value Original value.
+     * @return array Array.
+     */
+    function scalar_to_map(string $key, mixed $value): array
+    {
+        return array();
+    }
+}
+namespace RockLobsterInc\Functions {
+    /**
+     * Converts multi-dimensional array to a flat array.
+     *
+     * @param mixed $input Array or item of array.
+     * @return array Flatten array.
+     */
+    function array_flatten(mixed $input): array
+    {
+        return array();
+    }
+    /**
+     * Strips surrounding whitespaces.
+     *
+     * @param string|array $input Input text or array of text.
+     * @return string|array Output text or array of text.
+     */
+    function strip_whitespaces(string|array $input): string|array
+    {
+        return array();
+    }
+    /**
+     * Converts all newline characters into line feed (LF).
+     *
+     * @param string|array $input Input text or array of text.
+     * @return string|array Output text or array of text.
+     */
+    function canonicalize_newline(string|array $input): string|array
+    {
+        return array();
+    }
+    /**
+     * Excludes unset or blank text values from the given array.
+     *
+     * @param array $input The array.
+     * @return array Array without blank text values.
+     */
+    function exclude_blank(array $input): array
+    {
+        return array();
+    }
+}
+namespace RockLobsterInc\Swv {
+    /**
+     * Returns the number of code units in a string.
+     *
+     * @link http://www.w3.org/TR/html5/infrastructure.html#code-unit-length
+     *
+     * @param string $input Input string in the UTF-8 encoding.
+     * @return int|false The number of code units, or false if mbstring is
+     *                   not available.
+     */
+    function count_code_units(string $input): int|bool
+    {
+        return false;
+    }
+}
 namespace {
     /**
      * @return void
      */
-    function wpcf7_admin_menu(): void {}
+    function wpcf7_admin_menu(): void
+    {}
     /**
      * @param string $menu_slug
      * @return string
      */
-    function wpcf7_admin_menu_change_notice(string $menu_slug = ''): string
+    function wpcf7_admin_menu_change_notice($menu_slug = ''): string
     {
         return '';
     }
@@ -4693,40 +5357,53 @@ namespace {
      * @param string $hook_suffix
      * @return void
      */
-    function wpcf7_admin_enqueue_scripts(string $hook_suffix): void {}
+    function wpcf7_admin_enqueue_scripts($hook_suffix): void
+    {}
+    function wpcf7_load_dashboard_page()
+    {
+    }
+    function wpcf7_admin_dashboard_page()
+    {
+    }
     /**
      * @return void
      */
-    function wpcf7_load_contact_form_admin(): void {}
+    function wpcf7_load_contact_form_admin(): void
+    {}
     /**
      * @return void
      */
-    function wpcf7_admin_management_page(): void {}
+    function wpcf7_admin_management_page(): void
+    {}
     /**
      * @return void
      */
-    function wpcf7_admin_add_new_page(): void {}
+    function wpcf7_admin_add_new_page(): void
+    {}
     /**
      * @return void
      */
-    function wpcf7_load_integration_page(): void {}
+    function wpcf7_load_integration_page(): void
+    {}
     /**
      * @return void
      */
-    function wpcf7_admin_integration_page(): void {}
+    function wpcf7_admin_integration_page(): void
+    {}
     /**
      * @param string $page
      * @param string $action
      * @param WPCF7_ContactForm $object
      * @return void
      */
-    function wpcf7_admin_updated_message(string $page, string $action, WPCF7_ContactForm $object): void {}
+    function wpcf7_admin_updated_message($page, $action, $object): void
+    {}
     /**
      * @param array<int, string> $links
      * @param string $file
      * @return array<int, string>
      */
-    function wpcf7_plugin_action_links(array $links, string $file): array
+    function wpcf7_plugin_action_links($links, $file): array
     {
         return array();
     }
@@ -4736,28 +5413,33 @@ namespace {
      * @param WPCF7_ContactForm $object
      * @return void
      */
-    function wpcf7_old_wp_version_error(string $page, string $action, WPCF7_ContactForm $object): void {}
+    function wpcf7_old_wp_version_error($page, $action, $object): void
+    {}
     /**
      * @param string $page
      * @param string $action
      * @param WPCF7_ContactForm $object
      * @return void
      */
-    function wpcf7_not_allowed_to_edit(string $page, string $action, WPCF7_ContactForm $object): void {}
+    function wpcf7_not_allowed_to_edit($page, $action, $object): void
+    {}
     /**
      * @param string $page
      * @param string $action
      * @param WPCF7_ContactForm $object
      * @return void
      */
-    function wpcf7_ctct_deprecated_warning(string $page, string $action, WPCF7_ContactForm $object): void {}
+    function wpcf7_ctct_deprecated_warning($page, $action, $object): void
+    {}
     /**
      * @param string $page
      * @param string $action
      * @param WPCF7_ContactForm $object
      * @return void
      */
-    function wpcf7_captcha_future_warning(string $page, string $action, WPCF7_ContactForm $object): void {}
+    function wpcf7_captcha_future_warning($page, $action, $object): void
+    {}
+    // Exit if accessed directly
     /**
      * @return string|false
      */
@@ -4771,6 +5453,72 @@ namespace {
     function wpcf7_admin_has_edit_cap(): bool
     {
         return false;
+    }
+    /**
+     * Ajax action to update the Contact Form 7 news in the Dashboard screen.
+     */
+    function wpcf7_ajax_dashboard_widgets()
+    {
+    }
+    /**
+     * Ajax action to update the contact lists in the Brevo editor panel.
+     */
+    function wpcf7_ajax_sendinblue_contact_lists()
+    {
+    }
+    /**
+     * Ajax action to update the email templates in the Brevo editor panel.
+     */
+    function wpcf7_ajax_sendinblue_email_template()
+    {
+    }
+    /**
+     * Defines the core widgets for the Contact Form 7 Dashboard.
+     */
+    function wpcf7_dashboard_widgets()
+    {
+    }
+    /**
+     * Adds dashboard widgets to the Contact Form 7 Dashboard screen.
+     */
+    function wpcf7_dashboard_setup()
+    {
+    }
+    /**
+     * Defines the "At a Glance" dashboard widget content.
+     */
+    function wpcf7_dashboard_right_now()
+    {
+    }
+    /**
+     * Defines the "News" dashboard widget content.
+     */
+    function wpcf7_dashboard_news()
+    {
+    }
+    /**
+     * Retrieves the news feed from the contactform7.com site.
+     */
+    function wpcf7_dashboard_cf7com_news()
+    {
+    }
+    /**
+     * Defines the "Get Support" dashboard widget content.
+     */
+    function wpcf7_get_support()
+    {
+    }
+    /**
+     * Defines the "Spam Protection" dashboard widget content.
+     */
+    function wpcf7_spam_protection()
+    {
+    }
+    /**
+     * Defines the "Save Messages" dashboard widget content.
+     */
+    function wpcf7_save_messages()
+    {
     }
     /**
      * @param string $name
@@ -4839,23 +5587,6 @@ namespace {
     /**
      * @return void
      */
-    function wpcf7_welcome_panel(): void {}
-    /**
-     * @return void
-     */
-    function wpcf7_admin_ajax_welcome_panel(): void {}
-    /**
-     * @param array<string, mixed> $screen_settings
-     * @param \WP_Screen $screen
-     * @return array<string, mixed>
-     */
-    function wpcf7_welcome_panel_screen_settings(array $screen_settings, \WP_Screen $screen): array
-    {
-        return array();
-    }
-    /**
-     * @return void
-     */
     function wpcf7_init_block_editor_assets(): void {}
     /**
      * @param array<int, string> $caps
@@ -4868,29 +5599,23 @@ namespace {
     {
         return array();
     }
-    /**
-     * Runs bulk validation after the reCAPTCHA integration option is updated.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param mixed $old_option
-     * @return void
-     */
-    function wpcf7_config_validator_update_option(string $name, mixed $value, mixed $old_option): void {}
+    // Exit if accessed directly
     /**
      * Wrapper function of WPCF7_ContactForm::get_instance().
      *
      * @param WPCF7_ContactForm|\WP_Post|int $post Object or post ID.
      * @return WPCF7_ContactForm|null Contact form object. Null if unset.
      */
-    function wpcf7_contact_form(WPCF7_ContactForm|WP_Post|int $post) { return null; }
+    function wpcf7_contact_form(WPCF7_ContactForm|WP_Post|int $post) {
+        return null;
+    }
     /**
      * Searches for a contact form by an old unit ID.
      *
      * @param int $old_id Old unit ID.
-     * @return WPCF7_ContactForm|null Contact form object.
+     * @return ?\WPCF7_ContactForm Contact form object.
      */
-    function wpcf7_get_contact_form_by_old_id(int $old_id): ?WPCF7_ContactForm
+    function wpcf7_get_contact_form_by_old_id($old_id): ?\WPCF7_ContactForm
     {
         return null;
     }
@@ -4917,9 +5642,9 @@ namespace {
     /**
      * Wrapper function of WPCF7_ContactForm::get_current().
      *
-     * @return WPCF7_ContactForm|null Contact form object.
+     * @return ?\WPCF7_ContactForm Contact form object.
      */
-    function wpcf7_get_current_contact_form(): ?WPCF7_ContactForm
+    function wpcf7_get_current_contact_form(): ?\WPCF7_ContactForm
     {
         return null;
     }
@@ -5113,7 +5838,9 @@ namespace {
      *
      * @return void
      */
-    function wpcf7_html5_fallback(): void {}
+    function wpcf7_html5_fallback(): void
+    {}
+    // Exit if accessed directly
     /**
      * Validates uploaded files and moves them to the temporary directory.
      *
@@ -5121,7 +5848,7 @@ namespace {
      * @param string|array<string, mixed> $options Optional. Options to control behavior.
      * @return array<string, mixed> Array of file paths, or WP_Error if validation fails.
      */
-    function wpcf7_unship_uploaded_file(array $file, mixed $options = ''): array
+    function wpcf7_unship_uploaded_file($file, $options = '')
     {
         return array();
     }
@@ -5174,7 +5901,9 @@ namespace {
      *
      * @return array<string, mixed>
      */
-    function wpcf7_init_uploads(): array { return array(); }
+    function wpcf7_init_uploads(): array {
+        return array();
+    }
     /**
      * Creates a child directory with a randomly generated name.
      *
@@ -5211,7 +5940,9 @@ namespace {
      * @param WPCF7_ContactForm $object
      * @return void
      */
-    function wpcf7_file_display_warning_message(string $page, string $action, WPCF7_ContactForm $object): void {}
+    function wpcf7_file_display_warning_message($page, $action, $object): void
+    {}
+    // Exit if accessed directly
     /**
      * Wrapper function of WPCF7_FormTagsManager::add().
      *
@@ -5258,6 +5989,7 @@ namespace {
     function wpcf7_form_tag_supports(string $tag_type, string $feature): bool {
         return false;
     }
+    // Exit if accessed directly
     /**
      * Replaces double line breaks with paragraph elements.
      *
@@ -5310,7 +6042,7 @@ namespace {
      * @return mixed Processed value.
      */
     function wpcf7_strip_quote_deep(mixed $input): mixed {
-        return $input;
+        return null;
     }
     /**
      * Normalizes newline characters.
@@ -5331,7 +6063,9 @@ namespace {
      * @param string $to Optional. The newline character that is used in the output.
      * @return mixed Processed value.
      */
-    function wpcf7_normalize_newline_deep(mixed $input, string $to = "\n"): mixed { return $input; }
+    function wpcf7_normalize_newline_deep(mixed $input, string $to = "\n"): mixed {
+        return null;
+    }
     /**
      * Strips newline characters.
      *
@@ -5449,8 +6183,9 @@ namespace {
      */
     function wpcf7_strip_whitespaces(mixed $input, string $side = 'both'): string|array
     {
-        return '';
+        return array();
     }
+    // Exit if accessed directly
     /**
      * Returns path to a plugin file.
      *
@@ -5655,7 +6390,7 @@ namespace {
      */
     function wpcf7_version_grep(string $version, array $input): array|false
     {
-        return array();
+        return false;
     }
     /**
      * Returns an enctype attribute value.
@@ -5701,7 +6436,7 @@ namespace {
      */
     function wpcf7_count_code_units(string $text): int|false
     {
-        return 0;
+        return false;
     }
     /**
      * Returns true if WordPress is running on the localhost.
@@ -5733,7 +6468,7 @@ namespace {
      * @param string $replacement The hook that should have been used.
      * @return mixed
      */
-    function wpcf7_apply_filters_deprecated(string $hook_name, mixed $args, string $version, mixed $replacement = '') : mixed
+    function wpcf7_apply_filters_deprecated(string $hook_name, mixed $args, string $version, mixed $replacement = ''): mixed
     {
         return null;
     }
@@ -5764,7 +6499,7 @@ namespace {
      */
     function wpcf7_anonymize_ip_addr(string $ip_addr): string|false
     {
-        return '';
+        return false;
     }
     /**
      * Retrieves a sanitized value from the $_GET superglobal.
@@ -5820,6 +6555,7 @@ namespace {
     function wpcf7_superglobal(string $superglobal, string $key): string|array|null {
         return null;
     }
+    // Exit if accessed directly
     /**
      * Retrieves an associative array of languages to which
      * this plugin is translated.
@@ -5836,6 +6572,7 @@ namespace {
      * @param string $locale Locale code.
      */
     /**
+     * @param string $locale
      * @return bool
      */
     function wpcf7_is_valid_locale(string $locale): bool
@@ -5907,41 +6644,9 @@ namespace {
     }
     /**
      * Adds custom properties to the PHPMailer object.
+     * @param \PHPMailer\PHPMailer\PHPMailer $phpmailer
      */
     function wpcf7_phpmailer_init(\PHPMailer\PHPMailer\PHPMailer $phpmailer): void {}
-    /**
-     * All the functions and classes in this file are deprecated.
-     * You should not use them. The functions and classes will be
-     * removed in a later version.
-     */
-    /**
-     * @param string $tag
-     * @param callable $callback
-     * @param bool $has_name
-     * @return void
-     */
-    function wpcf7_add_shortcode(string $tag, callable $callback, bool $has_name = \false): void {}
-    /**
-     * @param string $tag
-     * @return void
-     */
-    function wpcf7_remove_shortcode(string $tag): void {}
-    /**
-     * @param string $content
-     * @return string
-     */
-    function wpcf7_do_shortcode(string $content): string
-    {
-        return '';
-    }
-    /**
-     * @param array<string, mixed>|null $cond
-     * @return array<int, mixed>
-     */
-    function wpcf7_scan_shortcode(?array $cond = \null): array
-    {
-        return array();
-    }
     /**
      * Returns output string of a special mail-tag.
      *
@@ -6001,19 +6706,15 @@ namespace {
         return array();
     }
     /**
-     * Loads SWV rules.
-     *
-     * @return void
-     */
-    function wpcf7_swv_load_rules(): void {}
-    /**
      * Creates an SWV rule object.
      *
      * @param string $rule_name Rule name.
      * @param string|array<string, mixed> $properties Optional. Rule properties.
-     * @return \Contactable\SWV\Rule|null The rule object, or null if it failed.
+     * @return \RockLobsterInc\Swv\AbstractRule|null The rule object, or null if it failed.
      */
-    function wpcf7_swv_create_rule(string $rule_name, mixed $properties = ''): ?\Contactable\SWV\Rule { return null; }
+    function wpcf7_swv_create_rule(string $rule_name, mixed $properties = ''): ?\RockLobsterInc\Swv\AbstractRule {
+        return null;
+    }
     /**
      * Returns an associative array of JSON Schema for Contact Form 7 SWV.
      *
@@ -6027,18 +6728,26 @@ namespace {
      * Runs functions necessary when upgrading from old plugin versions before 5.8.
      *
      * @since 5.8.0 New `_config_validation` post meta is introduced.
+     * @param string $new_ver
+     * @param string $old_ver
      */
     function wpcf7_upgrade_58(string $new_ver, string $old_ver): void {}
     /**
      * Converts old data in the dedicated database table to custom posts.
      *
      * @since 3.0.0 `wpcf7_contact_form` CPT is introduced.
+     * @param string $new_ver
+     * @param string $old_ver
      */
     function wpcf7_convert_to_cpt(string $new_ver, string $old_ver): void {}
     /**
      * Prepends an underscore to post meta keys.
+     * @param mixed $new_ver
+     * @param mixed $old_ver
      */
-    function wpcf7_prepend_underscore(string $new_ver, string $old_ver): void {}
+    function wpcf7_prepend_underscore($new_ver, $old_ver): void
+    {}
+    // Exit if accessed directly
     /**
      * Checks whether a string is a valid NAME token.
      *
@@ -6135,6 +6844,7 @@ namespace {
      *                    mailbox, false if not.
      */
     /**
+     * @param string $mailbox_list
      * @return bool
      */
     function wpcf7_is_mailbox_list(string $mailbox_list): bool
@@ -6150,6 +6860,8 @@ namespace {
      *              false if not.
      */
     /**
+     * @param string $email
+     * @param string $domain
      * @return bool
      */
     function wpcf7_is_email_in_domain(string $email, string $domain): bool
@@ -6160,6 +6872,7 @@ namespace {
      * Checks whether an email address belongs to the site domain.
      */
     /**
+     * @param string $email
      * @return bool
      */
     function wpcf7_is_email_in_site_domain(string $email): bool
@@ -6177,6 +6890,7 @@ namespace {
      *              false otherwise.
      */
     /**
+     * @param string $path
      * @return bool
      */
     function wpcf7_is_file_path_in_content_dir(string $path): bool
@@ -6222,7 +6936,7 @@ namespace {
      */
     function wpcf7_acceptance_validation_filter(\WPCF7_Validation $result, \WPCF7_FormTag $tag): \WPCF7_Validation
     {
-        return $result;
+        return null;
     }
     /**
      * @param bool $accepted
@@ -6368,7 +7082,7 @@ namespace {
      */
     function wpcf7_posted_data_checkbox(mixed $value, mixed $value_orig, WPCF7_FormTag $form_tag): mixed
     {
-        return $value;
+        return null;
     }
     /**
      * @return void
@@ -6461,6 +7175,9 @@ namespace {
     }
     /**
      * Starts a double opt-in session.
+     * @param string $agent_name
+     * @param mixed $args
+     * @param mixed $token
      */
     function wpcf7_doihelper_start_session(string $agent_name, mixed $args, &$token): void {}
     /**
@@ -6478,7 +7195,9 @@ namespace {
      * @param \WPCF7_MailTag|null $mail_tag
      * @return string
      */
-    function wpcf7_file_mail_tag(string $replaced, mixed $submitted, bool $html, ?WPCF7_MailTag $mail_tag): string { return ''; }
+    function wpcf7_file_mail_tag(string $replaced, mixed $submitted, bool $html, ?WPCF7_MailTag $mail_tag): string {
+        return '';
+    }
     /**
      * @return void
      */
@@ -6532,7 +7251,9 @@ namespace {
     function wpcf7_quiz_form_tag_handler(\WPCF7_FormTag $tag): string {
         return '';
     }
-    function wpcf7_quiz_validation_filter(\WPCF7_Validation $result, \WPCF7_FormTag $tag): \WPCF7_Validation { return $result; }
+    function wpcf7_quiz_validation_filter(\WPCF7_Validation $result, \WPCF7_FormTag $tag): \WPCF7_Validation {
+        return null;
+    }
     function wpcf7_quiz_ajax_refill(array $items): array {
         return array();
     }
@@ -6559,7 +7280,9 @@ namespace {
     function wpcf7_captchar_form_tag_handler(\WPCF7_FormTag $tag): string {
         return '';
     }
-    function wpcf7_captcha_validation_filter(\WPCF7_Validation $result, \WPCF7_FormTag $tag): \WPCF7_Validation { return $result; }
+    function wpcf7_captcha_validation_filter(\WPCF7_Validation $result, \WPCF7_FormTag $tag): \WPCF7_Validation {
+        return null;
+    }
     function wpcf7_captcha_ajax_refill(array $items): array {
         return array();
     }
@@ -6607,10 +7330,13 @@ namespace {
     function wpcf7_recaptcha_enqueue_scripts(): void {}
     /**
      * Adds hidden form field for reCAPTCHA.
+     * @param array $fields
      */
     function wpcf7_recaptcha_add_hidden_fields(array $fields): void {}
     /**
      * Verifies reCAPTCHA token on the server side.
+     * @param bool $spam
+     * @param WPCF7_Submission $submission
      */
     function wpcf7_recaptcha_verify_response(bool $spam, WPCF7_Submission $submission): void {}
     /**
@@ -6619,6 +7345,8 @@ namespace {
     function wpcf7_recaptcha_add_form_tag_recaptcha(): void {}
     /**
      * Adds warnings for users upgrading from reCAPTCHA v2 to v3.
+     * @param string $new_ver
+     * @param string $old_ver
      */
     function wpcf7_upgrade_recaptcha_v2_v3(string $new_ver, string $old_ver): void {}
     /**
@@ -6627,10 +7355,14 @@ namespace {
     function wpcf7_admin_init_recaptcha_v2_v3(): void {}
     /**
      * Increments the admin menu counter for the Integration page.
+     * @param array $counts
      */
     function wpcf7_admin_menu_change_notice_recaptcha_v2_v3(array $counts): void {}
     /**
      * Prints warnings on the admin screen.
+     * @param string $page
+     * @param string $action
+     * @param WPCF7_ContactForm $object
      */
     function wpcf7_admin_warnings_recaptcha_v2_v3(string $page, string $action, WPCF7_ContactForm $object): void {}
     /**
@@ -6642,12 +7374,14 @@ namespace {
     function wpcf7_add_form_tag_reflection(): void {}
     /**
      * The form-tag handler for the reflection type.
+     * @param \WPCF7_FormTag $tag
      */
     function wpcf7_reflection_form_tag_handler(\WPCF7_FormTag $tag): string {
         return '';
     }
     /**
      * The form-tag handler for the output type.
+     * @param \WPCF7_FormTag $tag
      */
     function wpcf7_output_form_tag_handler(\WPCF7_FormTag $tag): string {
         return '';
@@ -6675,24 +7409,54 @@ namespace {
     function wpcf7_tag_generator_menu(WPCF7_ContactForm $contact_form, mixed $options): void {}
     /**
      * Registers the sendinblue contact form property.
+     * @param array $properties
+     * @param \WPCF7_ContactForm $contact_form
      */
     function wpcf7_sendinblue_register_property(array $properties, \WPCF7_ContactForm $contact_form): array {
         return array();
     }
     /**
      * Saves the sendinblue property value.
+     * @param WPCF7_ContactForm $contact_form
+     * @param mixed $args
+     * @param string $context
      */
     function wpcf7_sendinblue_save_contact_form(WPCF7_ContactForm $contact_form, mixed $args, string $context): void {}
     /**
      * Builds the editor panel for the sendinblue property.
+     * @param array $panels
      */
     function wpcf7_sendinblue_editor_panels(array $panels): array {
         return array();
     }
     /**
-     * Retrieves contact lists from Brevo's database.
+     * Reusable content for the Brevo editor panel.
      */
-    function wpcf7_sendinblue_get_lists(): void {}
+    function wpcf7_sendinblue_editor_table()
+    {
+    }
+    function wpcf7_sendinblue_editor_lists($lists_selected, $options = '')
+    {
+    }
+    function wpcf7_sendinblue_editor_templates($template_selected, $options = '')
+    {
+    }
+    /**
+     * Retrieves contact lists from Brevo's database.
+     * @param mixed $options
+     */
+    function wpcf7_sendinblue_get_lists($options = ''): ?array
+    {
+        return null;
+    }
+    /**
+     * Retrieves email templates from Brevo's database.
+     * @param mixed $options
+     */
+    function wpcf7_sendinblue_get_templates($options = ''): ?array
+    {
+        return null;
+    }
     /**
      * Registers wpcf7_sendinblue as an agent.
      * @return void
@@ -6720,6 +7484,8 @@ namespace {
     /**
      * Callback to the wpcf7_submit action hook. Creates a contact
      * based on the submission.
+     * @param \WPCF7_ContactForm $contact_form
+     * @param array $result
      */
     function wpcf7_sendinblue_submit(\WPCF7_ContactForm $contact_form, array $result): void {}
     /**
@@ -6742,6 +7508,8 @@ namespace {
     /**
      * Skips the spam check if it is not necessary.
      *
+     * @param bool $skip_spam_check
+     * @param \WPCF7_Submission $submission
      * @return bool True if the spam check is not necessary.
      */
     function wpcf7_stripe_skip_spam_check(bool $skip_spam_check, \WPCF7_Submission $submission): bool
@@ -6750,10 +7518,15 @@ namespace {
     }
     /**
      * Verifies submitted Stripe Payment Intent ID.
+     * @param bool $spam
+     * @param WPCF7_Submission $submission
      */
     function wpcf7_stripe_verify_payment_intent(bool $spam, WPCF7_Submission $submission): void {}
     /**
      * Creates Stripe's Payment Intent.
+     * @param WPCF7_ContactForm $contact_form
+     * @param mixed $abort
+     * @param mixed $submission
      */
     function wpcf7_stripe_before_send_mail(WPCF7_ContactForm $contact_form, &$abort, $submission): void {}
     /**
@@ -6768,10 +7541,15 @@ namespace {
     }
     /**
      * Registers the [_stripe_payment_link] special mail-tag.
+     * @param string $output
+     * @param string $tag_name
+     * @param bool $html
+     * @param ?WPCF7_MailTag $mail_tag
      */
     function wpcf7_stripe_smt(string $output, string $tag_name, bool $html, ?WPCF7_MailTag $mail_tag = \null): void {}
     /**
      * Adds Stripe-related meta data to Flamingo Inbound Message parameters.
+     * @param mixed $args
      */
     function wpcf7_stripe_add_flamingo_inbound_message_params(mixed $args): void {}
     /**
@@ -6784,6 +7562,7 @@ namespace {
     /**
      * Defines the stripe form-tag handler.
      *
+     * @param \WPCF7_FormTag $tag
      * @return string HTML content that replaces a stripe form-tag.
      */
     function wpcf7_stripe_form_tag_handler(\WPCF7_FormTag $tag): string
@@ -6830,24 +7609,25 @@ namespace {
      * @return void
      */
     function wpcf7_add_tag_generator_textarea(): void {}
-    function wpcf7_tag_generator_textarea(WPCF7_ContactForm $contact_form, mixed $options) : void {}
+    function wpcf7_tag_generator_textarea(WPCF7_ContactForm $contact_form, mixed $options): void {}
     /**
      * Registers the Turnstile service.
      */
-    function wpcf7_turnstile_register_service() : void {}
+    function wpcf7_turnstile_register_service(): void {}
     /**
      * Enqueues the Turnstile script.
      */
-    function wpcf7_turnstile_enqueue_scripts() : void {}
+    function wpcf7_turnstile_enqueue_scripts(): void {}
     /**
      * Registers the Turnstile form-tag type.
      */
     /**
      * @return void
      */
-    function wpcf7_add_form_tag_turnstile() : void {}
+    function wpcf7_add_form_tag_turnstile(): void {}
     /**
      * The Turnstile form-tag handler.
+     * @param \WPCF7_FormTag $tag
      */
     function wpcf7_turnstile_form_tag_handler(\WPCF7_FormTag $tag): string {
         return '';
@@ -6855,8 +7635,9 @@ namespace {
     /**
      * Prepends a Turnstile widget to the form content if the form template
      * does not include a Turnstile form-tag.
+     * @param mixed $content
      */
-    function wpcf7_turnstile_prepend_widget(mixed $content) : string {
+    function wpcf7_turnstile_prepend_widget(mixed $content): string {
         return '';
     }
     /**
@@ -6866,17 +7647,18 @@ namespace {
      * @param WPCF7_Submission $submission The submission object.
      * @return bool True if the submitter is a bot, false if a human.
      */
-    function wpcf7_turnstile_verify_response(bool $spam, \WPCF7_Submission $submission) : bool
+    function wpcf7_turnstile_verify_response(bool $spam, \WPCF7_Submission $submission): bool
     {
         return false;
     }
     /**
      * Passes response data from Turnstile siteverify API to Flamingo.
+     * @param array $params
      */
-    function wpcf7_flamingo_inbound_message_parameters_turnstile(array $params) : array {
+    function wpcf7_flamingo_inbound_message_parameters_turnstile(array $params): array {
         return array();
     }
-    function wpcf7_delete_plugin() : bool {
+    function wpcf7_delete_plugin(): bool {
         return false;
     }
 }

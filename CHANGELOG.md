@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The README badges show the Packagist version and downloads, the license, and the status of the PHPStan and Generate Stubs workflows
 - The stubs follow Contact Form 7 6.1.6, up from 6.1.5. The PHP floor of the package is 8.0, the least that the stubs file loads on, because that release declares "Requires PHP: 7.4"
 - The stubs follow Contact Form 7 6.1.7, up from 6.1.6. The PHP floor of the package is 8.0, the least that the stubs file loads on, because that release declares "Requires PHP: 7.4"
+- The stubs follow Contact Form 7 6.2, up from 6.1.7. The PHP floor of the package is 8.3, the "Requires PHP" of that release
 
 ### Fixed
 

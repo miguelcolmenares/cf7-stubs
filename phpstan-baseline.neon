@@ -1,8 +1,506 @@
 parameters:
 	ignoreErrors:
 		-
+			message: '#^Class RockLobsterInc\\Swv\\InvalidityException has an uninitialized readonly property \$cause\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\InvalidityException has an uninitialized readonly property \$rule\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\AllRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\AllRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\AnyRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\AnyRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\DateRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\DateRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\DayofweekRule has an uninitialized readonly property \$accept\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\DayofweekRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\DayofweekRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\EmailRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\EmailRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\EnumRule has an uninitialized readonly property \$accept\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\EnumRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\EnumRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\FileRule has an uninitialized readonly property \$accept\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\FileRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\FileRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxDateRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxDateRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxDateRule has an uninitialized readonly property \$threshold\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxFilesizeRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxFilesizeRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxFilesizeRule has an uninitialized readonly property \$threshold\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxItemsRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxItemsRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxItemsRule has an uninitialized readonly property \$threshold\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxLengthRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxLengthRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxLengthRule has an uninitialized readonly property \$threshold\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxNumberRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxNumberRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MaxNumberRule has an uninitialized readonly property \$threshold\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinDateRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinDateRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinDateRule has an uninitialized readonly property \$threshold\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinFilesizeRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinFilesizeRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinFilesizeRule has an uninitialized readonly property \$threshold\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinItemsRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinItemsRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinItemsRule has an uninitialized readonly property \$threshold\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinLengthRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinLengthRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinLengthRule has an uninitialized readonly property \$threshold\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinNumberRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinNumberRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\MinNumberRule has an uninitialized readonly property \$threshold\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\NumberRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\NumberRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\RequiredFileRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\RequiredFileRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\RequiredRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\RequiredRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\StepNumberRule has an uninitialized readonly property \$base\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\StepNumberRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\StepNumberRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\StepNumberRule has an uninitialized readonly property \$interval\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\TelRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\TelRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\TimeRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\TimeRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\UrlRule has an uninitialized readonly property \$error\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class RockLobsterInc\\Swv\\Rules\\UrlRule has an uninitialized readonly property \$field\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Class WPCF7_SWV_Schema has an uninitialized readonly property \$locale\. Assign it in the constructor\.$#'
+			identifier: property.uninitializedReadonly
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\FormDataTree\\dissolve_name\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\FormDataTree\\scalar_to_map\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\Functions\\array_flatten\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\Functions\\canonicalize_newline\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\Functions\\canonicalize_newline\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\Functions\\canonicalize_newline\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\Functions\\exclude_blank\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\Functions\\exclude_blank\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\Functions\\strip_whitespaces\(\) has parameter \$input with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\Functions\\strip_whitespaces\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\Functions\\strip_whitespaces\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function RockLobsterInc\\Swv\\count_code_units\(\) never returns int so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_acceptance_validation_filter\(\) should return WPCF7_Validation but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_admin_dashboard_page\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_admin_menu_change_notice_recaptcha_v2_v3\(\) has parameter \$counts with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_ajax_dashboard_widgets\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_ajax_sendinblue_contact_lists\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_ajax_sendinblue_email_template\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: contact-form-7-stubs.php
 
@@ -19,7 +517,7 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
-			message: '#^Function wpcf7_anonymize_ip_addr\(\) never returns false so it can be removed from the return type\.$#'
+			message: '#^Function wpcf7_anonymize_ip_addr\(\) never returns string so it can be removed from the return type\.$#'
 			identifier: return.unusedType
 			count: 1
 			path: contact-form-7-stubs.php
@@ -55,6 +553,12 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
+			message: '#^Function wpcf7_captcha_validation_filter\(\) should return WPCF7_Validation but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_captchac_options\(\) has parameter \$options with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -73,7 +577,7 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
-			message: '#^Function wpcf7_count_code_units\(\) never returns false so it can be removed from the return type\.$#'
+			message: '#^Function wpcf7_count_code_units\(\) never returns int so it can be removed from the return type\.$#'
 			identifier: return.unusedType
 			count: 1
 			path: contact-form-7-stubs.php
@@ -85,8 +589,32 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
-			message: '#^Function wpcf7_doihelper_start_session\(\) has parameter \$token with no type specified\.$#'
-			identifier: missingType.parameter
+			message: '#^Function wpcf7_dashboard_cf7com_news\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_dashboard_news\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_dashboard_right_now\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_dashboard_setup\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_dashboard_widgets\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: contact-form-7-stubs.php
 
@@ -139,8 +667,20 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
+			message: '#^Function wpcf7_get_support\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_l10n\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_load_dashboard_page\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: contact-form-7-stubs.php
 
@@ -181,6 +721,12 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
+			message: '#^Function wpcf7_quiz_validation_filter\(\) should return WPCF7_Validation but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_recaptcha_add_hidden_fields\(\) has parameter \$fields with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -193,8 +739,32 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
+			message: '#^Function wpcf7_save_messages\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_sendinblue_collect_parameters\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_editor_lists\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_editor_lists\(\) has parameter \$lists_selected with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_editor_lists\(\) has parameter \$options with no type specified\.$#'
+			identifier: missingType.parameter
 			count: 1
 			path: contact-form-7-stubs.php
 
@@ -206,6 +776,54 @@ parameters:
 
 		-
 			message: '#^Function wpcf7_sendinblue_editor_panels\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_editor_table\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_editor_templates\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_editor_templates\(\) has parameter \$options with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_editor_templates\(\) has parameter \$template_selected with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_get_lists\(\) never returns array so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_get_lists\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_get_templates\(\) never returns array so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_get_templates\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: contact-form-7-stubs.php
@@ -229,20 +847,14 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
-			message: '#^Function wpcf7_strip_whitespaces\(\) never returns array\<int\|string, mixed\> so it can be removed from the return type\.$#'
+			message: '#^Function wpcf7_spam_protection\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_strip_whitespaces\(\) never returns string so it can be removed from the return type\.$#'
 			identifier: return.unusedType
-			count: 1
-			path: contact-form-7-stubs.php
-
-		-
-			message: '#^Function wpcf7_stripe_before_send_mail\(\) has parameter \$abort with no type specified\.$#'
-			identifier: missingType.parameter
-			count: 1
-			path: contact-form-7-stubs.php
-
-		-
-			message: '#^Function wpcf7_stripe_before_send_mail\(\) has parameter \$submission with no type specified\.$#'
-			identifier: missingType.parameter
 			count: 1
 			path: contact-form-7-stubs.php
 
@@ -265,7 +877,7 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
-			message: '#^Function wpcf7_swv_create_rule\(\) never returns Contactable\\SWV\\Rule so it can be removed from the return type\.$#'
+			message: '#^Function wpcf7_swv_create_rule\(\) never returns RockLobsterInc\\Swv\\AbstractRule so it can be removed from the return type\.$#'
 			identifier: return.unusedType
 			count: 1
 			path: contact-form-7-stubs.php
@@ -295,7 +907,553 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
-			message: '#^Function wpcf7_version_grep\(\) never returns false so it can be removed from the return type\.$#'
+			message: '#^Function wpcf7_version_grep\(\) never returns array\<int\|string, mixed\> so it can be removed from the return type\.$#'
 			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\FormDataTree\\File\:\:buildTree\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\FormDataTree\\FormDataTree\:\:__construct\(\) has parameter \$origin with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\FormDataTree\\FormDataTree\:\:getAll\(\) return type has no value type specified in iterable type iterable\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\FormDataTree\\FormDataTree\:\:getAll\(\) should return iterable but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\FormDataTree\\FormDataTree\:\:getAllFiles\(\) return type has no value type specified in iterable type iterable\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\FormDataTree\\FormDataTree\:\:getAllFiles\(\) should return iterable but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\FormDataTree\\FormDataTreeInterface\:\:getAll\(\) return type has no value type specified in iterable type iterable\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\FormDataTree\\FormDataTreeInterface\:\:getAllFiles\(\) return type has no value type specified in iterable type iterable\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\AbstractRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\AbstractRule\:\:validate\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\AbstractRule\:\:validate\(\) has parameter \$context with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\CompositeRule\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\InvalidityException\:\:__construct\(\) has parameter \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\AllRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\AllRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\AnyRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\AnyRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\DateRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\DateRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\DayofweekRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\DayofweekRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\EmailRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\EmailRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\EnumRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\EnumRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\FileRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\FileRule\:\:convertMimeToExt\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\FileRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MaxDateRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MaxDateRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MaxFilesizeRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MaxFilesizeRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MaxItemsRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MaxItemsRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MaxLengthRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MaxLengthRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MaxNumberRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MaxNumberRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MinDateRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MinDateRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MinFilesizeRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MinFilesizeRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MinItemsRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MinItemsRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MinLengthRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MinLengthRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MinNumberRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\MinNumberRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\NumberRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\NumberRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\RequiredFileRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\RequiredFileRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\RequiredRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\RequiredRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\StepNumberRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\StepNumberRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\TelRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\TelRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\TimeRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\TimeRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\UrlRule\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method RockLobsterInc\\Swv\\Rules\\UrlRule\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_ConfigValidator\:\:contact_form\(\) should return WPCF7_ContactForm but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_ContactForm\:\:copy\(\) should return WPCF7_ContactForm but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_ContactForm\:\:get_template\(\) should return WPCF7_ContactForm but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_ContactForm\:\:submit\(\) should return array\{contact_form_id\: int, status\: string, message\: string, posted_data_hash\?\: string, invalid_fields\?\: array\<string, array\{into\: string, message\: string, idref\: string\}\>, demo_mode\?\: bool\} but returns array\{\}\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_Filesystem\:\:get_instance\(\) should return WPCF7_Filesystem but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_FormTagsManager\:\:get_instance\(\) should return WPCF7_FormTagsManager but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_HTMLFormatter\:\:concatenate_texts\(\) should return iterable\<array\{position\: int, type\: string, content\: string\}\> but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_HTMLFormatter\:\:normalize_start_tag\(\) should return array\{tag\: string, tag_name\: string\} but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_HTMLFormatter\:\:pre_format\(\) should return iterable\<array\{position\: int, type\: string, content\: string\}\> but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_HTMLFormatter\:\:separate_into_chunks\(\) should return iterable\<array\{position\: int, type\: string, content\: string\}\> but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_List_Table\:\:get_instance\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_REST_Controller\:\:create_contact_form\(\) should return WP_REST_Response but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_REST_Controller\:\:create_feedback\(\) should return WP_REST_Response but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_REST_Controller\:\:delete_contact_form\(\) should return WP_REST_Response but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_REST_Controller\:\:get_contact_form\(\) should return WP_REST_Response but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_REST_Controller\:\:get_contact_forms\(\) should return WP_REST_Response but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_REST_Controller\:\:get_refill\(\) should return WP_REST_Response but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_REST_Controller\:\:get_schema\(\) should return WP_REST_Response but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_REST_Controller\:\:update_contact_form\(\) should return WP_REST_Response but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_SWV_Schema\:\:__construct\(\) has parameter \$properties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_SWV_Schema\:\:add_rule\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_SWV_Schema\:\:to_array\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_Submission\:\:get_contact_form\(\) should return WPCF7_ContactForm but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_Submission\:\:get_result\(\) should return array\{status\: string, message\: string, posted_data_hash\?\: string, invalid_fields\?\: array\<string, array\{into\: string, message\: string, idref\: string\}\>\} but returns array\{\}\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_Turnstile\:\:get_instance\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Property RockLobsterInc\\Swv\\CompositeRule\:\:\$rules type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Property RockLobsterInc\\Swv\\Rules\\DayofweekRule\:\:\$accept type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Property RockLobsterInc\\Swv\\Rules\\EnumRule\:\:\$accept type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Property RockLobsterInc\\Swv\\Rules\\FileRule\:\:\$accept type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: contact-form-7-stubs.php

@@ -28,7 +28,7 @@ The stubs are generated directly from the Contact Form 7 plugin source code usin
 
 ## Requirements
 
-- PHP 8.3 or later. Contact Form 7 6.2 declares `Requires PHP: 8.3`, and the stubs file uses native union types and `mixed`, so it does not load below PHP 8.0. When the update workflow follows a release, it sets this minimum to that release's `Requires PHP`, and it refuses a release below PHP 8.0. Between releases it only checks that the minimum is not lower.
+- PHP 8.3 or later. Contact Form 7 6.2 declares `Requires PHP: 8.3`, and the stubs file uses native union types and `mixed`, so it does not load below PHP 8.0. When the update workflow follows a release, it sets this minimum to that release's `Requires PHP`, and it never goes below PHP 8.0, even for a release that declares less (6.1 declares 7.4). Between releases it only checks that the minimum is not lower.
 
 ## Installation
 

@@ -7,10 +7,11 @@
 # nothing when the pinned version is already that one, and it refuses to go to an older one.
 # Otherwise it edits source/composer.json, sets the PHP floor of composer.json to the
 # "Requires PHP" that CF7 declares for that release (with no argument, the floor of the latest
-# release; when it does not move, it only checks that the floor is not lower than that), sets the
+# release, but never below 8.0; when it does not move, it only checks that the floor is not lower than that), sets the
 # `phpVersion` of phpstan.neon.dist to the same floor, prints the version in the README and in
-# contact-form-7-types.php, and adds a line under [Unreleased] in CHANGELOG.md. It refuses a
-# release whose Requires PHP is below 8.0, because the stubs file uses union types and `mixed`.
+# contact-form-7-types.php, and adds a line under [Unreleased] in CHANGELOG.md. A release that
+# declares less than 8.0 (6.1 declares 7.4) gets the floor 8.0, because the stubs file uses union
+# types and `mixed`, and the CHANGELOG line says so.
 #
 # The stubs file is curated by hand (docblocks, return types, bodies), so it is never overwritten
 # by the generator. The script generates the raw stubs of the pinned release and of the new one,
@@ -79,6 +80,13 @@ else
 fi
 [[ "$php_floor" =~ ^[0-9]+\.[0-9]+$ ]] || die "no usable Requires PHP for $target: '$php_floor'"
 
+# The stubs file uses union types and `mixed`, so it does not load below PHP 8.0. A release that
+# declares less (6.1 declares 7.4) gets the floor 8.0, and the CHANGELOG line says so.
+declared_php="$php_floor"
+if [ "$(printf '%s\n%s\n' "$php_floor" 8.0 | sort -V | head -n 1)" != 8.0 ]; then
+    php_floor=8.0
+fi
+
 current="$(jq -r '.require["contact-form-7/contact-form-7"]' source/composer.json)"
 [[ "$current" =~ ^[0-9]+(\.[0-9]+){1,3}$ ]] || die "source/composer.json has no pinned version: '$current'"
 
@@ -89,14 +97,10 @@ if [ "$target" = "$current" ]; then
     [[ "$floor" == '>='* && "$floor_version" =~ ^[0-9]+\.[0-9]+$ ]] || die "composer.json requires php '$floor', expected the form >=8.3"
     lowest="$(printf '%s\n%s\n' "$floor_version" "$php_floor" | sort -V | head -n 1)"
     [ "$lowest" = "$php_floor" ] || die "composer.json requires php '$floor', but Contact Form 7 $current declares Requires PHP $php_floor"
-    echo "Contact Form 7 $current is already the pinned version, and the PHP floor is not lower than its Requires PHP ($php_floor)."
+    echo "Contact Form 7 $current is already the pinned version, and the PHP floor is not lower than $php_floor."
     out changed false
     exit 0
 fi
-
-# The stubs file uses union types and `mixed`, so it does not load below PHP 8.0.
-lowest_php="$(printf '%s\n%s\n' "$php_floor" 8.0 | sort -V | head -n 1)"
-{ [ "$lowest_php" = 8.0 ] || [ "$php_floor" = 8.0 ]; } || die "Contact Form 7 $target declares Requires PHP $php_floor, and the stubs need PHP 8.0 or later"
 
 highest="$(printf '%s\n%s\n' "$current" "$target" | sort -V | tail -n 1)"
 [ "$highest" = "$target" ] || die "$target is older than the pinned $current, refusing to go back"
@@ -163,11 +167,15 @@ if [ "${NO_GENERATE:-}" != 1 ]; then
     conflicts="$(grep -c '^<<<<<<< curated$' "$STUBS" || true)"
 fi
 
-python3 - "$target" "$current" "$php_floor" <<'PY'
+python3 - "$target" "$current" "$php_floor" "$declared_php" <<'PY'
 import re, sys
-target, current, php = sys.argv[1:4]
+target, current, php, declared = sys.argv[1:5]
+if php == declared:
+    reason = 'the "Requires PHP" of that release'
+else:
+    reason = f'the least that the stubs file loads on, because that release declares "Requires PHP: {declared}"'
 line = (f"- The stubs follow Contact Form 7 {target}, up from {current}. "
-        f"The PHP floor of the package is {php}, the \"Requires PHP\" of that release\n")
+        f"The PHP floor of the package is {php}, {reason}\n")
 text = open("CHANGELOG.md").read()
 m = re.search(r"^## \[Unreleased\]\n", text, re.M)
 if not m:

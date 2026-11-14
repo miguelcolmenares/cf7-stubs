@@ -1,7 +1,19 @@
 parameters:
 	ignoreErrors:
 		-
+			message: '#^Function wpcf7_acceptance_mail_tag\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_admin_menu_change_notice_recaptcha_v2_v3\(\) has parameter \$counts with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_admin_menu_change_notice_recaptcha_v2_v3\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: contact-form-7-stubs.php
@@ -27,6 +39,12 @@ parameters:
 		-
 			message: '#^Function wpcf7_array_flatten\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_blacklist_check\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
 			count: 1
 			path: contact-form-7-stubs.php
 
@@ -67,6 +85,12 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
+			message: '#^Function wpcf7_check_disallowed_list\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_contact_form\(\) never returns WPCF7_ContactForm so it can be removed from the return type\.$#'
 			identifier: return.unusedType
 			count: 1
@@ -91,6 +115,12 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
+			message: '#^Function wpcf7_flamingo_add_channel\(\) never returns int so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_flamingo_inbound_message_parameters_turnstile\(\) has parameter \$params with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -105,6 +135,12 @@ parameters:
 		-
 			message: '#^Function wpcf7_flamingo_submit\(\) has parameter \$result with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_flamingo_update_channel\(\) never returns bool so it can be removed from the return type\.$#'
+			identifier: return.unusedType
 			count: 1
 			path: contact-form-7-stubs.php
 
@@ -134,6 +170,54 @@ parameters:
 
 		-
 			message: '#^Function wpcf7_get_current_contact_form\(\) never returns WPCF7_ContactForm so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_init_captcha\(\) never returns object so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_is_date\(\) never returns int so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_is_email\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_is_mailbox_list\(\) has parameter \$mailbox_list with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_is_mailbox_list\(\) never returns array so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_is_mailbox_list\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_is_name\(\) never returns int so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_is_time\(\) never returns int so it can be removed from the return type\.$#'
 			identifier: return.unusedType
 			count: 1
 			path: contact-form-7-stubs.php
@@ -187,6 +271,24 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
+			message: '#^Function wpcf7_recaptcha_add_hidden_fields\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_remove_captcha\(\) never returns bool so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_response_form_tag_handler\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_save_contact_form\(\) never returns WPCF7_ContactForm so it can be removed from the return type\.$#'
 			identifier: return.unusedType
 			count: 1
@@ -206,6 +308,12 @@ parameters:
 
 		-
 			message: '#^Function wpcf7_sendinblue_editor_panels\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_sendinblue_get_lists\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: contact-form-7-stubs.php
@@ -247,6 +355,12 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
+			message: '#^Function wpcf7_stripe_smt\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_superglobal\(\) never returns array\<int\|string, mixed\> so it can be removed from the return type\.$#'
 			identifier: return.unusedType
 			count: 1
@@ -283,6 +397,18 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
+			message: '#^Function wpcf7_turnstile_form_tag_handler\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Function wpcf7_unship_uploaded_file\(\) never returns WP_Error so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_upload_dir\(\) never returns string so it can be removed from the return type\.$#'
 			identifier: return.unusedType
 			count: 1
@@ -297,5 +423,95 @@ parameters:
 		-
 			message: '#^Function wpcf7_version_grep\(\) never returns false so it can be removed from the return type\.$#'
 			identifier: return.unusedType
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method Contactable\\SWV\\Rule\:\:create_error\(\) should return WP_Error but returns false\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_ConfigValidator\:\:detect_unavailable_names\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_ContactForm\:\:get_schema\(\) should return WPCF7_SWV_Schema but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_Integration\:\:get_instance\(\) should return WPCF7_Integration but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_MailTaggedText\:\:format\(\) has parameter \$original with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_MailTaggedText\:\:format\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_Stripe\:\:get_api_keys\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_Submission\:\:get_invalid_field\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_Submission\:\:get_posted_data\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_TagGenerator\:\:get_instance\(\) should return WPCF7_TagGenerator but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_WelcomePanelColumn_AntiSpam\:\:content\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_WelcomePanelColumn_Donation\:\:content\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_WelcomePanelColumn_Flamingo\:\:content\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Method WPCF7_WelcomePanelColumn_Integration\:\:content\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
+			message: '#^Return type \(Generator\) of method WPCF7_SWV_Schema\:\:validate\(\) should be compatible with return type \(bool\|WP_Error\) of method Contactable\\SWV\\CompositeRule\:\:validate\(\)$#'
+			identifier: method.childReturnType
 			count: 1
 			path: contact-form-7-stubs.php

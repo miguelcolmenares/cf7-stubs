@@ -143,11 +143,10 @@ namespace {
          */
         public function set_help_tabs($screen_type): void {}
         /**
-         * @return string
+         * @return void
          */
-        public function sidebar(): string
+        public function sidebar(): void
         {
-            return '';
         }
     }
     /**
@@ -157,9 +156,9 @@ namespace {
     {
         /**
          * Returns the singleton instance of this class.
-         * @return WPCF7_TagGenerator|null
+         * @return \WPCF7_TagGenerator
          */
-        public static function get_instance(): ?WPCF7_TagGenerator
+        public static function get_instance(): \WPCF7_TagGenerator
         {
             return null;
         }
@@ -170,9 +169,12 @@ namespace {
          * @param string $title Generator title.
          * @param callable $callback Generator callback function.
          * @param string|array<string, mixed> $options Generator options.
-         * @return void
+         * @return bool
          */
-        public function add(string $id, string $title, callable $callback, $options = ''): void {}
+        public function add(string $id, string $title, callable $callback, $options = ''): bool
+        {
+            return false;
+        }
         /**
          * Renders form-tag generator calling buttons.
          *
@@ -237,9 +239,9 @@ namespace {
         /**
          * Returns the content HTML.
          *
-         * @return string Content HTML.
+         * @return mixed Content HTML.
          */
-        protected abstract function content();
+        protected abstract function content(): mixed;
         /**
          * Prints the content.
          *
@@ -270,11 +272,11 @@ namespace {
         /**
          * Returns the content HTML.
          *
-         * @return string Content HTML.
+         * @return array Content HTML.
          */
-        protected function content(): string
+        protected function content(): array
         {
-            return '';
+            return array();
         }
     }
     class WPCF7_WelcomePanelColumn_Donation extends \WPCF7_WelcomePanelColumn
@@ -300,11 +302,11 @@ namespace {
         /**
          * Returns the content HTML.
          *
-         * @return string Content HTML.
+         * @return array Content HTML.
          */
-        protected function content(): string
+        protected function content(): array
         {
-            return '';
+            return array();
         }
     }
     class WPCF7_WelcomePanelColumn_Flamingo extends \WPCF7_WelcomePanelColumn
@@ -330,11 +332,11 @@ namespace {
         /**
          * Returns the content HTML.
          *
-         * @return string Content HTML.
+         * @return array Content HTML.
          */
-        protected function content(): string
+        protected function content(): array
         {
-            return '';
+            return array();
         }
     }
     class WPCF7_WelcomePanelColumn_Integration extends \WPCF7_WelcomePanelColumn
@@ -360,11 +362,11 @@ namespace {
         /**
          * Returns the content HTML.
          *
-         * @return string Content HTML.
+         * @return array Content HTML.
          */
-        protected function content(): string
+        protected function content(): array
         {
-            return '';
+            return array();
         }
     }
     trait WPCF7_ConfigValidator_AdditionalSettings
@@ -398,7 +400,7 @@ namespace {
          *
          * @link https://contactform7.com/configuration-errors/unavailable-names/
          */
-        public function detect_unavailable_names(string $section, string $content): bool
+        public function detect_unavailable_names(string $section, string $content): array|false
         {
             return false;
         }
@@ -461,51 +463,44 @@ namespace {
         /**
          * Runs error detection for the mail sections.
          */
-        public function validate_mail(string $template = 'mail'): bool
+        public function validate_mail(string $template = 'mail'): void
         {
-            return false;
         }
         /**
          * Runs error detection for the mail subject section.
          */
-        public function validate_mail_subject(string $template, string $content): bool
+        public function validate_mail_subject(string $template, string $content): void
         {
-            return false;
         }
         /**
          * Runs error detection for the mail sender section.
          */
-        public function validate_mail_sender(string $template, string $content): bool
+        public function validate_mail_sender(string $template, string $content): void
         {
-            return false;
         }
         /**
          * Runs error detection for the mail recipient section.
          */
-        public function validate_mail_recipient(string $template, string $content): bool
+        public function validate_mail_recipient(string $template, string $content): void
         {
-            return false;
         }
         /**
          * Runs error detection for the mail additional headers section.
          */
-        public function validate_mail_additional_headers(string $template, string $content): bool
+        public function validate_mail_additional_headers(string $template, string $content): void
         {
-            return false;
         }
         /**
          * Runs error detection for the mail body section.
          */
-        public function validate_mail_body(string $template, string $content): bool
+        public function validate_mail_body(string $template, string $content): void
         {
-            return false;
         }
         /**
          * Runs error detection for the mail attachments section.
          */
-        public function validate_mail_attachments(string $template, string $content): bool
+        public function validate_mail_attachments(string $template, string $content): void
         {
-            return false;
         }
         /**
          * Detects errors of invalid mailbox syntax.
@@ -689,9 +684,12 @@ namespace {
          * @param string $section The section where the error detected.
          * @param string $code The unique code of the error.
          * @param string|array<string, mixed> $args Optional options for the error.
-         * @return void
+         * @return bool
          */
-        public function add_error($section, $code, $args = '') {}
+        public function add_error($section, $code, $args = '')
+        {
+            return false;
+        }
         /**
          * Removes an error.
          *
@@ -712,10 +710,10 @@ namespace {
         /**
          * Saves detected errors as a post meta data.
          *
-         * @return int Post ID on success, 0 on failure.
+         * @return void Post ID on success, 0 on failure.
          */
-        public function save(): int {
-            return 0;
+        public function save(): void
+        {
         }
         /**
          * Restore errors from the database.
@@ -791,7 +789,7 @@ namespace {
         /**
          * Retrieves SWV schema for this holder object (contact form).
          *
-         * @return WPCF7_SWV_Schema|null The schema object.
+         * @return WPCF7_SWV_Schema The schema object.
          */
         public function get_schema()
         {
@@ -825,9 +823,12 @@ namespace {
         /**
          * Scans form tags.
          *
-         * @return void
+         * @return array
          */
-        public function scan_form_tags() {}
+        public function scan_form_tags()
+        {
+            return array();
+        }
     }
     class WPCF7_ContactForm
     {
@@ -1386,9 +1387,9 @@ namespace {
         /**
          * Retrieves the id option value from the form-tag.
          *
-         * @return string|bool
+         * @return string|false
          */
-        public function get_id_option(): string|bool
+        public function get_id_option(): string|false
         {
             return false;
         }
@@ -1588,11 +1589,11 @@ namespace {
         /**
          * Returns scanned form-tags.
          *
-         * @return array<int, WPCF7_FormTag> Array of WPCF7_FormTag objects.
+         * @return array<int, WPCF7_FormTag>|null Array of WPCF7_FormTag objects.
          */
-        public function get_scanned_tags()
+        public function get_scanned_tags(): ?array
         {
-            return array();
+            return null;
         }
         /**
          * Registers form-tag types to the manager.
@@ -1837,7 +1838,7 @@ namespace {
          * associative array that includes 'position', 'type', and 'content' keys.
          *
          * @param string $input Text to be separated into chunks.
-         * @return iterable<array{position: int, type: string, content: string}> Iterable of chunks.
+         * @return iterable<array{position: int, type: int, content: string}> Iterable of chunks.
          */
         public function separate_into_chunks($input)
         {
@@ -1847,8 +1848,8 @@ namespace {
          * Normalizes content in each chunk. This may change the type and position
          * of the chunk.
          *
-         * @param iterable<array{position: int, type: string, content: string}> $chunks The original chunks.
-         * @return iterable<array{position: int, type: string, content: string}> Normalized chunks.
+         * @param iterable<array{position: int, type: int, content: string}> $chunks The original chunks.
+         * @return iterable<array{position: int, type: int, content: string}> Normalized chunks.
          */
         public function pre_format($chunks)
         {
@@ -1857,8 +1858,8 @@ namespace {
         /**
          * Concatenates neighboring text chunks to create a single chunk.
          *
-         * @param iterable<array{position: int, type: string, content: string}> $chunks The original chunks.
-         * @return iterable<array{position: int, type: string, content: string}> Processed chunks.
+         * @param iterable<array{position: int, type: int, content: string}> $chunks The original chunks.
+         * @return iterable<array{position: int, type: int, content: string}> Processed chunks.
          */
         public function concatenate_texts($chunks)
         {
@@ -1867,7 +1868,7 @@ namespace {
         /**
          * Outputs formatted HTML based on the given chunks.
          *
-         * @param iterable<array{position: int, type: string, content: string}> $chunks The original chunks.
+         * @param iterable<array{position: int, type: int, content: string}> $chunks The original chunks.
          * @return string Formatted HTML.
          */
         public function format($chunks)
@@ -1907,9 +1908,12 @@ namespace {
          * @param string $tag_name Tag name.
          * @param array<string, string> $atts Associative array of attribute name and value pairs.
          * @param string $tag A start tag.
-         * @return void
+         * @return false|null
          */
-        public function append_start_tag($tag_name, $atts = array(), $tag = '') {}
+        public function append_start_tag($tag_name, $atts = array(), $tag = '')
+        {
+            return null;
+        }
         /**
          * Closes an element and its open descendants at a time.
          *
@@ -1965,9 +1969,12 @@ namespace {
          *
          * @param callable $callback
          * @param mixed ...$args
-         * @return void
+         * @return mixed
          */
-        public function call_user_func($callback, ...$args) {}
+        public function call_user_func($callback, ...$args)
+        {
+            return null;
+        }
         /**
          * Closes all remaining tags, returns and resets the output.
          *
@@ -1990,7 +1997,7 @@ namespace {
          * Calculates the position of the next chunk based on the position and
          * length of the current chunk.
          *
-         * @param array{position: int, type: string, content: string} $chunk An associative array of the current chunk.
+         * @param array{position: int, type: int, content: string} $chunk An associative array of the current chunk.
          * @return int The position of the next chunk.
          */
         public static function calc_next_position($chunk)
@@ -2011,11 +2018,11 @@ namespace {
          * Normalizes a start tag.
          *
          * @param string $tag A start tag or a tag name.
-         * @return array{tag: string, tag_name: string} An array includes the normalized start tag and tag name.
+         * @return array{string, string} An array includes the normalized start tag and tag name.
          */
         public static function normalize_start_tag($tag)
         {
-            return array('tag' => '', 'tag_name' => '');
+            return array('', '');
         }
         /**
          * Normalizes a paragraph of text.
@@ -2059,7 +2066,7 @@ namespace {
         /**
          * Returns the singleton instance of this class.
          *
-         * @return WPCF7_Integration|null The instance.
+         * @return WPCF7_Integration The instance.
          */
         public static function get_instance()
         {
@@ -2070,17 +2077,23 @@ namespace {
          *
          * @param string $name
          * @param \WPCF7_Service $service
-         * @return void
+         * @return false|null
          */
-        public function add_service($name, \WPCF7_Service $service) {}
+        public function add_service($name, \WPCF7_Service $service)
+        {
+            return null;
+        }
         /**
          * Adds a service category to the categories list.
          *
          * @param string $name
          * @param string $title
-         * @return void
+         * @return false|null
          */
-        public function add_category($name, $title) {}
+        public function add_category($name, $title)
+        {
+            return null;
+        }
         /**
          * Returns true if a service with the name exists in the services list.
          *
@@ -2142,20 +2155,20 @@ namespace {
         /**
          * Returns the service icon HTML.
          *
-         * @return string Icon HTML.
+         * @return mixed Icon HTML.
          */
         public function icon()
         {
-            return '';
+            return null;
         }
         /**
          * Returns the service link URL.
          *
-         * @return string Link URL.
+         * @return mixed Link URL.
          */
         public function link()
         {
-            return '';
+            return null;
         }
         /**
          * Loads the service.
@@ -2555,13 +2568,13 @@ namespace {
         /**
          * Formats string based on the formatting option in the form-tag.
          *
-         * @param string $original
+         * @param string|array $original
          * @param string $format
-         * @return string
+         * @return array
          */
-        public function format($original, mixed $format)
+        public function format(string|array $original, mixed $format): array
         {
-            return '';
+            return array();
         }
     }
     /**
@@ -2681,9 +2694,12 @@ namespace {
          * Pulls a value from the pocket.
          *
          * @param string $key Property key.
-         * @return void
+         * @return mixed
          */
-        public function pull($key): void {}
+        public function pull($key): mixed
+        {
+            return null;
+        }
         /**
          * Pushes a value to the pocket.
          *
@@ -2716,9 +2732,9 @@ namespace {
          * Creates a contact form.
          *
          * @param WP_REST_Request<array<string, mixed>> $request REST request object.
-         * @return \WP_REST_Response REST response.
+         * @return \WP_REST_Response|\WP_Error REST response.
          */
-        public function create_contact_form(\WP_REST_Request $request): WP_REST_Response
+        public function create_contact_form(\WP_REST_Request $request): \WP_REST_Response|\WP_Error
         {
             return new \WP_REST_Response();
         }
@@ -2726,9 +2742,9 @@ namespace {
          * Gets a contact form.
          *
          * @param WP_REST_Request<array<string, mixed>> $request REST request object.
-         * @return \WP_REST_Response REST response.
+         * @return \WP_REST_Response|\WP_Error REST response.
          */
-        public function get_contact_form(\WP_REST_Request $request): WP_REST_Response
+        public function get_contact_form(\WP_REST_Request $request): \WP_REST_Response|\WP_Error
         {
             return new \WP_REST_Response();
         }
@@ -2736,9 +2752,9 @@ namespace {
          * Updates a contact form.
          *
          * @param WP_REST_Request<array<string, mixed>> $request REST request object.
-         * @return \WP_REST_Response REST response.
+         * @return \WP_REST_Response|\WP_Error REST response.
          */
-        public function update_contact_form(\WP_REST_Request $request): WP_REST_Response
+        public function update_contact_form(\WP_REST_Request $request): \WP_REST_Response|\WP_Error
         {
             return new \WP_REST_Response();
         }
@@ -2746,9 +2762,9 @@ namespace {
          * Deletes a contact form.
          *
          * @param WP_REST_Request<array<string, mixed>> $request REST request object.
-         * @return \WP_REST_Response REST response.
+         * @return \WP_REST_Response|\WP_Error REST response.
          */
-        public function delete_contact_form(\WP_REST_Request $request): WP_REST_Response
+        public function delete_contact_form(\WP_REST_Request $request): \WP_REST_Response|\WP_Error
         {
             return new \WP_REST_Response();
         }
@@ -2756,9 +2772,9 @@ namespace {
          * Creates feedback.
          *
          * @param WP_REST_Request<array<string, mixed>> $request REST request object.
-         * @return \WP_REST_Response REST response.
+         * @return \WP_REST_Response|\WP_Error REST response.
          */
-        public function create_feedback(\WP_REST_Request $request): WP_REST_Response
+        public function create_feedback(\WP_REST_Request $request): \WP_REST_Response|\WP_Error
         {
             return new \WP_REST_Response();
         }
@@ -2766,9 +2782,9 @@ namespace {
          * Gets schema.
          *
          * @param WP_REST_Request<array<string, mixed>> $request REST request object.
-         * @return \WP_REST_Response REST response.
+         * @return \WP_REST_Response|\WP_Error REST response.
          */
-        public function get_schema(\WP_REST_Request $request): WP_REST_Response
+        public function get_schema(\WP_REST_Request $request): \WP_REST_Response|\WP_Error
         {
             return new \WP_REST_Response();
         }
@@ -2776,9 +2792,9 @@ namespace {
          * Gets refill data.
          *
          * @param WP_REST_Request<array<string, mixed>> $request REST request object.
-         * @return \WP_REST_Response REST response.
+         * @return \WP_REST_Response|\WP_Error REST response.
          */
-        public function get_refill(\WP_REST_Request $request): WP_REST_Response
+        public function get_refill(\WP_REST_Request $request): \WP_REST_Response|\WP_Error
         {
             return new \WP_REST_Response();
         }
@@ -2797,7 +2813,7 @@ namespace {
         /**
          * Gets scanned tags.
          *
-         * @return array<string, mixed> Scanned tags.
+         * @return array<int, WPCF7_FormTag> Scanned tags.
          */
         public function get_scanned_tags(): array
         {
@@ -2976,10 +2992,10 @@ namespace {
          * Search an invalid field by field name.
          *
          * @param string $name The field name.
-         * @return bool Always false in stubs.
+         * @return array|false The validation error of the field, or false when the field is valid.
          *                    or false when no invalid field.
          */
-        public function get_invalid_field($name): bool
+        public function get_invalid_field($name): array|false
         {
             return false;
         }
@@ -2996,7 +3012,7 @@ namespace {
          * Retrieves meta information.
          *
          * @param string $name Name of the meta information.
-         * @return null Always null in stubs.
+         * @return mixed The value of the meta data, or null when it is not set.
          *                     null otherwise.
          */
         public function get_meta($name)
@@ -3007,7 +3023,7 @@ namespace {
          * Retrieves user input data through this submission.
          *
          * @param string $name Optional field name.
-         * @return null Always null in stubs.
+         * @return string|array|null The posted value of one field, or all the posted data when no name is given.
          */
         public function get_posted_data($name = '')
         {
@@ -3037,9 +3053,9 @@ namespace {
          * Verifies nonce of the given user input hash.
          *
          * @param string $hash The user input hash.
-         * @return bool Always false in stubs.
+         * @return int|false 1 or 2 when the hash is valid (1 if it was created 0 to 30 minutes ago, 2 for 30 to 60 minutes ago), false when it is not.
          */
-        public function verify_posted_data_hash($hash = ''): bool
+        public function verify_posted_data_hash($hash = ''): int|false
         {
             return false;
         }
@@ -3048,9 +3064,12 @@ namespace {
          *
          * @param string $name Field name.
          * @param string $conditions Conditions of consent.
-         * @return void
+         * @return bool
          */
-        public function add_consent($name, $conditions): void {}
+        public function add_consent($name, $conditions): bool
+        {
+            return false;
+        }
         /**
          * Collects user consent data.
          *
@@ -3142,11 +3161,11 @@ namespace Contactable\SWV {
          * Validates with this rule's logic.
          *
          * @param array<string, mixed> $context Context.
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context)
         {
-            return array();
+            return false;
         }
         /**
          * Converts the properties to an array.
@@ -3182,9 +3201,9 @@ namespace Contactable\SWV {
         /**
          * Creates an error object. Returns false if the error property is omitted.
          *
-         * @return false
+         * @return \WP_Error
          */
-        protected function create_error(): bool
+        protected function create_error(): \WP_Error
         {
             return false;
         }
@@ -3206,11 +3225,11 @@ namespace Contactable\SWV {
         /**
          * Returns an iterator of sub-rules.
          *
-         * @return \ArrayIterator<int, Rule>
+         * @return \Generator
          */
-        public function rules(): \ArrayIterator
+        public function rules(): \Generator
         {
-            return new \ArrayIterator();
+            yield;
         }
         /**
          * Returns true if this rule matches the given context.
@@ -3226,11 +3245,11 @@ namespace Contactable\SWV {
          * Validates with this rule's logic.
          *
          * @param array<string, mixed> $context Context.
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context)
         {
-            return array();
+            return false;
         }
         /**
          * Converts the properties to an array.
@@ -3255,11 +3274,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class AnyRule extends \Contactable\SWV\CompositeRule
@@ -3275,11 +3294,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class DateRule extends \Contactable\SWV\Rule
@@ -3295,11 +3314,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class DayofweekRule extends \Contactable\SWV\Rule
@@ -3315,11 +3334,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class EmailRule extends \Contactable\SWV\Rule
@@ -3335,11 +3354,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class EnumRule extends \Contactable\SWV\Rule
@@ -3355,11 +3374,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class FileRule extends \Contactable\SWV\Rule
@@ -3375,11 +3394,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class MaxDateRule extends \Contactable\SWV\Rule
@@ -3395,11 +3414,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class MaxFileSizeRule extends \Contactable\SWV\Rule
@@ -3415,11 +3434,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class MaxItemsRule extends \Contactable\SWV\Rule
@@ -3435,11 +3454,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class MaxLengthRule extends \Contactable\SWV\Rule
@@ -3455,11 +3474,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class MaxNumberRule extends \Contactable\SWV\Rule
@@ -3475,11 +3494,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class MinDateRule extends \Contactable\SWV\Rule
@@ -3495,11 +3514,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class MinFileSizeRule extends \Contactable\SWV\Rule
@@ -3515,11 +3534,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class MinItemsRule extends \Contactable\SWV\Rule
@@ -3535,11 +3554,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class MinLengthRule extends \Contactable\SWV\Rule
@@ -3555,11 +3574,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class MinNumberRule extends \Contactable\SWV\Rule
@@ -3575,11 +3594,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class NumberRule extends \Contactable\SWV\Rule
@@ -3595,11 +3614,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class RequiredRule extends \Contactable\SWV\Rule
@@ -3615,11 +3634,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class RequiredFileRule extends \Contactable\SWV\Rule
@@ -3635,11 +3654,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class StepNumberRule extends \Contactable\SWV\Rule
@@ -3655,11 +3674,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class TelRule extends \Contactable\SWV\Rule
@@ -3675,11 +3694,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class TimeRule extends \Contactable\SWV\Rule
@@ -3695,11 +3714,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
     class URLRule extends \Contactable\SWV\Rule
@@ -3715,11 +3734,11 @@ namespace Contactable\SWV {
         }
         /**
          * @param array<string, mixed> $context
-         * @return array<string, mixed>
+         * @return bool|\WP_Error
          */
-        public function validate($context): array
+        public function validate($context): bool|\WP_Error
         {
-            return array();
+            return false;
         }
     }
 }
@@ -3745,11 +3764,11 @@ namespace {
          * Validates with this schema.
          *
          * @param array<string, mixed> $context Context.
-         * @return array<string, mixed>
+         * @return \Generator
          */
-        public function validate($context): array
+        public function validate($context)
         {
-            return array();
+            yield;
         }
     }
     /**
@@ -3804,7 +3823,10 @@ namespace {
          * @link https://www.php.net/manual/en/arrayaccess.offsetget.php
          */
         #[\ReturnTypeWillChange]
-        public function offsetGet($offset): void {}
+        public function offsetGet($offset): mixed
+        {
+            return null;
+        }
         /**
          * Returns true if the specified offset exists.
          *
@@ -3900,20 +3922,18 @@ namespace {
         /**
          * Returns the service icon HTML.
          *
-         * @return string Icon HTML.
+         * @return void Icon HTML.
          */
-        public function icon(): string
+        public function icon(): void
         {
-            return '';
         }
         /**
          * Returns the service link URL.
          *
-         * @return string Link URL.
+         * @return void Link URL.
          */
-        public function link(): string
+        public function link(): void
         {
-            return '';
         }
         /**
          * Displays the service.
@@ -3982,20 +4002,18 @@ namespace {
         /**
          * Returns the service icon HTML.
          *
-         * @return string Icon HTML.
+         * @return void Icon HTML.
          */
-        public function icon(): string
+        public function icon(): void
         {
-            return '';
         }
         /**
          * Returns the service link URL.
          *
-         * @return string Link URL.
+         * @return void Link URL.
          */
-        public function link(): string
+        public function link(): void
         {
-            return '';
         }
         /**
          * Returns the menu page URL.
@@ -4070,20 +4088,18 @@ namespace {
         /**
          * Returns the service icon HTML.
          *
-         * @return string Icon HTML.
+         * @return void Icon HTML.
          */
-        public function icon(): string
+        public function icon(): void
         {
-            return '';
         }
         /**
          * Returns the service link URL.
          *
-         * @return string Link URL.
+         * @return void Link URL.
          */
-        public function link(): string
+        public function link(): void
         {
-            return '';
         }
         /**
          * Returns the global site key.
@@ -4106,21 +4122,21 @@ namespace {
         /**
          * Returns the site key.
          *
-         * @return string Site key.
+         * @return string|false Site key.
          */
-        public function get_sitekey(): string
+        public function get_sitekey(): string|false
         {
-            return '';
+            return false;
         }
         /**
          * Returns the secret for a given site key.
          *
          * @param string $sitekey Site key.
-         * @return string Secret.
+         * @return string|false Secret.
          */
-        public function get_secret($sitekey): string
+        public function get_secret($sitekey): string|false
         {
-            return '';
+            return false;
         }
         /**
          * Logs the request and response.
@@ -4213,9 +4229,9 @@ namespace {
         /**
          * Confirms the API key.
          *
-         * @return bool True if valid, false otherwise.
+         * @return ?bool True if valid, false otherwise.
          */
-        public function confirm_key(): bool { return false; }
+        public function confirm_key(): ?bool { return null; }
         /**
          * Gets contact lists.
          *
@@ -4233,16 +4249,16 @@ namespace {
          * Creates a contact.
          *
          * @param array<string, mixed> $properties Contact properties.
-         * @return bool True if successful, false otherwise.
+         * @return string|false True if successful, false otherwise.
          */
-        public function create_contact($properties): bool { return false; }
+        public function create_contact($properties): string|false { return false; }
         /**
          * Sends an email.
          *
          * @param array<string, mixed> $properties Email properties.
-         * @return bool True if successful, false otherwise.
+         * @return string|false True if successful, false otherwise.
          */
-        public function send_email($properties): bool { return false; }
+        public function send_email($properties): string|false { return false; }
     }
     class WPCF7_Sendinblue extends \WPCF7_Service
     {
@@ -4295,20 +4311,18 @@ namespace {
         /**
          * Returns the service icon HTML.
          *
-         * @return string Icon HTML.
+         * @return void Icon HTML.
          */
-        public function icon()
+        public function icon(): void
         {
-            return '';
         }
         /**
          * Returns the service link URL.
          *
-         * @return string Link URL.
+         * @return void Link URL.
          */
-        public function link()
+        public function link(): void
         {
-            return '';
         }
         /**
          * Logs the request and response.
@@ -4462,11 +4476,11 @@ namespace {
         /**
          * Returns the API keys.
          *
-         * @return array<string, string> API keys (publishable and secret).
+         * @return ?array API keys (publishable and secret).
          */
-        public function get_api_keys(): array
+        public function get_api_keys(): ?array
         {
-            return array();
+            return null;
         }
         /**
          * Returns the service categories.
@@ -4480,20 +4494,18 @@ namespace {
         /**
          * Returns the service icon HTML.
          *
-         * @return string Icon HTML.
+         * @return void Icon HTML.
          */
-        public function icon(): string
+        public function icon(): void
         {
-            return '';
         }
         /**
          * Returns the service link URL.
          *
-         * @return string Link URL.
+         * @return void Link URL.
          */
-        public function link(): string
+        public function link(): void
         {
-            return '';
         }
         /**
          * Returns the menu page URL.
@@ -4580,20 +4592,18 @@ namespace {
         /**
          * Returns the icon that represents the service.
          *
-         * @return string Icon HTML.
+         * @return void Icon HTML.
          */
-        public function icon(): string
+        public function icon(): void
         {
-            return '';
         }
         /**
          * Returns a link to the service provider.
          *
-         * @return string Service provider URL.
+         * @return void Service provider URL.
          */
-        public function link(): string
+        public function link(): void
         {
-            return '';
         }
         /**
          * Returns a sitekey.
@@ -4778,9 +4788,12 @@ namespace {
      * @param string $elm_id
      * @param callable $callback
      * @param array<string, mixed> $options
-     * @return void
+     * @return bool
      */
-    function wpcf7_add_tag_generator(string $name, string $title, string $elm_id, callable $callback, array $options = array()): void {}
+    function wpcf7_add_tag_generator(string $name, string $title, string $elm_id, callable $callback, array $options = array()): bool
+    {
+        return false;
+    }
     /**
      * @return void
      */
@@ -5011,11 +5024,11 @@ namespace {
     /**
      * Sanitizes the form property data.
      *
-     * @param string $input
+     * @param ?string $input
      * @param string $default_template
      * @return string
      */
-    function wpcf7_sanitize_form(string $input, string $default_template = ''): string
+    function wpcf7_sanitize_form(?string $input, string $default_template = ''): string
     {
         return '';
     }
@@ -5044,11 +5057,11 @@ namespace {
     /**
      * Sanitizes the additional settings property data.
      *
-     * @param string $input
+     * @param ?string $input
      * @param string $default_template
      * @return string
      */
-    function wpcf7_sanitize_additional_settings(string $input, string $default_template = ''): string
+    function wpcf7_sanitize_additional_settings(?string $input, string $default_template = ''): string
     {
         return '';
     }
@@ -5119,9 +5132,9 @@ namespace {
      *
      * @param array<string, mixed> $file An item of `$_FILES`.
      * @param string|array<string, mixed> $options Optional. Options to control behavior.
-     * @return array<string, mixed> Array of file paths, or WP_Error if validation fails.
+     * @return array<int, string>|\WP_Error Array of file paths, or WP_Error if validation fails.
      */
-    function wpcf7_unship_uploaded_file(array $file, mixed $options = ''): array
+    function wpcf7_unship_uploaded_file(array $file, mixed $options = ''): array|\WP_Error
     {
         return array();
     }
@@ -5172,9 +5185,11 @@ namespace {
     /**
      * Initializes the temporary directory for uploaded files.
      *
-     * @return array<string, mixed>
+     * @return void
      */
-    function wpcf7_init_uploads(): array { return array(); }
+    function wpcf7_init_uploads(): void
+    {
+    }
     /**
      * Creates a child directory with a randomly generated name.
      *
@@ -5633,9 +5648,12 @@ namespace {
     /**
      * Registers post types used for this plugin.
      *
-     * @return void
+     * @return bool
      */
-    function wpcf7_register_post_types(): void {}
+    function wpcf7_register_post_types(): bool
+    {
+        return false;
+    }
     /**
      * Returns the version string of this plugin.
      *
@@ -6048,9 +6066,9 @@ namespace {
      *
      * @link http://www.w3.org/TR/html401/types.html#h-6.2
      * @param string $text
-     * @return bool True if it is a valid name, false if not.
+     * @return int|false True if it is a valid name, false if not.
      */
-    function wpcf7_is_name(string $text): bool
+    function wpcf7_is_name(string $text): int|false
     {
         return false;
     }
@@ -6059,9 +6077,9 @@ namespace {
      */
     /**
      * @param string $text
-     * @return bool
+     * @return string|false
      */
-    function wpcf7_is_email(string $text): bool
+    function wpcf7_is_email(string $text): string|false
     {
         return false;
     }
@@ -6107,9 +6125,9 @@ namespace {
      */
     /**
      * @param string $text
-     * @return bool
+     * @return int|bool
      */
-    function wpcf7_is_date(string $text): bool
+    function wpcf7_is_date(string $text): int|bool
     {
         return false;
     }
@@ -6120,9 +6138,9 @@ namespace {
      */
     /**
      * @param string $text
-     * @return bool
+     * @return int|bool
      */
-    function wpcf7_is_time(string $text): bool
+    function wpcf7_is_time(string $text): int|bool
     {
         return false;
     }
@@ -6135,9 +6153,9 @@ namespace {
      *                    mailbox, false if not.
      */
     /**
-     * @return bool
+     * @return array|false
      */
-    function wpcf7_is_mailbox_list(string $mailbox_list): bool
+    function wpcf7_is_mailbox_list(string|array $mailbox_list): array|false
     {
         return false;
     }
@@ -6249,15 +6267,15 @@ namespace {
         return false;
     }
     /**
-     * @param string $replaced
+     * @param ?string $replaced
      * @param mixed $submitted
      * @param bool $html
      * @param WPCF7_MailTag $mail_tag
-     * @return string
+     * @return ?string
      */
-    function wpcf7_acceptance_mail_tag(string $replaced, mixed $submitted, bool $html, ?WPCF7_MailTag $mail_tag): string
+    function wpcf7_acceptance_mail_tag(?string $replaced, mixed $submitted, bool $html, ?WPCF7_MailTag $mail_tag): ?string
     {
-        return '';
+        return null;
     }
     /**
      * @return void
@@ -6445,17 +6463,17 @@ namespace {
     }
     /**
      * @param string $target
-     * @return bool
+     * @return string|false
      */
-    function wpcf7_check_disallowed_list(string $target): bool
+    function wpcf7_check_disallowed_list(string $target): string|false
     {
         return false;
     }
     /**
      * @param string $target
-     * @return bool
+     * @return string|false
      */
-    function wpcf7_blacklist_check(string $target): bool
+    function wpcf7_blacklist_check(string $target): string|false
     {
         return false;
     }
@@ -6485,9 +6503,18 @@ namespace {
     function wpcf7_add_tag_generator_file(): void {}
     function wpcf7_tag_generator_file(WPCF7_ContactForm $contact_form, mixed $options): void {}
     function wpcf7_flamingo_submit(\WPCF7_ContactForm $contact_form, array $result): void {}
-    function wpcf7_flamingo_get_value(string $field, WPCF7_ContactForm $contact_form): void {}
-    function wpcf7_flamingo_add_channel(string $slug, string $name = ''): void {}
-    function wpcf7_flamingo_update_channel(WPCF7_ContactForm $contact_form): void {}
+    function wpcf7_flamingo_get_value(string $field, WPCF7_ContactForm $contact_form): mixed
+    {
+        return null;
+    }
+    function wpcf7_flamingo_add_channel(string $slug, string $name = ''): int|false
+    {
+        return false;
+    }
+    function wpcf7_flamingo_update_channel(\WPCF7_ContactForm $contact_form): ?bool
+    {
+        return null;
+    }
     /**
      * Returns output string of a special mail-tag.
      *
@@ -6508,7 +6535,10 @@ namespace {
     function wpcf7_hidden_form_tag_handler(\WPCF7_FormTag $tag): string {
         return '';
     }
-    function wpcf7_listo(mixed $data, mixed $options, mixed $args): void {}
+    function wpcf7_listo(mixed $data, mixed $options, mixed $args): mixed
+    {
+        return null;
+    }
     /**
      * @return void
      */
@@ -6574,9 +6604,12 @@ namespace {
      */
     function wpcf7_captcha_display_warning_message(string $page, string $action, \WPCF7_ContactForm $object): void {}
     /**
-     * @return void
+     * @return object|false
      */
-    function wpcf7_init_captcha(): void {}
+    function wpcf7_init_captcha(): object|false
+    {
+        return false;
+    }
     /**
      * Returns the directory path for Really Simple CAPTCHA files.
      *
@@ -6586,13 +6619,19 @@ namespace {
     {
         return '';
     }
-    function wpcf7_captcha_tmp_url(): void {}
+    function wpcf7_captcha_tmp_url(): string
+    {
+        return '';
+    }
     function wpcf7_captcha_url(string $filename): string {
         return '';
     }
     function wpcf7_generate_captcha(mixed $options = \null): void {}
     function wpcf7_check_captcha(string $prefix, string $response): void {}
-    function wpcf7_remove_captcha(string $prefix): void {}
+    function wpcf7_remove_captcha(string $prefix): ?bool
+    {
+        return null;
+    }
     function wpcf7_cleanup_captcha_files(): void {}
     function wpcf7_captchac_options(array $options): array {
         return array();
@@ -6608,11 +6647,17 @@ namespace {
     /**
      * Adds hidden form field for reCAPTCHA.
      */
-    function wpcf7_recaptcha_add_hidden_fields(array $fields): void {}
+    function wpcf7_recaptcha_add_hidden_fields(array $fields): array
+    {
+        return array();
+    }
     /**
      * Verifies reCAPTCHA token on the server side.
      */
-    function wpcf7_recaptcha_verify_response(bool $spam, WPCF7_Submission $submission): void {}
+    function wpcf7_recaptcha_verify_response(bool $spam, \WPCF7_Submission $submission): bool
+    {
+        return false;
+    }
     /**
      * Registers form-tag types for reCAPTCHA.
      */
@@ -6628,7 +6673,10 @@ namespace {
     /**
      * Increments the admin menu counter for the Integration page.
      */
-    function wpcf7_admin_menu_change_notice_recaptcha_v2_v3(array $counts): void {}
+    function wpcf7_admin_menu_change_notice_recaptcha_v2_v3(array $counts): array
+    {
+        return array();
+    }
     /**
      * Prints warnings on the admin screen.
      */
@@ -6656,8 +6704,8 @@ namespace {
      * @return void
      */
     function wpcf7_add_form_tag_response(): void {}
-    function wpcf7_response_form_tag_handler(\WPCF7_FormTag $tag): string {
-        return '';
+    function wpcf7_response_form_tag_handler(\WPCF7_FormTag $tag): ?string {
+        return null;
     }
     /**
      * @return void
@@ -6692,7 +6740,10 @@ namespace {
     /**
      * Retrieves contact lists from Brevo's database.
      */
-    function wpcf7_sendinblue_get_lists(): void {}
+    function wpcf7_sendinblue_get_lists(): array
+    {
+        return array();
+    }
     /**
      * Registers wpcf7_sendinblue as an agent.
      * @return void
@@ -6701,10 +6752,10 @@ namespace {
     /**
      * Default optin_callback function.
      * @param array<string, mixed> $properties
-     * @return bool
+     * @return void
      */
-    function wpcf7_sendinblue_doi_default_optin_callback(array $properties): bool {
-        return false;
+    function wpcf7_sendinblue_doi_default_optin_callback(array $properties): void
+    {
     }
     /**
      * Default email_callback function.
@@ -6751,7 +6802,10 @@ namespace {
     /**
      * Verifies submitted Stripe Payment Intent ID.
      */
-    function wpcf7_stripe_verify_payment_intent(bool $spam, WPCF7_Submission $submission): void {}
+    function wpcf7_stripe_verify_payment_intent(bool $spam, \WPCF7_Submission $submission): bool
+    {
+        return false;
+    }
     /**
      * Creates Stripe's Payment Intent.
      */
@@ -6769,11 +6823,17 @@ namespace {
     /**
      * Registers the [_stripe_payment_link] special mail-tag.
      */
-    function wpcf7_stripe_smt(string $output, string $tag_name, bool $html, ?WPCF7_MailTag $mail_tag = \null): void {}
+    function wpcf7_stripe_smt(?string $output, string $tag_name, bool $html, ?WPCF7_MailTag $mail_tag = \null): ?string
+    {
+        return null;
+    }
     /**
      * Adds Stripe-related meta data to Flamingo Inbound Message parameters.
      */
-    function wpcf7_stripe_add_flamingo_inbound_message_params(mixed $args): void {}
+    function wpcf7_stripe_add_flamingo_inbound_message_params(mixed $args): mixed
+    {
+        return null;
+    }
     /**
      * Registers the stripe form-tag handler.
      */
@@ -6849,8 +6909,8 @@ namespace {
     /**
      * The Turnstile form-tag handler.
      */
-    function wpcf7_turnstile_form_tag_handler(\WPCF7_FormTag $tag): string {
-        return '';
+    function wpcf7_turnstile_form_tag_handler(\WPCF7_FormTag $tag): ?string {
+        return null;
     }
     /**
      * Prepends a Turnstile widget to the form content if the form template

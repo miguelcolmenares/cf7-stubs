@@ -16,7 +16,7 @@ namespace {
      * Contact Form 7 Constants
      */
     if (!defined('WPCF7_VERSION')) {
-        define('WPCF7_VERSION', '6.2.1');
+        define('WPCF7_VERSION', '6.2.2');
     }
     
     if (!defined('WPCF7_PLUGIN_BASENAME')) {

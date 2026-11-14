@@ -2999,7 +2999,9 @@ namespace {
          * @param \RockLobsterInc\Swv\AbstractRule $rule Sub-rule to be added.
          */
         public function add_rule(\RockLobsterInc\Swv\AbstractRule $rule)
-        {}
+        {
+            return array();
+        }
         /**
          * Wrapper function for toArray.
          *
@@ -5323,6 +5325,19 @@ namespace RockLobsterInc\Functions {
     {
         return array();
     }
+    /**
+     * Replaces ill-formed UTF-8 byte sequences with the Unicode
+     * Replacement Character.
+     *
+     * @param string $input String which is assumed to be UTF-8 but
+     *        may contain invalid sequences of bytes.
+     * @return string Input text with invalid sequences of bytes replaced
+     *         with the Unicode replacement character.
+     */
+    function scrub_utf8(string $input): string
+    {
+        return '';
+    }
 }
 namespace RockLobsterInc\Swv {
     /**
@@ -5846,9 +5861,10 @@ namespace {
      *
      * @param array<string, mixed> $file An item of `$_FILES`.
      * @param string|array<string, mixed> $options Optional. Options to control behavior.
+     * @param mixed $uploaded_files
      * @return array<string, mixed> Array of file paths, or WP_Error if validation fails.
      */
-    function wpcf7_unship_uploaded_file($file, $options = '')
+    function wpcf7_unship_uploaded_file($file, $options, &$uploaded_files): array
     {
         return array();
     }
@@ -5989,7 +6005,6 @@ namespace {
     function wpcf7_form_tag_supports(string $tag_type, string $feature): bool {
         return false;
     }
-    // Exit if accessed directly
     /**
      * Replaces double line breaks with paragraph elements.
      *
@@ -6115,6 +6130,15 @@ namespace {
     function wpcf7_antiscript_file_name(string $filename): string
     {
         return '';
+    }
+    /**
+     * Returns a file extension safelist.
+     *
+     * @return array List of file extensions.
+     */
+    function wpcf7_file_extension_safelist(): array
+    {
+        return array();
     }
     /**
      * Masks a password with asterisks (*).

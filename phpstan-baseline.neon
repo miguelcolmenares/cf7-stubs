@@ -619,6 +619,12 @@ parameters:
 			path: contact-form-7-stubs.php
 
 		-
+			message: '#^Function wpcf7_file_extension_safelist\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: contact-form-7-stubs.php
+
+		-
 			message: '#^Function wpcf7_flamingo_inbound_message_parameters_turnstile\(\) has parameter \$params with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1

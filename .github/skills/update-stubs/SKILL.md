@@ -274,6 +274,16 @@ vendor/bin/phpstan analyse --no-progress --memory-limit=512M
 
 **Must show `[OK] No errors`.**
 
+### 7a-bis. Compare with the plugin
+
+```bash
+bash scripts/compare-stubs.sh --check --report /tmp/stubs-report.md
+```
+
+The structure sections must be empty (`--check` exits 0). The review sections are leads: for each type
+that the report lists, read the real function and every `return` of it before you change the stub. Do not
+trust a docblock of the plugin over its `return` statements.
+
 ### 7b. If Errors Appear
 
 Common error types and fixes:
@@ -334,6 +344,7 @@ git commit -m "chore: Bump CF7 source version to X.Y.Z
 | Compare functions | `diff <(grep -oE 'function [a-zA-Z_]+' *.annotated \| sort) <(grep -oE 'function [a-zA-Z_]+' contact-form-7-stubs.php \| sort)` |
 | Restore backup | `cp contact-form-7-stubs.php.annotated contact-form-7-stubs.php` |
 | Run PHPStan | `vendor/bin/phpstan analyse --no-progress --memory-limit=512M` |
+| Compare with the plugin | `bash scripts/compare-stubs.sh --check` |
 | Regenerate baseline | `vendor/bin/phpstan analyse --generate-baseline --memory-limit=512M` |
 
 ## Common Pitfalls

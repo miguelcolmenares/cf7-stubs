@@ -4,7 +4,9 @@ name: Watch Contact Form 7
 # one, it opens a draft pull request that moves the pinned version, the PHP floor (the "Requires
 # PHP" of that release), the PHP version of the PHPStan analysis, the version printed in the README and in contact-form-7-types.php, and the
 # CHANGELOG, and applies the change of the plugin API to the curated
-# stubs file with a three-way merge. See scripts/update-source.sh.
+# stubs file with a three-way merge. See scripts/update-source.sh. It then compares the stubs file
+# with the plugin (scripts/compare-stubs.sh) and writes the counts in the description. The owner of the
+# repository is the reviewer of the pull request, which is how the maintainer gets the notification.
 #
 # The pull request is a draft because a person has to read it: a line that was curated by hand and
 # that the new release also changed is a conflict, and the file keeps its markers. Nothing is tagged
@@ -90,6 +92,20 @@ jobs:
             echo "phpstan=fails, run it on the branch" >> "$GITHUB_OUTPUT"
           fi
 
+      # Facts first: a function, class, method or parameter on one side only. The type leads that follow
+      # are for a person who reads the plugin, so they are counted here and never stop the run.
+      - name: Compare the stubs with the plugin
+        id: compare
+        if: steps.update.outputs.changed == 'true' && steps.existing.outputs.found == 'false'
+        env:
+          CONFLICTS: ${{ steps.update.outputs.conflicts }}
+        run: |
+          if [ "$CONFLICTS" -gt 0 ]; then
+            echo "structure=skipped" >> "$GITHUB_OUTPUT"
+          else
+            bash scripts/compare-stubs.sh >/dev/null || echo "structure=failed" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Open the draft pull request
         if: steps.update.outputs.changed == 'true' && steps.existing.outputs.found == 'false'
         env:
@@ -98,6 +114,9 @@ jobs:
           PHP_FLOOR: ${{ steps.update.outputs.php }}
           CONFLICTS: ${{ steps.update.outputs.conflicts }}
           PHPSTAN: ${{ steps.check.outputs.phpstan }}
+          STRUCTURE: ${{ steps.compare.outputs.structure }}
+          REVIEW: ${{ steps.compare.outputs.review }}
+          UNDOCUMENTED: ${{ steps.compare.outputs.undocumented }}
         run: |
           branch="chore/cf7-$VERSION"
           git config user.name "github-actions[bot]"
@@ -118,6 +137,12 @@ jobs:
             echo "- **Stubs:** the change of the plugin API between the pinned release and $VERSION is applied to \`contact-form-7-stubs.php\` with a three-way merge, so the lines that were curated by hand stay."
             echo "- **Conflicts:** $CONFLICTS"
             echo "- **PHPStan:** $PHPSTAN"
+            case "$STRUCTURE" in
+              skipped) compare="skipped, the file has conflict markers" ;;
+              ''|failed) compare="could not run, run \`bash scripts/compare-stubs.sh\` on the branch" ;;
+              *) compare="$STRUCTURE structure difference(s), $REVIEW type lead(s) to read, $UNDOCUMENTED type(s) that the stubs add where the plugin has none. \`bash scripts/compare-stubs.sh\` lists them" ;;
+            esac
+            echo "- **Against the plugin:** $compare"
             echo
             if [ "$CONFLICTS" -gt 0 ]; then
               echo "## What is left to do"
@@ -129,5 +154,10 @@ jobs:
             echo
             echo "No tag and no release. The version of the package follows the one of the plugin, and the maintainer decides when to cut it."
           } > "$RUNNER_TEMP/body.md"
-          gh pr create --repo "$GITHUB_REPOSITORY" --draft --base main --head "$branch" \
-            --title "Follow Contact Form 7 $VERSION" --body-file "$RUNNER_TEMP/body.md"
+          pr_url="$(gh pr create --repo "$GITHUB_REPOSITORY" --draft --base main --head "$branch" \
+            --title "Follow Contact Form 7 $VERSION" --body-file "$RUNNER_TEMP/body.md")"
+          echo "$pr_url"
+          # The owner is the reviewer, so GitHub sends a notification. A pull request that fails to take
+          # the reviewer is still open, so this is a warning and not a failure.
+          gh pr edit "$pr_url" --add-reviewer "$GITHUB_REPOSITORY_OWNER" \
+            || echo "::warning::Could not request a review from $GITHUB_REPOSITORY_OWNER on $pr_url"

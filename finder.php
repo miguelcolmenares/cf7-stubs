@@ -5,6 +5,7 @@ declare(strict_types=1);
 use StubsGenerator\Finder;
 
 return Finder::create()
+    // scripts/compare/extract.php skips the same files when it reads the plugin. Change the two lists together.
     ->in('source/contact-form-7')
     // Exclude assets (CSS, JS, images)
     ->notPath('admin/includes/css')

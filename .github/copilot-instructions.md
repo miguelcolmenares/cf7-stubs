@@ -11,6 +11,8 @@ This project auto-generates PHPStan/Psalm type stubs from Contact Form 7 WordPre
 - `finder.php` - Configures which CF7 files to stub (excludes assets/languages)
 - `generate.sh` - Runs `php-stubs/generator` to regenerate base stubs (raw, it overwrites the curated file)
 - `scripts/update-source.sh` - Follows a new CF7 release and keeps the curated lines (three-way merge)
+- `scripts/compare-stubs.sh` - Compares the curated stubs with the real plugin: structure (fails `--check`) and return type leads (never fail). Its helpers are `scripts/compare/extract.php` and `scripts/compare/compare.py`
+- `tests/` - `update-source.sh` and `compare-stubs.sh` test the two scripts with fixtures, no network
 
 **Type Enhancement Pattern:** Base stubs are auto-generated WITHOUT implementations or full types. Manual enhancement adds complete `@param`/`@return` annotations by cross-referencing source code implementations.
 
@@ -306,6 +308,7 @@ public function format($input, $options) {}
 - [ ] Updated `source/composer.json` with new version/URL
 - [ ] Ran `scripts/update-source.sh` successfully (or `./generate.sh` and re-applied the annotations by hand)
 - [ ] Resolved every `<<<<<<< curated` conflict
+- [ ] `bash scripts/compare-stubs.sh --check` passes, and the type leads in its report were read against the plugin code
 - [ ] Verified error reduction maintained at level max
 - [ ] After the pull request is merged, the maintainer tags the release by hand (the workflow never tags)
 
@@ -380,6 +383,7 @@ PAGER=cat gh pr view <pr-number>
 | Task | Command |
 |------|---------|
 | Follow a new CF7 release | `bash scripts/update-source.sh [version]` |
+| Compare the stubs with the plugin | `bash scripts/compare-stubs.sh [--check] [--report FILE]` |
 | Regenerate raw stubs | `./generate.sh` |
 | Check errors | `vendor/bin/phpstan analyse contact-form-7-stubs.php --memory-limit=512M` |
 | Update CF7 version | Edit `source/composer.json`, run `cd source && composer update` |

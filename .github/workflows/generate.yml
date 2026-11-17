@@ -67,3 +67,70 @@ jobs:
 
     - name: Run the tests
       run: bash tests/update-source.sh
+
+  compare-script:
+    runs-on: ubuntu-latest
+    name: Tests of scripts/compare-stubs.sh
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.4'
+        coverage: none
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run the tests
+      run: bash tests/compare-stubs.sh
+
+  compare-stubs:
+    runs-on: ubuntu-latest
+    name: Stubs against the plugin
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.4'
+        coverage: none
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Install source dependencies
+      run: cd source && composer install --prefer-dist --no-progress
+
+    # Fails when a function, class, method, property or parameter exists on one side only. The
+    # types are leads for a person, so they are in the report and never fail the job.
+    - name: Compare the stubs with the plugin
+      id: compare
+      run: bash scripts/compare-stubs.sh --check --report "$RUNNER_TEMP/stubs-report.md"
+
+    - name: Write the counts in the job summary
+      if: always() && steps.compare.outcome != 'skipped'
+      run: |
+        {
+          echo "### Stubs against the plugin"
+          echo
+          if [ -f "$RUNNER_TEMP/stubs-report.md" ]; then
+            echo "The report is in the artifact \`stubs-against-plugin\`."
+            echo
+            grep '^## ' "$RUNNER_TEMP/stubs-report.md" | sed 's/^## /- /'
+          else
+            echo "The comparison did not write a report, see the log of the previous step."
+          fi
+        } >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Upload the report
+      if: always() && steps.compare.outcome != 'skipped'
+      uses: actions/upload-artifact@v7
+      with:
+        name: stubs-against-plugin
+        path: ${{ runner.temp }}/stubs-report.md
+        if-no-files-found: ignore

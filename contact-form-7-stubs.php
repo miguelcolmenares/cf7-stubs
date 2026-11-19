@@ -604,11 +604,11 @@ namespace {
          * Returns the default template value for a property.
          *
          * @param string $prop Property name (form, mail, mail_2, messages).
-         * @return array<string, mixed>|string Template value.
+         * @return array<string, mixed>|string|null Template value. Null for a property that has no default template.
          */
         public static function get_default($prop = 'form')
         {
-            return array();
+            return null;
         }
         /**
          * Returns the default form template.

@@ -109,6 +109,7 @@ function process_form(int $form_id): void {
     assert($form instanceof WPCF7_ContactForm);
     
     $title = $form->title();
+    // id() is int|null: it is null for a form that has not been saved.
     $form_id = $form->id();
 }
 ```

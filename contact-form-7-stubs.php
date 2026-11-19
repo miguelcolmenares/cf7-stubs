@@ -825,20 +825,20 @@ namespace {
         /**
          * Returns unit-tag for this contact form.
          *
-         * @return string Unit-tag.
+         * @return string|null Unit-tag. Null until form_html() has run.
          */
-        public function unit_tag(): string
+        public function unit_tag()
         {
-            return '';
+            return null;
         }
         /**
          * Returns name (slug) of this contact form.
          *
-         * @return string Name.
+         * @return string|null Name. Null for a form that has not been saved.
          */
-        public function name(): string
+        public function name()
         {
-            return '';
+            return null;
         }
         /**
          * Returns title of this contact form.

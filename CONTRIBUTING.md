@@ -87,7 +87,7 @@ Before submitting a pull request:
 1. Ensure stubs generate without errors
 2. Run PHPStan: `vendor/bin/phpstan analyse`
 3. Compare with the plugin: `bash scripts/compare-stubs.sh --check` (needs `cd source && composer install` first)
-4. Run the script tests: `bash tests/update-source.sh` and `bash tests/compare-stubs.sh`
+4. Run the script tests: `bash tests/update-source.sh` and `bash tests/compare-stubs.sh`, and the type tests: `bash tests/stub-types.sh` (PHPStan `assertType()` checks in `tests/types/`, such as `WPCF7_ContactForm::id()` being `int|null` for a form that is not saved)
 5. Validate composer.json: `composer validate --strict`
 
 `composer.lock` is not tracked, so `composer install` takes the newest PHPStan that

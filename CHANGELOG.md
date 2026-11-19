@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.2.5.1] - 2026-11-19
+
+This is a revision of the stubs, not a Contact Form 7 release. The stubs still follow Contact Form 7 6.2.5, and the fourth segment of the version counts the corrections made to them.
+
 ### Added
 
 - `scripts/compare-stubs.sh` compares the curated stubs file with the Contact Form 7 release that it follows (functions, classes, methods, properties, constants, parameters, native and docblock types, stub bodies) and writes a Markdown report. `--check` fails on a structure difference (see "Comparing the stubs with the plugin" in CONTRIBUTING.md); the type findings are leads for a person and never fail it

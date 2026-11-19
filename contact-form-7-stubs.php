@@ -604,11 +604,11 @@ namespace {
          * Returns the default template value for a property.
          *
          * @param string $prop Property name (form, mail, mail_2, messages).
-         * @return array<string, mixed>|string Template value.
+         * @return array<string, mixed>|string|null Template value. Null for a property that has no default template.
          */
         public static function get_default($prop = 'form')
         {
-            return array();
+            return null;
         }
         /**
          * Returns the default form template.
@@ -816,29 +816,29 @@ namespace {
         /**
          * Returns ID of this contact form.
          *
-         * @return int The ID.
+         * @return int|null The ID, or null for a form that has not been saved.
          */
-        public function id(): int
+        public function id()
         {
-            return 0;
+            return null;
         }
         /**
          * Returns unit-tag for this contact form.
          *
-         * @return string Unit-tag.
+         * @return string|null Unit-tag. Null until form_html() has run.
          */
-        public function unit_tag(): string
+        public function unit_tag()
         {
-            return '';
+            return null;
         }
         /**
          * Returns name (slug) of this contact form.
          *
-         * @return string Name.
+         * @return string|null Name. Null for a form that has not been saved.
          */
-        public function name(): string
+        public function name()
         {
-            return '';
+            return null;
         }
         /**
          * Returns title of this contact form.

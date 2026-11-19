@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `scripts/compare-stubs.sh` compares the curated stubs file with the Contact Form 7 release that it follows (functions, classes, methods, properties, constants, parameters, native and docblock types, stub bodies) and writes a Markdown report. `--check` fails on a structure difference (see "Comparing the stubs with the plugin" in CONTRIBUTING.md); the type findings are leads for a person and never fail it
 - The workflow `generate.yml` runs that comparison against the pinned release and tests the script, and the workflow that watches for new releases writes the counts in the draft pull request and requests a review from the owner
+- `tests/stub-types.sh` checks with PHPStan `assertType()` what the stubs say about an unsaved form (`tests/types/`), and the workflow `generate.yml` runs it
+
+### Fixed
+
+- `WPCF7_ContactForm::id()` is `int|null`. Contact Form 7 never sets the ID of a form that has not been saved, such as the form of the Add New screen, so `id()` returns null there, and the stubs said `int`. PHPStan accepted code that passes `id()` to an `int` parameter, which fails at run time in the plugin. The method no longer has a native return type, like the plugin
+- `WPCF7_ContactForm::name()` and `unit_tag()` are `string|null`: the name is null for a form that has not been saved, and the unit-tag is null until `form_html()` has run
+- `WPCF7_ContactFormTemplate::get_default()` can return null, for a property other than form, mail, mail_2 and messages
 
 ## [6.2.5] - 2026-11-14
 

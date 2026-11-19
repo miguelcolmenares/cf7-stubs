@@ -816,11 +816,11 @@ namespace {
         /**
          * Returns ID of this contact form.
          *
-         * @return int The ID.
+         * @return int|null The ID, or null for a form that has not been saved.
          */
-        public function id(): int
+        public function id()
         {
-            return 0;
+            return null;
         }
         /**
          * Returns unit-tag for this contact form.

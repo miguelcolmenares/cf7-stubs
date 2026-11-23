@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.2.6] - 2026-11-23
+
 ### Added
 
 - `WPCF7_ConfigValidator::detect_stripe_deviation()` and the `stripe_deviation` configuration error code, new in Contact Form 7 6.2.6

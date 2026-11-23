@@ -7,10 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `WPCF7_ConfigValidator::detect_stripe_deviation()` and the `stripe_deviation` configuration error code, new in Contact Form 7 6.2.6
 
 ### Changed
 
 - The stubs follow Contact Form 7 6.2.6, up from 6.2.5. The PHP floor of the package is 8.3, the "Requires PHP" of that release
+- `WPCF7_ConfigValidator::last_important_update` is `6.2.6`, up from `5.8.1`
 
 ## [6.2.5.1] - 2026-11-19
 

@@ -293,9 +293,12 @@ namespace {
          * Detects errors of Stripe deviation.
          *
          * @link https://contactform7.com/configuration-errors/stripe-deviation/
+         * @param string $section
+         * @param string $content
          */
-        public function detect_stripe_deviation($section, $content)
+        public function detect_stripe_deviation(string $section, string $content): bool
         {
+            return false;
         }
     }
     // Exit if accessed directly

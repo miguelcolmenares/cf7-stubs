@@ -289,6 +289,14 @@ namespace {
         {
             return false;
         }
+        /**
+         * Detects errors of Stripe deviation.
+         *
+         * @link https://contactform7.com/configuration-errors/stripe-deviation/
+         */
+        public function detect_stripe_deviation($section, $content)
+        {
+        }
     }
     // Exit if accessed directly
     trait WPCF7_ConfigValidator_Mail
@@ -448,8 +456,8 @@ namespace {
         /**
          * The plugin version in which important updates happened last time.
          */
-        const last_important_update = '5.8.1';
-        const error_codes = array('maybe_empty', 'invalid_mailbox_syntax', 'email_not_in_site_domain', 'html_in_message', 'multiple_controls_in_label', 'file_not_found', 'unavailable_names', 'invalid_mail_header', 'deprecated_settings', 'file_not_in_content_dir', 'unavailable_html_elements', 'attachments_overweight', 'dots_in_names', 'colons_in_names', 'upload_filesize_overlimit', 'unsafe_email_without_protection');
+        const last_important_update = '6.2.6';
+        const error_codes = array('maybe_empty', 'invalid_mailbox_syntax', 'email_not_in_site_domain', 'html_in_message', 'multiple_controls_in_label', 'file_not_found', 'unavailable_names', 'invalid_mail_header', 'deprecated_settings', 'file_not_in_content_dir', 'unavailable_html_elements', 'attachments_overweight', 'dots_in_names', 'colons_in_names', 'upload_filesize_overlimit', 'unsafe_email_without_protection', 'stripe_deviation');
         use \WPCF7_ConfigValidator_Form;
         use \WPCF7_ConfigValidator_Mail;
         use \WPCF7_ConfigValidator_Messages;
